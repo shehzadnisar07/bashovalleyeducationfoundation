@@ -4,11 +4,11 @@ import { siteConfig } from "@/config/site";
 
 export function SiteFooter() {
   return (
-    <footer className="bg-navy-950 text-surface-white">
-      <div className="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8">
-        <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-4">
-          {/* Brand & Mission */}
-          <div className="space-y-4">
+    <footer className="bg-brand-primary text-surface-white">
+      <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
+        <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-12">
+          {/* Institutional Identity */}
+          <div className="space-y-4 lg:col-span-5">
             <Link
               href="/"
               aria-label={siteConfig.name}
@@ -17,39 +17,42 @@ export function SiteFooter() {
               <Image
                 src="/images/logo-white.svg"
                 alt=""
-                width={38}
-                height={48}
-                className="h-11 w-auto"
+                width={36}
+                height={46}
+                className="h-10 w-auto"
               />
               <div>
-                <p className="text-2xl tracking-tight text-surface-white">
-                  <span className="font-serif font-bold">Basho </span>
-                  <span className="font-sans font-light text-surface-white/90">
-                    Valley
-                  </span>
+                <p className="font-serif text-xl font-semibold leading-none text-surface-white">
+                  Basho Valley
                 </p>
-                <p className="text-xs text-surface-white/75">{siteConfig.name}</p>
+                <p className="mt-1 text-xs text-surface-white/70">
+                  Education Foundation
+                </p>
               </div>
             </Link>
-            <p className="text-sm leading-relaxed text-surface-white/80">
+
+            <p className="max-w-md text-sm leading-relaxed text-surface-white/75">
               {siteConfig.description}
             </p>
-            <p className="inline-flex items-center rounded-full border border-gold-500/35 bg-navy-900 px-3 py-1 text-xs font-medium text-gold-500">
-              {siteConfig.registrationNumber}
+
+            <p className="text-xs font-medium text-ochre-400">
+              {siteConfig.isRegistrationPending
+                ? "Registered Charitable Trust · Seven Local Trustees"
+                : `${siteConfig.registrationNumber} · Seven Local Trustees`}
             </p>
           </div>
 
-          {/* Quick Links */}
-          <div>
-            <h2 className="font-serif text-base font-semibold text-gold-500">
-              Quick Links
+          {/* Navigation */}
+          <div className="lg:col-span-2">
+            <h2 className="text-xs font-semibold tracking-wide text-surface-white/60">
+              Foundation
             </h2>
             <ul className="mt-4 space-y-2.5 text-sm">
               {siteConfig.nav.map((item) => (
                 <li key={item.href}>
                   <Link
                     href={item.href}
-                    className="text-surface-white/80 transition-colors hover:text-gold-500"
+                    className="text-surface-white/80 transition-colors hover:text-ochre-400"
                   >
                     {item.label}
                   </Link>
@@ -58,63 +61,91 @@ export function SiteFooter() {
             </ul>
           </div>
 
-          {/* Program Pillars */}
-          <div>
-            <h2 className="font-serif text-base font-semibold text-gold-500">
-              Our Model
+          {/* Model Pillars */}
+          <div className="lg:col-span-2">
+            <h2 className="text-xs font-semibold tracking-wide text-surface-white/60">
+              Our Approach
             </h2>
             <ul className="mt-4 space-y-2.5 text-sm text-surface-white/80">
-              <li>Three-Teacher STEM Team</li>
-              <li>Offline Digital Classrooms</li>
-              <li>Local Female Educators</li>
-              <li>Exam-Linked Accountability</li>
-              <li>Zero Bricks-and-Mortar Overhead</li>
+              <li>
+                <Link
+                  href="/program#partnership"
+                  className="transition-colors hover:text-ochre-400"
+                >
+                  Education Dept. MOU
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/program#classroom"
+                  className="transition-colors hover:text-ochre-400"
+                >
+                  Three-Teacher STEM Teams
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/program#classroom-kit"
+                  className="transition-colors hover:text-ochre-400"
+                >
+                  Offline Solar Classrooms
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/program#accountability"
+                  className="transition-colors hover:text-ochre-400"
+                >
+                  Exam-Linked Incentives
+                </Link>
+              </li>
             </ul>
           </div>
 
-          {/* Contact & Valley Info */}
-          <div>
-            <h2 className="font-serif text-base font-semibold text-gold-500">
-              Contact &amp; Location
+          {/* Location & Inquiries */}
+          <div className="lg:col-span-3">
+            <h2 className="text-xs font-semibold tracking-wide text-surface-white/60">
+              Location &amp; Inquiries
             </h2>
             <dl className="mt-4 space-y-3 text-sm text-surface-white/80">
               <div>
-                <dt className="text-xs uppercase tracking-wider text-slate-500">
-                  Location
-                </dt>
+                <dt className="text-xs text-surface-white/50">Valley Location</dt>
                 <dd className="mt-0.5">{siteConfig.contact.address}</dd>
-              </div>
-              <div>
-                <dt className="text-xs uppercase tracking-wider text-slate-500">
-                  Email
-                </dt>
-                <dd className="mt-0.5">
-                  <a
-                    href={`mailto:${siteConfig.contact.email}`}
-                    className="transition-colors hover:text-gold-500"
-                  >
-                    {siteConfig.contact.email}
-                  </a>
+                <dd className="mt-0.5 text-xs text-surface-white/60">
+                  Altitude {siteConfig.stats.altitude} · {siteConfig.stats.distanceFromK2}
                 </dd>
               </div>
               <div>
-                <dt className="text-xs uppercase tracking-wider text-slate-500">
-                  Phone / WhatsApp
-                </dt>
-                <dd className="mt-0.5">{siteConfig.contact.phone}</dd>
+                <dt className="text-xs text-surface-white/50">Direct Inquiries</dt>
+                <dd className="mt-0.5">
+                  {siteConfig.contact.isPlaceholder ? (
+                    <Link
+                      href="/contact"
+                      className="underline decoration-ochre-500/70 underline-offset-4 transition-colors hover:text-ochre-400"
+                    >
+                      Submit an inquiry via Contact
+                    </Link>
+                  ) : (
+                    <a
+                      href={`mailto:${siteConfig.contact.email}`}
+                      className="transition-colors hover:text-ochre-400"
+                    >
+                      {siteConfig.contact.email}
+                    </a>
+                  )}
+                </dd>
               </div>
             </dl>
           </div>
         </div>
 
-        {/* Bottom Legal & Trust Strip */}
-        <div className="mt-12 flex flex-col items-start justify-between gap-4 border-t border-surface-white/10 pt-6 text-xs text-surface-white/70 sm:flex-row sm:items-center">
+        {/* Bottom Strip */}
+        <div className="mt-14 flex flex-col items-start justify-between gap-3 border-t border-surface-white/10 pt-6 text-xs text-surface-white/60 sm:flex-row sm:items-center">
           <p>
-            &copy; 2026 {siteConfig.name} ({siteConfig.shortName}). All rights
-            reserved.
+            &copy; 2026 {siteConfig.name} ({siteConfig.shortName}). All rights reserved.
           </p>
           <p>
-            Supporting {siteConfig.stats.activePartnerSchools} partner school &bull;{" "}
+            {siteConfig.stats.activePartnerSchools} active partner school ·{" "}
             {siteConfig.stats.villagesWaiting} villages awaiting expansion
           </p>
         </div>

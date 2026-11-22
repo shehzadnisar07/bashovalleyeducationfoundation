@@ -1,19 +1,41 @@
 "use client";
 
+import { useSearchParams } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
+import { ArrowRightIcon, CheckIcon, MailIcon } from "@/components/ui/Icons";
 import { siteConfig } from "@/config/site";
+
+const INQUIRY_TOPICS = [
+  "Sponsor a Three-Teacher STEM Team",
+  "Equip a Digital Classroom Kit",
+  "Direct Trust Bank Transfer Details",
+  "Education Partnership",
+  "Educator or Volunteer Interest",
+  "General Inquiry",
+] as const;
 
 interface SubmittedInquiry {
   name: string;
   email: string;
+  organization: string;
   topic: string;
   message: string;
 }
 
 export function ContactForm() {
+  const searchParams = useSearchParams();
+  const topicParam = searchParams.get("topic");
+  const initialTopic =
+    topicParam &&
+    INQUIRY_TOPICS.includes(topicParam as (typeof INQUIRY_TOPICS)[number])
+      ? topicParam
+      : INQUIRY_TOPICS[0];
+
   const formRef = useRef<HTMLFormElement>(null);
   const announcerRef = useRef<HTMLDivElement>(null);
+  const [userSelectedTopic, setUserSelectedTopic] = useState<string | null>(null);
   const [submitted, setSubmitted] = useState<SubmittedInquiry | null>(null);
+  const selectedTopic = userSelectedTopic ?? initialTopic;
 
   useEffect(() => {
     const form = formRef.current;
@@ -111,7 +133,10 @@ export function ContactForm() {
       const target = e.target as HTMLElement;
       if (!supportsUserInvalid && "validity" in target) {
         const ctrl = target as HTMLInputElement;
-        if (ctrl.classList.contains("user-invalid-fallback") || ctrl.classList.contains("user-valid-fallback")) {
+        if (
+          ctrl.classList.contains("user-invalid-fallback") ||
+          ctrl.classList.contains("user-valid-fallback")
+        ) {
           ctrl.classList.toggle("user-invalid-fallback", !ctrl.validity.valid);
           ctrl.classList.toggle("user-valid-fallback", ctrl.validity.valid);
         }
@@ -156,7 +181,8 @@ export function ContactForm() {
     setSubmitted({
       name: String(data.get("name") || "").trim(),
       email: String(data.get("email") || "").trim(),
-      topic: String(data.get("topic") || "General Inquiry"),
+      organization: String(data.get("organization") || "").trim(),
+      topic: String(data.get("topic") || INQUIRY_TOPICS[0]),
       message: String(data.get("message") || "").trim(),
     });
     form.reset();
@@ -166,33 +192,52 @@ export function ContactForm() {
     const mailtoSubject = encodeURIComponent(
       `[BVEF Inquiry] ${submitted.topic} — ${submitted.name}`
     );
+    const orgLine = submitted.organization
+      ? `Organization: ${submitted.organization}\n`
+      : "";
     const mailtoBody = encodeURIComponent(
-      `Name: ${submitted.name}\nEmail: ${submitted.email}\nTopic: ${submitted.topic}\n\nMessage:\n${submitted.message}`
+      `Name: ${submitted.name}\nEmail: ${submitted.email}\n${orgLine}Topic: ${submitted.topic}\n\nMessage:\n${submitted.message}`
     );
 
     return (
-      <div className="rounded-2xl border border-gold-500/40 bg-gold-100/70 p-6 sm:p-8">
-        <h2 className="font-serif text-2xl font-bold text-navy-900">
-          Thank You, {submitted.name}
+      <div className="rounded-sm border border-border-subtle bg-surface-white p-7 sm:p-10">
+        <div className="inline-flex h-10 w-10 items-center justify-center rounded-sm bg-ochre-100 text-ochre-600">
+          <CheckIcon className="h-5 w-5" />
+        </div>
+        <h2 className="mt-5 font-serif text-2xl font-medium text-navy-950 sm:text-3xl">
+          Inquiry prepared for {submitted.name}
         </h2>
-        <p className="mt-3 text-sm leading-relaxed text-text-body">
-          Your inquiry has been prepared. Because our automated email backend is
-          being finalized for launch, you can also send this message directly
-          via your email client so it reaches our team right away.
+        <p className="mt-3 text-sm leading-relaxed text-text-body sm:text-base">
+          This website operates without an automated server-side mail relay. To
+          deliver your inquiry directly to the Trust, open the pre-filled draft
+          in your email application below.
         </p>
+
+        <dl className="mt-6 space-y-2 rounded-sm border border-border-subtle bg-surface-ivory p-4 text-xs sm:text-sm">
+          <div className="flex flex-wrap gap-x-2">
+            <dt className="font-semibold text-navy-950">Topic:</dt>
+            <dd className="text-text-body">{submitted.topic}</dd>
+          </div>
+          <div className="flex flex-wrap gap-x-2">
+            <dt className="font-semibold text-navy-950">Reply-to:</dt>
+            <dd className="text-text-body">{submitted.email}</dd>
+          </div>
+        </dl>
+
         <div className="mt-6 flex flex-wrap gap-3">
           <a
             href={`mailto:${siteConfig.contact.email}?subject=${mailtoSubject}&body=${mailtoBody}`}
-            className="inline-flex items-center justify-center rounded-lg bg-navy-900 px-5 py-2.5 text-sm font-semibold text-surface-white transition-colors hover:bg-navy-950"
+            className="inline-flex items-center justify-center gap-2 rounded-md bg-navy-950 px-5 py-2.5 text-sm font-semibold text-surface-white transition-colors hover:bg-navy-900"
           >
-            Open in Email App
+            <MailIcon className="h-4 w-4" />
+            <span>Open draft in email app</span>
           </a>
           <button
             type="button"
             onClick={() => setSubmitted(null)}
-            className="inline-flex items-center justify-center rounded-lg border border-border-subtle bg-surface-white px-5 py-2.5 text-sm font-semibold text-navy-900 transition-colors hover:bg-surface-ivory"
+            className="inline-flex items-center justify-center rounded-md border border-border-strong bg-surface-white px-5 py-2.5 text-sm font-medium text-navy-950 transition-colors hover:bg-surface-ivory"
           >
-            Send Another Message
+            Prepare another inquiry
           </button>
         </div>
       </div>
@@ -203,93 +248,113 @@ export function ContactForm() {
     <form
       ref={formRef}
       onSubmit={handleSubmit}
-      className="space-y-5 rounded-2xl border border-border-subtle bg-surface-white p-6 shadow-xs sm:p-8"
+      className="space-y-6 rounded-sm border border-border-subtle bg-surface-white p-7 sm:p-10"
     >
       <div ref={announcerRef} aria-live="polite" className="sr-only" />
 
-      <div>
-        <label
-          htmlFor="contact-name"
-          className="block text-sm font-semibold text-navy-900"
-        >
-          Full Name
-        </label>
-        <input
-          id="contact-name"
-          name="name"
-          type="text"
-          required
-          minLength={2}
-          autoComplete="name"
-          data-error="contact-name-error"
-          className="form-control mt-1.5 block w-full rounded-lg border border-border-subtle bg-surface-white px-3.5 py-2.5 text-base text-navy-950 sm:text-sm"
-          placeholder="Your name"
-        />
-        <div id="contact-name-error" className="field-error-msg">
-          <span role="img" aria-label="Error">
-            !
-          </span>
-          <span>Please enter your full name (at least 2 characters).</span>
+      <div className="border-b border-border-subtle pb-5">
+        <h2 className="font-serif text-2xl font-medium text-navy-950">
+          Write to the Foundation
+        </h2>
+        <p className="mt-1.5 text-sm text-text-muted">
+          Complete the fields below to prepare a structured inquiry draft for
+          BVEF&apos;s Trustees.
+        </p>
+      </div>
+
+      <div className="grid gap-5 sm:grid-cols-2">
+        <div>
+          <label
+            htmlFor="contact-name"
+            className="block text-sm font-medium text-navy-950"
+          >
+            Full name
+          </label>
+          <input
+            id="contact-name"
+            name="name"
+            type="text"
+            required
+            minLength={2}
+            autoComplete="name"
+            data-error="contact-name-error"
+            className="form-control mt-1.5 block w-full rounded-md border border-border-subtle bg-surface-ivory/50 px-3.5 py-2.5 text-base text-navy-950 transition-colors focus:border-navy-950 focus:bg-surface-white sm:text-sm"
+            placeholder="Your full name"
+          />
+          <div id="contact-name-error" className="field-error-msg">
+            <span>Enter your full name (at least 2 characters).</span>
+          </div>
+        </div>
+
+        <div>
+          <label
+            htmlFor="contact-email"
+            className="block text-sm font-medium text-navy-950"
+          >
+            Email address
+          </label>
+          <input
+            id="contact-email"
+            name="email"
+            type="email"
+            required
+            autoComplete="email"
+            data-error="contact-email-error"
+            className="form-control mt-1.5 block w-full rounded-md border border-border-subtle bg-surface-ivory/50 px-3.5 py-2.5 text-base text-navy-950 transition-colors focus:border-navy-950 focus:bg-surface-white sm:text-sm"
+            placeholder="you@example.com"
+          />
+          <div id="contact-email-error" className="field-error-msg">
+            <span>Enter a valid email address (e.g., you@example.com).</span>
+          </div>
         </div>
       </div>
 
-      <div>
-        <label
-          htmlFor="contact-email"
-          className="block text-sm font-semibold text-navy-900"
-        >
-          Email Address
-        </label>
-        <span id="contact-email-hint" className="mt-0.5 block text-xs text-slate-500">
-          Format: you@example.com
-        </span>
-        <input
-          id="contact-email"
-          name="email"
-          type="email"
-          required
-          autoComplete="email"
-          aria-describedby="contact-email-hint"
-          data-error="contact-email-error"
-          className="form-control mt-1.5 block w-full rounded-lg border border-border-subtle bg-surface-white px-3.5 py-2.5 text-base text-navy-950 sm:text-sm"
-          placeholder="you@example.com"
-        />
-        <div id="contact-email-error" className="field-error-msg">
-          <span role="img" aria-label="Error">
-            !
-          </span>
-          <span>Enter a valid email address in the format you@example.com.</span>
+      <div className="grid gap-5 sm:grid-cols-2">
+        <div>
+          <label
+            htmlFor="contact-organization"
+            className="block text-sm font-medium text-navy-950"
+          >
+            Organization{" "}
+            <span className="font-normal text-text-muted">(optional)</span>
+          </label>
+          <input
+            id="contact-organization"
+            name="organization"
+            type="text"
+            autoComplete="organization"
+            className="form-control mt-1.5 block w-full rounded-md border border-border-subtle bg-surface-ivory/50 px-3.5 py-2.5 text-base text-navy-950 transition-colors focus:border-navy-950 focus:bg-surface-white sm:text-sm"
+            placeholder="Foundation, school, or group"
+          />
         </div>
-      </div>
 
-      <div>
-        <label
-          htmlFor="contact-topic"
-          className="block text-sm font-semibold text-navy-900"
-        >
-          Inquiry Topic
-        </label>
-        <select
-          id="contact-topic"
-          name="topic"
-          defaultValue="Sponsor a School or Classroom"
-          className="form-control mt-1.5 block w-full rounded-lg border border-border-subtle bg-surface-white px-3.5 py-2.5 text-base text-navy-950 sm:text-sm"
-        >
-          <option value="Sponsor a School or Classroom">
-            Sponsor a School or Classroom
-          </option>
-          <option value="Donation & Bank Transfer Info">
-            Donation &amp; Bank Transfer Info
-          </option>
-          <option value="Education Partnership">Education Partnership</option>
-          <option value="General Inquiry">General Inquiry</option>
-        </select>
+        <div>
+          <label
+            htmlFor="contact-topic"
+            className="block text-sm font-medium text-navy-950"
+          >
+            Inquiry topic
+          </label>
+          <select
+            id="contact-topic"
+            name="topic"
+            value={selectedTopic}
+            onChange={(e) => setUserSelectedTopic(e.target.value)}
+            className="form-control mt-1.5 block w-full rounded-md border border-border-subtle bg-surface-ivory/50 px-3.5 py-2.5 text-base text-navy-950 transition-colors focus:border-navy-950 focus:bg-surface-white sm:text-sm"
+          >
+            {INQUIRY_TOPICS.map((topic) => (
+              <option key={topic} value={topic}>
+                {topic}
+              </option>
+            ))}
+          </select>
+        </div>
       </div>
 
       <div>
         <label
           htmlFor="contact-message"
-          className="block text-sm font-semibold text-navy-900"
+          className="block text-sm font-medium text-navy-950"
         >
           Message
         </label>
@@ -300,23 +365,27 @@ export function ContactForm() {
           required
           minLength={10}
           data-error="contact-message-error"
-          className="form-control mt-1.5 block w-full rounded-lg border border-border-subtle bg-surface-white px-3.5 py-2.5 text-base text-navy-950 sm:text-sm"
-          placeholder="Tell us how you would like to connect with Basho Valley Education Foundation..."
+          className="form-control mt-1.5 block w-full rounded-md border border-border-subtle bg-surface-ivory/50 px-3.5 py-2.5 text-base text-navy-950 transition-colors focus:border-navy-950 focus:bg-surface-white sm:text-sm"
+          placeholder="Share how you would like to support or partner with Basho Valley Education Foundation..."
         />
         <div id="contact-message-error" className="field-error-msg">
-          <span role="img" aria-label="Error">
-            !
-          </span>
           <span>Please write a message of at least 10 characters.</span>
         </div>
       </div>
 
-      <button
-        type="submit"
-        className="inline-flex w-full items-center justify-center rounded-lg bg-gold-500 px-6 py-3 text-sm font-semibold text-navy-950 shadow-xs transition-colors hover:bg-gold-600 sm:w-auto"
-      >
-        Prepare Inquiry
-      </button>
+      <div className="flex flex-col items-start justify-between gap-4 border-t border-border-subtle pt-5 sm:flex-row sm:items-center">
+        <p className="text-xs text-text-muted">
+          Prepares a structured email draft; no data is stored on external
+          servers.
+        </p>
+        <button
+          type="submit"
+          className="inline-flex w-full items-center justify-center gap-2 rounded-md bg-navy-950 px-6 py-3 text-sm font-semibold text-surface-white transition-colors hover:bg-navy-900 sm:w-auto"
+        >
+          <span>Prepare inquiry draft</span>
+          <ArrowRightIcon className="h-4 w-4" />
+        </button>
+      </div>
     </form>
   );
 }

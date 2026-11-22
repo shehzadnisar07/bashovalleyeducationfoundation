@@ -1,298 +1,455 @@
 import Image from "next/image";
 import Link from "next/link";
 import { HeroSlideshow } from "@/components/home/HeroSlideshow";
+import {
+  ArrowRightIcon,
+  AwardIcon,
+  MonitorIcon,
+  ShieldIcon,
+  UsersIcon,
+} from "@/components/ui/Icons";
+import { SupportBanner } from "@/components/ui/SupportBanner";
+import { ValleyFootprint } from "@/components/ui/ValleyFootprint";
 import { siteConfig } from "@/config/site";
 import { GALLERY_PHOTOS } from "@/data/gallery";
 
-const WHY_CARDS = [
+const CORE_PILLARS = [
   {
-    title: "Why Basho Valley",
+    icon: ShieldIcon,
+    title: "Existing public schools",
     description:
-      "Across a suspension bridge over the River Sind and a 20 km mountain track at 8,800–11,800 ft, 17 villages have long lacked consistent STEM instruction.",
+      "Formal Education Department MOU with zero bricks-and-mortar spending—100% of donor capital strengthens instruction.",
   },
   {
-    title: "Why Existing Schools",
+    icon: UsersIcon,
+    title: "Local female STEM teachers",
     description:
-      "Zero bricks-and-mortar spending: BVEF signs an MOU with the local Education Department to strengthen existing public schools from within.",
+      "Three-Teacher Teams recruited primarily from within Basho Valley for lasting retention and trusted mentorship.",
   },
   {
-    title: "Why Local Female Teachers",
+    icon: MonitorIcon,
+    title: "Offline solar classrooms",
     description:
-      "Employing qualified local female educators maximizes retention, creates strong role models, and links bonuses directly to external exam results.",
+      "TV screen, two pre-loaded laptops, speakers, and solar battery backup deliver modern STEM lessons without internet.",
+  },
+  {
+    icon: AwardIcon,
+    title: "Exam-linked accountability",
+    description:
+      "Annual teacher bonuses are tied to student performance in external examinations, measured separately by subject.",
   },
 ];
 
-const HIGHLIGHT_IDS = [
-  "valley-1",
-  "classes-11",
+const FEATURED_ESSAY_IDS = [
   "assembly-7",
-  "children-21",
+  "classes-11",
+  "exams-14",
   "teachers-23",
-  "village-1",
+  "ptm-24",
 ];
 
 export default function Home() {
-  const highlights = GALLERY_PHOTOS.filter((photo) =>
-    HIGHLIGHT_IDS.includes(photo.id)
-  );
+  const essayPhotos = FEATURED_ESSAY_IDS.map((id) =>
+    GALLERY_PHOTOS.find((p) => p.id === id)
+  ).filter((p): p is NonNullable<typeof p> => Boolean(p));
+
+  const [leadPhoto, ...supportingPhotos] = essayPhotos;
 
   return (
     <>
-      {/* 1. Full-Bleed Village Slideshow Hero */}
-      <section className="relative isolate overflow-hidden bg-navy-950">
-        <HeroSlideshow />
+      {/* 1. Documentary Hero — stacked on mobile for unobstructed photography, full-bleed cinematic on desktop */}
+      <section className="relative isolate flex flex-col overflow-hidden bg-navy-950 md:min-h-[88dvh] md:justify-end">
+        {/* Photo Stage: dedicated top frame on mobile, full-bleed background on desktop */}
+        <div className="relative h-[46dvh] min-h-[300px] max-h-[390px] w-full overflow-hidden md:absolute md:inset-0 md:h-full md:min-h-0 md:max-h-none">
+          <HeroSlideshow />
 
-        {/* Neutral dark left-to-right fade: preserves natural photo colors while keeping text readable */}
-        <div
-          className="pointer-events-none absolute inset-0 bg-gradient-to-r from-black/65 via-black/30 to-transparent"
-          aria-hidden="true"
-        />
+          {/* Top scrim keeps transparent header crisp; desktop adds full editorial directional scrim */}
+          <div
+            className="pointer-events-none absolute inset-0 bg-gradient-to-b from-navy-980/70 via-transparent to-navy-980/45 md:from-navy-980/75 md:via-navy-950/25 md:to-navy-980/85"
+            aria-hidden="true"
+          />
+          <div
+            className="pointer-events-none absolute inset-0 hidden bg-gradient-to-r from-navy-980/80 via-navy-950/35 to-transparent md:block"
+            aria-hidden="true"
+          />
+        </div>
 
-        <div className="relative z-10 mx-auto flex min-h-[82dvh] max-w-7xl items-center px-4 pt-24 pb-20 sm:min-h-[85dvh] sm:px-6 sm:pt-28 lg:px-8 lg:pt-32 lg:pb-24">
-          <div className="max-w-2xl space-y-5 sm:space-y-6">
-            <h1 className="font-serif text-3xl font-bold leading-[1.14] tracking-tight text-surface-white drop-shadow-sm sm:text-5xl lg:text-6xl">
-              Transforming Learning Outcomes{" "}
-              <span className="text-gold-500">in Basho Valley</span>
-            </h1>
-
-            <p className="max-w-xl text-base leading-relaxed text-surface-white/95 drop-shadow-sm sm:text-lg">
-              {siteConfig.description}
+        {/* Hero Copy: stacked cleanly below photo on mobile, overlaid bottom-left on desktop */}
+        <div className="relative z-10 mx-auto w-full max-w-7xl px-4 py-8 sm:px-6 md:pt-36 md:pb-28 lg:px-8">
+          <div className="animate-hero-reveal max-w-2xl">
+            <p className="inline-flex items-center gap-2 text-xs font-medium tracking-wide text-ochre-400 sm:text-sm">
+              <span>{siteConfig.stats.altitude}</span>
+              <span aria-hidden="true">/</span>
+              <span>District Skardu, Gilgit-Baltistan</span>
             </p>
 
-            <div className="flex flex-col gap-3 pt-2 sm:flex-row sm:flex-wrap sm:items-center sm:gap-4">
+            <h1 className="mt-3 font-serif text-[2rem] font-medium leading-[1.12] tracking-tight text-surface-white sm:text-5xl md:mt-4 lg:text-[4rem] lg:leading-[1.08]">
+              Bringing STEM education to the high villages of Basho Valley
+            </h1>
+
+            <p className="mt-3.5 max-w-[48ch] text-[15px] leading-relaxed text-surface-white/85 sm:text-lg md:mt-5">
+              Community-led Three-Teacher STEM Teams and offline solar
+              classrooms inside existing government schools.
+            </p>
+
+            <div className="mt-6 flex flex-col gap-2.5 sm:flex-row sm:items-center sm:gap-3 md:mt-8">
               <Link
                 href="/support"
-                className="inline-flex w-full items-center justify-center rounded-full bg-gold-500 px-7 py-3.5 text-sm font-semibold text-navy-950 shadow-md transition-colors hover:bg-gold-600 sm:w-auto"
+                className="inline-flex items-center justify-center gap-2 rounded-md bg-ochre-500 px-6 py-3 text-sm font-semibold text-navy-980 transition-colors hover:bg-ochre-400 md:py-3.5"
               >
-                Support a Classroom
+                <span>Support a classroom</span>
+                <ArrowRightIcon className="h-4 w-4" />
               </Link>
               <Link
                 href="/program"
-                className="inline-flex w-full items-center justify-center rounded-full border border-surface-white/50 bg-navy-950/35 px-7 py-3.5 text-sm font-semibold text-surface-white backdrop-blur-sm transition-colors hover:border-gold-500/70 hover:bg-navy-900/70 sm:w-auto"
+                className="inline-flex items-center justify-center rounded-md border border-surface-white/35 bg-navy-900/50 px-6 py-3 text-sm font-medium text-surface-white backdrop-blur-xs transition-colors hover:border-surface-white/75 hover:bg-navy-900 md:py-3.5"
               >
-                Explore Our 9-Point Model
+                Read the 9-Point Model
               </Link>
             </div>
           </div>
         </div>
       </section>
 
-      {/* 2. Angled Deep Navy Mission & Impact Stats Band (#022046) */}
-      <section className="angled-band-bottom bg-navy-950 text-surface-white">
-        <div className="mx-auto max-w-6xl px-4 pt-12 pb-18 text-center sm:px-6 sm:pt-14 sm:pb-24 lg:px-8">
-          <h2 className="mx-auto max-w-4xl font-serif text-xl font-medium leading-snug text-surface-white sm:text-3xl">
-            Basho Valley Education Foundation establishes high-impact,
-            community-led STEM learning inside existing public schools across
-            remote Himalayan villages.
-          </h2>
+      {/* 2. Institutional Mandate & Key Valley Figures (#0E2243) */}
+      <section className="border-t border-surface-white/15 bg-navy-950 text-surface-white md:border-t-0">
+        <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8 lg:py-16">
+          <div className="grid gap-8 lg:grid-cols-12 lg:items-center lg:gap-12">
+            <div className="space-y-3 lg:col-span-5">
+              <p className="text-xs font-medium tracking-wide text-ochre-400">
+                Community-Governed Charitable Trust
+              </p>
+              <p className="font-serif text-2xl font-normal leading-snug text-surface-white sm:text-[1.75rem]">
+                A duly registered charitable Trust governed by{" "}
+                <span className="italic text-ochre-400">seven Trustees</span>—most
+                of whom are teachers living and working in Basho Valley.
+              </p>
+            </div>
 
-          <div className="mt-10 grid grid-cols-2 gap-6 sm:mt-12 sm:gap-8 lg:grid-cols-4">
-            <div>
-              <p className="font-serif text-2xl font-bold text-gold-500 sm:text-4xl lg:text-5xl">
-                {siteConfig.stats.altitude}
-              </p>
-              <p className="mt-1.5 text-xs text-surface-white/80 sm:mt-2 sm:text-sm">
-                Himalayan Valley Altitude
-              </p>
-            </div>
-            <div>
-              <p className="font-serif text-3xl font-bold text-gold-500 sm:text-4xl lg:text-5xl">
-                {siteConfig.stats.activePartnerSchools}
-              </p>
-              <p className="mt-1.5 text-xs text-surface-white/80 sm:mt-2 sm:text-sm">
-                Active Partner School
-              </p>
-            </div>
-            <div>
-              <p className="font-serif text-3xl font-bold text-gold-500 sm:text-4xl lg:text-5xl">
-                {siteConfig.stats.villagesWaiting}
-              </p>
-              <p className="mt-1.5 text-xs text-surface-white/80 sm:mt-2 sm:text-sm">
-                Remaining Villages Waiting
-              </p>
-            </div>
-            <div>
-              <p className="font-serif text-3xl font-bold text-gold-500 sm:text-4xl lg:text-5xl">
-                {siteConfig.stats.trusteesCount}
-              </p>
-              <p className="mt-1.5 text-xs text-surface-white/80 sm:mt-2 sm:text-sm">
-                Trustees Guiding BVEF
-              </p>
-            </div>
+            <dl className="grid grid-cols-2 gap-3.5 sm:gap-4 lg:col-span-7">
+              <div className="rounded-sm border border-surface-white/12 bg-navy-900/55 p-4 sm:p-5">
+                <dt className="text-xs font-medium text-surface-white/65">
+                  Valley Altitude
+                </dt>
+                <dd className="mt-1.5 whitespace-nowrap font-serif text-xl font-medium tabular-nums text-ochre-400 sm:text-3xl">
+                  8,800–11,800<span className="ml-1 text-sm sm:text-base">ft</span>
+                </dd>
+                <p className="mt-1 text-[11px] text-surface-white/60 sm:text-xs">
+                  68 mi from K2 · Skardu
+                </p>
+              </div>
+
+              <div className="rounded-sm border border-surface-white/12 bg-navy-900/55 p-4 sm:p-5">
+                <dt className="text-xs font-medium text-surface-white/65">
+                  Active Partner School
+                </dt>
+                <dd className="mt-1.5 font-serif text-xl font-medium tabular-nums text-surface-white sm:text-3xl">
+                  {siteConfig.stats.activePartnerSchools}
+                </dd>
+                <p className="mt-1 text-[11px] text-surface-white/60 sm:text-xs">
+                  2nd school planned this year
+                </p>
+              </div>
+
+              <div className="rounded-sm border border-surface-white/12 bg-navy-900/55 p-4 sm:p-5">
+                <dt className="text-xs font-medium text-surface-white/65">
+                  Villages Waiting
+                </dt>
+                <dd className="mt-1.5 font-serif text-xl font-medium tabular-nums text-surface-white sm:text-3xl">
+                  {siteConfig.stats.villagesWaiting}
+                </dd>
+                <p className="mt-1 text-[11px] text-surface-white/60 sm:text-xs">
+                  17 villages · 1 high school
+                </p>
+              </div>
+
+              <div className="rounded-sm border border-surface-white/12 bg-navy-900/55 p-4 sm:p-5">
+                <dt className="text-xs font-medium text-surface-white/65">
+                  Local Trustees
+                </dt>
+                <dd className="mt-1.5 font-serif text-xl font-medium tabular-nums text-surface-white sm:text-3xl">
+                  {siteConfig.stats.trusteesCount}
+                </dd>
+                <p className="mt-1 text-[11px] text-surface-white/60 sm:text-xs">
+                  Mostly valley teachers
+                </p>
+              </div>
+            </dl>
           </div>
         </div>
       </section>
 
-      {/* 3. Split Appeal + 3-Card "Why" Grid (#FCF8F7) */}
+      {/* 3. Editorial Narrative — Across the River Sind (bg-surface-ivory) */}
       <section className="bg-surface-ivory">
-        <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
-          {/* Top Split Appeal */}
-          <div className="grid items-center gap-10 border-b border-navy-950/20 pb-14 lg:grid-cols-2 lg:gap-14">
-            <div className="relative aspect-[4/3] overflow-hidden bg-navy-950/5">
-              <Image
-                src="/images/children/image21.jpg"
-                alt="Smiling schoolchildren at the BVEF partner school in Basho Valley"
-                fill
-                sizes="(max-width: 1024px) 100vw, 50vw"
-                className="object-cover"
-              />
-            </div>
-
-            <div className="space-y-6">
-              <h2 className="font-serif text-3xl font-bold leading-tight text-navy-950 sm:text-4xl">
-                Support a student&apos;s journey to quality STEM education in
-                Basho Valley
+        <div className="mx-auto max-w-7xl px-4 py-18 sm:px-6 lg:px-8 lg:py-24">
+          <div className="grid gap-12 lg:grid-cols-12 lg:items-start">
+            <div className="space-y-6 lg:col-span-5">
+              <p className="text-xs font-medium text-glacial-600">
+                The Context — {siteConfig.stats.distanceFromK2} ·{" "}
+                {siteConfig.stats.distanceFromNangaParbat}
+              </p>
+              <h2 className="font-serif text-3xl font-medium leading-tight text-navy-950 sm:text-4xl">
+                Beyond a suspension bridge and a 20 km mountain track
               </h2>
-
-              <ul className="space-y-3 text-base text-text-body">
-                <li className="flex items-start gap-3">
-                  <span
-                    className="mt-2 h-2 w-2 shrink-0 rounded-full bg-gold-500"
-                    aria-hidden="true"
-                  />
-                  <span>
-                    <strong className="text-navy-950">
-                      Three-Teacher STEM Team:
-                    </strong>{" "}
-                    Sponsor dedicated local educators inside an existing school.
-                  </span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span
-                    className="mt-2 h-2 w-2 shrink-0 rounded-full bg-gold-500"
-                    aria-hidden="true"
-                  />
-                  <span>
-                    <strong className="text-navy-950">
-                      Offline Digital Classroom Kit:
-                    </strong>{" "}
-                    TV screen, two laptops, and extra speakers with offline
-                    lessons.
-                  </span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span
-                    className="mt-2 h-2 w-2 shrink-0 rounded-full bg-gold-500"
-                    aria-hidden="true"
-                  />
-                  <span>
-                    <strong className="text-navy-950">
-                      Solar Power &amp; Battery Backup:
-                    </strong>{" "}
-                    Keep digital lessons running reliably off the grid.
-                  </span>
-                </li>
-              </ul>
-
+              <p className="text-base leading-relaxed text-text-body">
+                Tucked deep in the Himalayan range near Skardu, Basho Valley is
+                reached by crossing a gushing River Sind over a suspension
+                bridge and ascending a 20 km unpaved mountain track. Families
+                here live without paved roads, running water, heating, internet,
+                or local medical facilities.
+              </p>
+              <p className="text-base leading-relaxed text-text-body">
+                Across 17 villages, there is only one high school. Public
+                primary and middle school buildings exist, yet chronic shortages
+                of qualified STEM teachers mean many children fail even Middle
+                School exams—and hardly any have ever reached university.
+              </p>
               <div className="pt-2">
                 <Link
-                  href="/support"
-                  className="inline-flex items-center justify-center rounded-full bg-gold-500 px-8 py-3.5 text-sm font-semibold text-navy-950 shadow-xs transition-colors hover:bg-gold-600"
+                  href="/about"
+                  className="inline-flex items-center gap-2 text-sm font-semibold text-navy-950 underline decoration-ochre-500 decoration-2 underline-offset-6 transition-colors hover:text-ochre-600"
                 >
-                  Support a Classroom
+                  <span>Read our full story and Trust governance</span>
+                  <ArrowRightIcon className="h-4 w-4" />
                 </Link>
               </div>
             </div>
-          </div>
 
-          {/* Bottom 3-Column Flat "Why" Grid */}
-          <div className="mt-14 grid gap-6 md:grid-cols-3">
-            {WHY_CARDS.map((card) => (
-              <article key={card.title} className="bg-[#EFECE6] p-8">
-                <h3 className="font-serif text-2xl font-bold text-navy-950">
-                  {card.title}
-                </h3>
-                <p className="mt-3 text-sm leading-relaxed text-text-body">
-                  {card.description}
-                </p>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
+            <div className="grid gap-5 sm:grid-cols-12 lg:col-span-7">
+              <figure className="sm:col-span-7">
+                <div className="relative aspect-[4/3] w-full overflow-hidden rounded-sm border border-border-subtle bg-surface-linen">
+                  <Image
+                    src="/images/children/image21.jpg"
+                    alt="Three young schoolgirls in white headscarves and blue uniforms smiling beside a stone wall in Basho Valley"
+                    fill
+                    loading="eager"
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 58vw, 34vw"
+                    className="object-cover object-top"
+                  />
+                </div>
+                <figcaption className="mt-2.5 text-xs text-text-muted">
+                  Students at BVEF&apos;s partner public school in Basho Valley.
+                </figcaption>
+              </figure>
 
-      {/* 4. 2-Column School-Partnership Program Feature */}
-      <section className="bg-surface-white">
-        <div className="mx-auto grid max-w-7xl items-center gap-10 px-4 py-16 sm:px-6 lg:grid-cols-2 lg:gap-14 lg:px-8">
-          <div className="relative aspect-[4/3] overflow-hidden bg-navy-950/5">
-            <Image
-              src="/images/classes/image11.jpg"
-              alt="Students engaged in a classroom lesson in Basho Valley"
-              fill
-              sizes="(max-width: 1024px) 100vw, 50vw"
-              className="object-cover"
-            />
-          </div>
-
-          <div className="space-y-5">
-            <p className="text-xs font-bold uppercase tracking-widest text-gold-600">
-              How Our Model Works
-            </p>
-            <h2 className="font-serif text-3xl font-bold text-navy-950 sm:text-4xl">
-              The 9-Point School-Partnership Program
-            </h2>
-            <p className="text-base leading-relaxed text-text-body">
-              Guided by seven Trustees—most of whom are teachers working in
-              Basho Valley—our model pairs an Education Department MOU with
-              offline digital classrooms, local female teachers, and
-              exam-linked performance bonuses. With 1 partner school active and a
-              2nd planned this year, 16 villages await expansion.
-            </p>
-            <div className="pt-2">
-              <Link
-                href="/program"
-                className="inline-flex items-center justify-center rounded-full border-2 border-navy-950 px-7 py-3 text-sm font-semibold text-navy-950 transition-colors hover:bg-navy-950 hover:text-surface-white"
-              >
-                Explore the 9-Point Model
-              </Link>
+              <figure className="sm:col-span-5">
+                <div className="relative aspect-[4/3] w-full overflow-hidden rounded-sm border border-border-subtle bg-surface-linen sm:aspect-[3/4]">
+                  <Image
+                    src="/images/valley-views/image2.jpg"
+                    alt="Snow-covered suspension bridge across the River Sind in winter"
+                    fill
+                    loading="eager"
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 42vw, 24vw"
+                    className="object-cover"
+                  />
+                </div>
+                <figcaption className="mt-2.5 text-xs text-text-muted">
+                  The River Sind suspension bridge in winter.
+                </figcaption>
+              </figure>
             </div>
           </div>
         </div>
       </section>
 
-      {/* 5. Dark Navy Field Gallery Showcase (#141E2A) */}
-      <section className="bg-navy-850 text-surface-white">
-        <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
-          <div className="flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-end">
-            <div>
-              <p className="text-xs font-bold uppercase tracking-widest text-gold-500">
-                From the Field
+      {/* 4. The School-Partnership Model Preview (bg-surface-linen) */}
+      <section className="border-y border-border-subtle bg-surface-linen">
+        <div className="mx-auto max-w-7xl px-4 py-18 sm:px-6 lg:px-8 lg:py-24">
+          <div className="grid gap-10 lg:grid-cols-12 lg:items-end">
+            <div className="lg:col-span-7">
+              <p className="text-xs font-medium text-glacial-600">
+                Our Operational Model
               </p>
-              <h2 className="mt-1 font-serif text-3xl font-bold text-surface-white">
-                Life &amp; Learning in Basho Valley
+              <h2 className="mt-2 font-serif text-3xl font-medium leading-tight text-navy-950 sm:text-4xl">
+                Designed for high-altitude realities, accountable to measurable
+                learning
+              </h2>
+            </div>
+            <div className="lg:col-span-5 lg:text-right">
+              <Link
+                href="/program"
+                className="inline-flex items-center gap-2 rounded-md border border-navy-950 px-5 py-2.5 text-sm font-semibold text-navy-950 transition-colors hover:bg-navy-950 hover:text-surface-white"
+              >
+                <span>Explore all 9 points of the model</span>
+                <ArrowRightIcon className="h-4 w-4" />
+              </Link>
+            </div>
+          </div>
+
+          <div className="mt-12 grid gap-px overflow-hidden rounded-sm border border-border-subtle bg-border-subtle sm:grid-cols-2 lg:grid-cols-4">
+            {CORE_PILLARS.map((pillar) => {
+              const Icon = pillar.icon;
+              return (
+                <article
+                  key={pillar.title}
+                  className="flex flex-col bg-surface-white p-7"
+                >
+                  <div className="inline-flex h-10 w-10 items-center justify-center rounded-sm bg-surface-ivory text-navy-950">
+                    <Icon className="h-5 w-5" />
+                  </div>
+                  <h3 className="mt-5 font-serif text-xl font-medium text-navy-950">
+                    {pillar.title}
+                  </h3>
+                  <p className="mt-2.5 text-sm leading-relaxed text-text-body">
+                    {pillar.description}
+                  </p>
+                </article>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* 5. 17-Village Expansion Footprint (bg-surface-ivory) */}
+      <section className="bg-surface-ivory">
+        <div className="mx-auto max-w-7xl px-4 py-18 sm:px-6 lg:px-8 lg:py-24">
+          <ValleyFootprint />
+        </div>
+      </section>
+
+      {/* 6. Documentary Field Essay (#0E2243) */}
+      <section className="bg-navy-950 text-surface-white">
+        <div className="mx-auto max-w-7xl px-4 py-18 sm:px-6 lg:px-8 lg:py-24">
+          <div className="flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-end">
+            <div className="max-w-xl">
+              <p className="text-xs font-medium text-ochre-400">
+                Documentary Archive
+              </p>
+              <h2 className="mt-2 font-serif text-3xl font-medium text-surface-white sm:text-4xl">
+                Inside the valley and partner school
               </h2>
             </div>
             <Link
               href="/gallery"
-              className="inline-flex items-center justify-center rounded-full border border-gold-500/60 px-6 py-2.5 text-sm font-semibold text-gold-500 transition-colors hover:bg-gold-500 hover:text-navy-950"
+              className="inline-flex items-center gap-2 rounded-md border border-surface-white/30 px-5 py-2.5 text-sm font-medium text-surface-white transition-colors hover:border-ochre-400 hover:text-ochre-400"
             >
-              View All {GALLERY_PHOTOS.length} Photos
+              <span>View all {GALLERY_PHOTOS.length} photographs</span>
+              <ArrowRightIcon className="h-4 w-4" />
             </Link>
           </div>
 
-          <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {highlights.map((photo) => (
-              <figure
-                key={photo.id}
-                className="overflow-hidden border border-surface-white/10 bg-navy-900"
-              >
-                <div className="relative aspect-[4/3] w-full">
+          {leadPhoto && (
+            <div className="mt-10 grid gap-6 lg:grid-cols-12">
+              {/* Featured Lead Frame */}
+              <figure className="flex flex-col lg:col-span-6">
+                <div className="relative aspect-[4/3] w-full flex-1 overflow-hidden rounded-sm border border-surface-white/10 bg-navy-900 lg:min-h-[26rem]">
                   <Image
-                    src={photo.src}
-                    alt={photo.alt}
+                    src={leadPhoto.src}
+                    alt={leadPhoto.alt}
                     fill
-                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    loading="eager"
+                    sizes="(max-width: 1024px) 100vw, 50vw"
                     className="object-cover"
                   />
                 </div>
-                <figcaption className="p-4 text-sm font-medium text-surface-white/90">
-                  {photo.caption}
+                <figcaption className="mt-3 text-sm text-surface-white/80">
+                  {leadPhoto.caption}
                 </figcaption>
               </figure>
-            ))}
+
+              {/* 2x2 Supporting Frames */}
+              <div className="grid gap-6 sm:grid-cols-2 lg:col-span-6">
+                {supportingPhotos.map((photo) => (
+                  <figure key={photo.id} className="flex flex-col">
+                    <div className="relative aspect-[4/3] w-full overflow-hidden rounded-sm border border-surface-white/10 bg-navy-900">
+                      <Image
+                        src={photo.src}
+                        alt={photo.alt}
+                        fill
+                        loading="eager"
+                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                        className={`object-cover ${
+                          photo.objectPosition === "top"
+                            ? "object-top"
+                            : "object-center"
+                        }`}
+                      />
+                    </div>
+                    <figcaption className="mt-2.5 text-xs leading-relaxed text-surface-white/75">
+                      {photo.caption}
+                    </figcaption>
+                  </figure>
+                ))}
+              </div>
+            </div>
+          )}
+        </div>
+      </section>
+
+      {/* 7. Direct Sponsorship Pathways (bg-surface-ivory) */}
+      <section className="bg-surface-ivory">
+        <div className="mx-auto max-w-7xl px-4 py-18 sm:px-6 lg:px-8 lg:py-24">
+          <div className="grid gap-10 lg:grid-cols-12 lg:items-center">
+            <div className="space-y-4 lg:col-span-5">
+              <p className="text-xs font-medium text-glacial-600">
+                Direct Classroom Impact
+              </p>
+              <h2 className="font-serif text-3xl font-medium leading-tight text-navy-950 sm:text-4xl">
+                Two tangible ways to stand with Basho Valley&apos;s students
+              </h2>
+              <p className="text-base leading-relaxed text-text-body">
+                Because BVEF operates inside existing government school
+                buildings, your support goes straight into qualified local
+                teaching and offline solar classroom technology.
+              </p>
+            </div>
+
+            <div className="grid gap-6 sm:grid-cols-2 lg:col-span-7">
+              <article className="flex flex-col justify-between rounded-sm border border-border-subtle bg-surface-white p-7">
+                <div>
+                  <p className="text-xs font-medium text-ochre-600">
+                    Core Instruction
+                  </p>
+                  <h3 className="mt-2 font-serif text-2xl font-medium text-navy-950">
+                    Three-Teacher STEM Team
+                  </h3>
+                  <p className="mt-3 text-sm leading-relaxed text-text-body">
+                    Fund local educators dedicated solely to STEM subjects
+                    inside a partner public school, backed by exam-linked
+                    performance incentives.
+                  </p>
+                </div>
+                <div className="mt-6 pt-4 border-t border-border-subtle">
+                  <Link
+                    href="/contact?topic=Sponsor+a+Three-Teacher+STEM+Team"
+                    className="inline-flex items-center gap-1.5 text-sm font-semibold text-navy-950 hover:text-ochre-600"
+                  >
+                    <span>Inquire about team sponsorship</span>
+                    <ArrowRightIcon className="h-4 w-4" />
+                  </Link>
+                </div>
+              </article>
+
+              <article className="flex flex-col justify-between rounded-sm border border-border-subtle bg-surface-white p-7">
+                <div>
+                  <p className="text-xs font-medium text-ochre-600">
+                    Classroom Hardware
+                  </p>
+                  <h3 className="mt-2 font-serif text-2xl font-medium text-navy-950">
+                    Offline Digital Classroom Kit
+                  </h3>
+                  <p className="mt-3 text-sm leading-relaxed text-text-body">
+                    Equip a classroom with a large TV screen, two laptops with
+                    offline STEM libraries, extra speakers, and solar battery
+                    backup.
+                  </p>
+                </div>
+                <div className="mt-6 pt-4 border-t border-border-subtle">
+                  <Link
+                    href="/contact?topic=Equip+a+Digital+Classroom+Kit"
+                    className="inline-flex items-center gap-1.5 text-sm font-semibold text-navy-950 hover:text-ochre-600"
+                  >
+                    <span>Inquire about classroom hardware</span>
+                    <ArrowRightIcon className="h-4 w-4" />
+                  </Link>
+                </div>
+              </article>
+            </div>
           </div>
         </div>
       </section>
+
+      <SupportBanner />
     </>
   );
 }

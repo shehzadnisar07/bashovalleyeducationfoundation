@@ -1,140 +1,235 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import { ArrowRightIcon } from "@/components/ui/Icons";
+import { PageHero } from "@/components/ui/PageHero";
+import { SupportBanner } from "@/components/ui/SupportBanner";
 import { siteConfig } from "@/config/site";
+import { VALLEY_REALITIES } from "@/data/program";
 
 export const metadata: Metadata = {
   title: "About Us",
   description:
-    "Learn about Basho Valley, the local education gap, and the seven Trustees guiding the Basho Valley Education Foundation (BVEF).",
+    "Discover the geography of Basho Valley, the local education gap across its 17 villages, and the seven local Trustees leading the Basho Valley Education Foundation.",
 };
 
 export default function AboutPage() {
   return (
     <>
-      {/* Page Header */}
-      <section className="bg-navy-950 text-surface-white">
-        <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
-          <p className="text-xs font-bold uppercase tracking-widest text-gold-500">
-            Our Story &amp; Trust
-          </p>
-          <h1 className="mt-2 font-serif text-4xl font-bold tracking-tight sm:text-5xl">
-            About Basho Valley{" "}
-            <span className="text-gold-500">Education Foundation</span>
-          </h1>
-          <p className="mt-4 max-w-2xl text-base leading-relaxed text-surface-white/80">
-            A community-anchored charitable Trust working across Basho Valley to
-            close the STEM learning gap in existing public schools.
-          </p>
-        </div>
-      </section>
+      <PageHero
+        sectionLabel="About Us"
+        title="Born inside Basho Valley, led by its own teachers"
+        lead="Basho Valley Education Foundation is a duly registered charitable Trust established by valley residents determined to transform STEM learning outcomes inside existing public schools."
+        imageSrc="/images/valley-views/image5.jpg"
+        imageAlt="Towering Himalayan granite mountain wall rising above the turquoise River Sind"
+        imageCaption="The Himalayan gorge and River Sind framing the approach to Basho Valley."
+        meta={`Altitude ${siteConfig.stats.altitude} · ${siteConfig.stats.distanceFromK2} · ${siteConfig.stats.distanceFromNangaParbat} · ${siteConfig.stats.distanceFromRakaposhi}`}
+      />
 
-      {/* Geography & Valley Context */}
-      <section className="bg-surface-white">
-        <div className="mx-auto grid max-w-7xl items-center gap-10 px-4 py-16 sm:px-6 lg:grid-cols-2 lg:gap-14 lg:px-8">
-          <div className="space-y-5">
-            <h2 className="font-serif text-3xl font-bold text-navy-900">
-              Life Across the River Sind
-            </h2>
-            <p className="text-base leading-relaxed text-text-body">
-              Basho Valley sits in the Himalayan mountain range at{" "}
-              <strong className="text-navy-900">
-                {siteConfig.stats.altitude}
-              </strong>{" "}
-              altitude near Skardu, Gilgit-Baltistan—roughly 68 miles from K2.
-              Reaching the valley means crossing a suspension bridge over the
-              River Sind and traveling a{" "}
-              <strong className="text-navy-900">
-                {siteConfig.stats.distanceFromSkardu}
-              </strong>{" "}
-              through steep alpine terrain.
-            </p>
-            <p className="text-base leading-relaxed text-text-body">
-              Across 17 villages, families value education deeply, yet remote
-              geography, harsh winters, and limited specialist staffing leave
-              local primary and middle schools struggling to deliver consistent
-              science, mathematics, and English instruction.
-            </p>
-          </div>
-
-          <div className="relative aspect-[4/3] overflow-hidden rounded-2xl border border-border-subtle shadow-sm">
-            <Image
-              src="/images/village/village-01.png"
-              alt="Homes and terraced fields in a Basho Valley village"
-              fill
-              sizes="(max-width: 1024px) 100vw, 50vw"
-              className="object-cover"
-            />
-          </div>
-        </div>
-      </section>
-
-      {/* BVEF Trust & Governance */}
-      <section className="bg-surface-ivory border-y border-border-subtle">
-        <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
-          <div className="grid gap-8 lg:grid-cols-3">
-            <div className="rounded-2xl border border-border-subtle bg-surface-white p-6">
-              <p className="text-xs font-bold uppercase tracking-widest text-gold-600">
-                Governance
+      {/* Chapter 1: Geography & Daily Realities */}
+      <section className="bg-surface-ivory">
+        <div className="mx-auto max-w-7xl px-4 py-18 sm:px-6 lg:px-8 lg:py-24">
+          <div className="grid gap-12 lg:grid-cols-12 lg:items-start">
+            <div className="space-y-5 lg:col-span-5">
+              <p className="text-xs font-medium text-glacial-600">
+                01 · Geography &amp; Isolation
               </p>
-              <h3 className="mt-2 font-serif text-2xl font-bold text-navy-900">
-                {siteConfig.stats.trusteesCount} Trustees
-              </h3>
-              <p className="mt-3 text-sm leading-relaxed text-text-body">
-                BVEF is a duly registered charitable Trust governed by seven
-                Trustees—most of whom are teachers actively working in Basho
-                Valley—ensuring decisions reflect real classroom needs.
+              <h2 className="font-serif text-3xl font-medium leading-tight text-navy-950 sm:text-4xl">
+                A valley virtually cut off from the modern world
+              </h2>
+              <p className="text-base leading-relaxed text-text-body">
+                Tucked away in the Himalayan mountain range—roughly{" "}
+                <strong className="font-semibold text-navy-950">
+                  68 miles from K2
+                </strong>
+                ,{" "}
+                <strong className="font-semibold text-navy-950">
+                  46 miles from Nanga Parbat
+                </strong>
+                , and{" "}
+                <strong className="font-semibold text-navy-950">
+                  66 miles from Rakaposhi
+                </strong>
+                —Basho Valley rises between {siteConfig.stats.altitude}.
               </p>
-              <p className="mt-4 text-xs font-medium text-slate-500">
-                Status: {siteConfig.registrationNumber}
+              <p className="text-base leading-relaxed text-text-body">
+                Reaching the valley means crossing a suspension bridge over the
+                gushing River Sind near Skardu and traveling a 20 km unpaved
+                mountain track. Only recently have specialized 4×4 jeeps begun
+                navigating the steep terrain.
               </p>
             </div>
 
-            <div className="rounded-2xl border border-border-subtle bg-surface-white p-6">
-              <p className="text-xs font-bold uppercase tracking-widest text-gold-600">
-                Focus
-              </p>
-              <h3 className="mt-2 font-serif text-2xl font-bold text-navy-900">
-                Existing Public Schools
-              </h3>
-              <p className="mt-3 text-sm leading-relaxed text-text-body">
-                Rather than constructing parallel private buildings, BVEF signs
-                MOUs with the Education Department to strengthen existing
-                government schools from within.
-              </p>
+            <div className="lg:col-span-7">
+              <div className="grid gap-6 sm:grid-cols-2">
+                {VALLEY_REALITIES.map((item) => (
+                  <article
+                    key={item.label}
+                    className="rounded-sm border border-border-subtle bg-surface-white p-6"
+                  >
+                    <h3 className="font-serif text-xl font-medium text-navy-950">
+                      {item.label}
+                    </h3>
+                    <p className="mt-2.5 text-sm leading-relaxed text-text-body">
+                      {item.detail}
+                    </p>
+                  </article>
+                ))}
+              </div>
             </div>
-
-            <div className="rounded-2xl border border-border-subtle bg-surface-white p-6">
-              <p className="text-xs font-bold uppercase tracking-widest text-gold-600">
-                Retention
-              </p>
-              <h3 className="mt-2 font-serif text-2xl font-bold text-navy-900">
-                Local Female Educators
-              </h3>
-              <p className="mt-3 text-sm leading-relaxed text-text-body">
-                Employing qualified female teachers from within the valley
-                reduces turnover, builds community trust, and keeps classrooms
-                open year-round.
-              </p>
-            </div>
-          </div>
-
-          <div className="mt-10 flex flex-wrap gap-4">
-            <Link
-              href="/program"
-              className="inline-flex items-center justify-center rounded-lg bg-navy-900 px-6 py-3 text-sm font-semibold text-surface-white transition-colors hover:bg-navy-950"
-            >
-              Read the 9-Point Program
-            </Link>
-            <Link
-              href="/gallery"
-              className="inline-flex items-center justify-center rounded-lg border border-navy-900 bg-surface-white px-6 py-3 text-sm font-semibold text-navy-900 transition-colors hover:bg-surface-ivory"
-            >
-              View Field Photos
-            </Link>
           </div>
         </div>
       </section>
+
+      {/* Chapter 2: The Local Education Gap */}
+      <section className="border-y border-border-subtle bg-surface-linen">
+        <div className="mx-auto max-w-7xl px-4 py-18 sm:px-6 lg:px-8 lg:py-24">
+          <div className="grid gap-12 lg:grid-cols-12 lg:items-center">
+            <div className="grid gap-5 sm:grid-cols-2 lg:col-span-6">
+              <figure>
+                <div className="relative aspect-[4/3] w-full overflow-hidden rounded-sm border border-border-subtle bg-surface-white">
+                  <Image
+                    src="/images/school-building/image16.jpg"
+                    alt="Existing whitewashed government school veranda in Basho Valley"
+                    fill
+                    loading="eager"
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                    className="object-cover"
+                  />
+                </div>
+                <figcaption className="mt-2 text-xs text-text-muted">
+                  Existing public school buildings already stand across the valley.
+                </figcaption>
+              </figure>
+
+              <figure>
+                <div className="relative aspect-[4/3] w-full overflow-hidden rounded-sm border border-border-subtle bg-surface-white">
+                  <Image
+                    src="/images/valley-views/image6.jpg"
+                    alt="Unpaved mountain track winding above terraced village plots in Basho Valley"
+                    fill
+                    loading="eager"
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                    className="object-cover"
+                  />
+                </div>
+                <figcaption className="mt-2 text-xs text-text-muted">
+                  Remote terrain makes recruiting outside specialist teachers difficult.
+                </figcaption>
+              </figure>
+            </div>
+
+            <div className="space-y-5 lg:col-span-6">
+              <p className="text-xs font-medium text-glacial-600">
+                02 · The Education Challenge
+              </p>
+              <h2 className="font-serif text-3xl font-medium leading-tight text-navy-950 sm:text-4xl">
+                School buildings exist—qualified STEM instruction does not
+              </h2>
+              <p className="text-base leading-relaxed text-text-body">
+                Apart from a single high school in the valley, every other
+                school is a primary or middle school. Sending a child to an
+                out-of-town high school demands resources far beyond what most
+                valley families possess.
+              </p>
+              <p className="text-base leading-relaxed text-text-body">
+                While government school buildings stand in the villages, they
+                have long lacked enough qualified, experienced teachers. As a
+                result, large numbers of children fail even Middle School
+                examinations, and hardly any student from Basho Valley has ever
+                gone on to university.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Chapter 3: The Trust & Local Governance */}
+      <section className="bg-surface-ivory">
+        <div className="mx-auto max-w-7xl px-4 py-18 sm:px-6 lg:px-8 lg:py-24">
+          <div className="grid gap-12 lg:grid-cols-12 lg:items-center">
+            <div className="space-y-5 lg:col-span-6">
+              <p className="text-xs font-medium text-glacial-600">
+                03 · Trust Origin &amp; Governance
+              </p>
+              <h2 className="font-serif text-3xl font-medium leading-tight text-navy-950 sm:text-4xl">
+                Seven Trustees taking responsibility for the next generation
+              </h2>
+              <p className="text-base leading-relaxed text-text-body">
+                Frustrated by decades of stagnation, the residents of Basho
+                Valley established BVEF as a duly registered charitable Trust
+                with one singular mandate: to improve learning outcomes for the
+                children of the valley.
+              </p>
+              <p className="text-base leading-relaxed text-text-body">
+                Most of BVEF&apos;s{" "}
+                <strong className="font-semibold text-navy-950">
+                  {siteConfig.stats.trusteesCount} Trustees
+                </strong>{" "}
+                are teachers actively working in Basho Valley. Because
+                governance sits directly inside the community, every decision—from
+                hiring local female educators to conducting regular
+                parent-teacher meetings—is rooted in lived classroom reality.
+              </p>
+
+              <div className="flex flex-wrap gap-3 pt-3">
+                <Link
+                  href="/program"
+                  className="inline-flex items-center gap-2 rounded-md bg-navy-950 px-5 py-2.5 text-sm font-semibold text-surface-white transition-colors hover:bg-navy-900"
+                >
+                  <span>Read the 9-Point Program</span>
+                  <ArrowRightIcon className="h-4 w-4" />
+                </Link>
+                <Link
+                  href="/gallery"
+                  className="inline-flex items-center justify-center rounded-md border border-border-strong bg-surface-white px-5 py-2.5 text-sm font-medium text-navy-950 transition-colors hover:bg-surface-linen"
+                >
+                  Browse field photographs
+                </Link>
+              </div>
+            </div>
+
+            <div className="grid gap-5 sm:grid-cols-2 lg:col-span-6">
+              <figure>
+                <div className="relative aspect-[4/3] w-full overflow-hidden rounded-sm border border-border-subtle bg-surface-linen">
+                  <Image
+                    src="/images/teachers/image23.jpg"
+                    alt="Five local educators standing together at the Basho Valley partner school"
+                    fill
+                    loading="eager"
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                    className="object-cover object-top"
+                  />
+                </div>
+                <figcaption className="mt-2 text-xs text-text-muted">
+                  Local educators dedicated to Basho Valley&apos;s classrooms.
+                </figcaption>
+              </figure>
+
+              <figure>
+                <div className="relative aspect-[4/3] w-full overflow-hidden rounded-sm border border-border-subtle bg-surface-linen">
+                  <Image
+                    src="/images/parent-teacher-meeting/image24.jpg"
+                    alt="Mothers and fathers gathered in the school courtyard for a parent-teacher meeting"
+                    fill
+                    loading="eager"
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                    className="object-cover"
+                  />
+                </div>
+                <figcaption className="mt-2 text-xs text-text-muted">
+                  Parents gathered in the courtyard for regular progress reviews.
+                </figcaption>
+              </figure>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <SupportBanner
+        title="Partner with a community-led charitable Trust"
+        description="Support our active partner school, help launch the 2nd school planned before year-end, or discuss expanding to the 16 villages still waiting."
+      />
     </>
   );
 }

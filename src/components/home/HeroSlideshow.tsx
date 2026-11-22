@@ -5,16 +5,19 @@ import { useEffect, useState } from "react";
 
 const HERO_SLIDES = [
   {
-    src: "/images/village/village-01.png",
-    alt: "Homes and terraced agricultural plots in a Basho Valley village",
+    src: "/images/valley-views/image4.jpg",
+    alt: "Basho Valley village, terraced fields, and partner public school nestled beneath golden Himalayan cliffs",
+    caption: "Basho Valley village and partner public school · 8,800–11,800 ft",
   },
   {
-    src: "/images/village/village-02.png",
-    alt: "Traditional stone and timber dwellings nestled against the Basho Valley mountains",
+    src: "/images/morning-assembly/image7.jpeg",
+    alt: "Students lined up in morning assembly in the sunlit courtyard of the partner school in Basho Valley",
+    caption: "Morning assembly at the Basho Valley partner school",
   },
   {
-    src: "/images/village/village-03.png",
-    alt: "Wide view of village households across Basho Valley",
+    src: "/images/valley-views/image1.jpg",
+    alt: "Wooden suspension bridge with blue railings spanning the River Sind into Basho Valley",
+    caption: "Crossing the River Sind suspension bridge toward the valley",
   },
 ];
 
@@ -29,10 +32,12 @@ export function HeroSlideshow() {
 
     const timer = setInterval(() => {
       setActiveIndex((prev) => (prev + 1) % HERO_SLIDES.length);
-    }, 5000);
+    }, 6500);
 
     return () => clearInterval(timer);
   }, []);
+
+  const currentSlide = HERO_SLIDES[activeIndex];
 
   return (
     <>
@@ -51,6 +56,7 @@ export function HeroSlideshow() {
               alt={slide.alt}
               fill
               priority={index === 0}
+              loading="eager"
               sizes="100vw"
               className="object-cover object-center"
             />
@@ -58,29 +64,37 @@ export function HeroSlideshow() {
         );
       })}
 
-      {/* Slide indicator dots */}
-      <div
-        className="absolute bottom-5 left-1/2 z-10 flex -translate-x-1/2 items-center gap-2.5"
-        role="group"
-        aria-label="Hero village photos"
-      >
-        {HERO_SLIDES.map((slide, index) => {
-          const isActive = index === activeIndex;
-          return (
-            <button
-              key={slide.src}
-              type="button"
-              onClick={() => setActiveIndex(index)}
-              aria-label={`Show village photo ${index + 1}`}
-              aria-pressed={isActive}
-              className={`h-2.5 rounded-full transition-all ${
-                isActive
-                  ? "w-7 bg-gold-500"
-                  : "w-2.5 bg-surface-white/70 hover:bg-surface-white"
-              }`}
-            />
-          );
-        })}
+      {/* Editorial bottom caption & slide selector */}
+      <div className="absolute inset-x-0 bottom-0 z-20 border-t border-surface-white/15 bg-navy-980/55 backdrop-blur-xs">
+        <div className="mx-auto flex max-w-7xl items-center justify-between gap-3 px-4 py-2.5 sm:px-6 sm:py-3.5 lg:px-8">
+          <p className="truncate text-[11px] text-surface-white/85 sm:text-xs">
+            {currentSlide.caption}
+          </p>
+
+          <div
+            className="flex shrink-0 items-center gap-2"
+            role="group"
+            aria-label="Select hero photograph"
+          >
+            {HERO_SLIDES.map((slide, index) => {
+              const isActive = index === activeIndex;
+              return (
+                <button
+                  key={slide.src}
+                  type="button"
+                  onClick={() => setActiveIndex(index)}
+                  aria-label={`Show photograph ${index + 1}: ${slide.caption}`}
+                  aria-pressed={isActive}
+                  className={`h-1.5 rounded-xs transition-all ${
+                    isActive
+                      ? "w-8 bg-ochre-500"
+                      : "w-4 bg-surface-white/45 hover:bg-surface-white/80"
+                  }`}
+                />
+              );
+            })}
+          </div>
+        </div>
       </div>
     </>
   );

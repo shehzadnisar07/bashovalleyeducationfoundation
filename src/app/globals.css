@@ -1,221 +1,106 @@
 @import "tailwindcss";
 
 @theme inline {
-  /* Primary Blues (Navy, Brand Royal Blue & Slate) */
-  --color-brand-blue: #0A06C4;
-  --color-brand-blue-dark: #07049A;
-  --color-brand-blue-100: #EEEEFC;
-  --color-navy-950: #022046;
-  --color-navy-900: #0B223D;
-  --color-navy-850: #141E2A;
-  --color-navy-800: #1B2330;
-  --color-slate-500: #72809A;
+  /* Required Organizational Primary Brand Color & Deep Navy Scale */
+  --color-brand-primary: #0E2243;
+  --color-navy-980: #08152B;
+  --color-navy-950: #0E2243;
+  --color-navy-900: #162E57;
+  --color-navy-850: #1E3A68;
+  --color-navy-800: #28477A;
 
-  /* Accent Gold / Amber */
-  --color-gold-500: #F3AE2C;
-  --color-gold-600: #D79D2F;
-  --color-gold-100: #FEF6E6;
+  /* Accent: Marigold Ochre (warm editorial CTA & key highlight) */
+  --color-ochre-500: #C98A2C;
+  --color-ochre-600: #A86F1B;
+  --color-ochre-400: #DEA448;
+  --color-ochre-100: #FBF3E4;
 
-  /* Surfaces & Neutrals */
-  --color-surface-white: #FDFDFB;
+  /* Accent: Glacial Sind (drawn from River Sind & high-altitude context) */
+  --color-glacial-700: #204654;
+  --color-glacial-600: #2B5B6C;
+  --color-glacial-100: #EAF1F4;
+
+  /* Surfaces & Neutrals (Preserving bg-surface-ivory) */
   --color-surface-ivory: #FCF8F7;
-  --color-border-subtle: #E6E2DC;
-  --color-text-body: #334155;
+  --color-surface-linen: #F3EDE6;
+  --color-surface-white: #FFFFFF;
+  --color-border-subtle: #DDD6CE;
+  --color-border-strong: #C5BCB1;
+
+  /* Ink Hierarchy */
+  --color-text-primary: #0E2243;
+  --color-text-body: #2E3A4D;
+  --color-text-muted: #5A677A;
+
+  /* Legacy aliases kept for backwards-compatibility with any external references */
+  --color-gold-500: #C98A2C;
+  --color-gold-600: #A86F1B;
+  --color-gold-100: #FBF3E4;
+  --color-slate-500: #5A677A;
 
   /* Typography */
-  --font-serif: var(--font-playfair-display), Georgia, "Times New Roman", serif;
-  --font-sans: var(--font-plus-jakarta-sans), system-ui, -apple-system, sans-serif;
+  --font-serif: var(--font-newsreader), Georgia, "Times New Roman", serif;
+  --font-sans: var(--font-dm-sans), system-ui, -apple-system, sans-serif;
 }
 
 :root {
   color-scheme: light;
   --background: #FCF8F7;
-  --foreground: #334155;
+  --foreground: #2E3A4D;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
 }
 
 body {
   background-color: var(--color-surface-ivory);
   color: var(--color-text-body);
   font-family: var(--font-sans);
+  font-feature-settings: "kern" 1, "liga" 1;
 }
 
-h1, h2, h3, h4, .font-serif {
+h1,
+h2,
+h3,
+h4,
+.font-serif {
   font-family: var(--font-serif);
 }
 
-/* Visible keyboard focus ring across light and dark surfaces */
+/* Visible high-contrast keyboard focus ring across light and dark surfaces */
 :focus-visible {
-  outline: 2px solid var(--color-gold-500);
-  outline-offset: 2px;
+  outline: 2px solid var(--color-ochre-500);
+  outline-offset: 3px;
+  border-radius: 2px;
 }
 
-/* ==========================================================================
-   Responsive Site Navigation (Single Semantic Tree + Native Popover)
-   ========================================================================== */
-
-.site-header .header-inner > * {
-  flex-shrink: 0;
-  white-space: nowrap;
-}
-
-.site-header.is-measuring * {
-  transition: none !important;
-}
-
-.site-header .menu-button {
-  anchor-name: --menu-button;
-}
-
-.site-header .site-menu {
-  position: fixed;
-  inset: auto;
-  /* Fixed fallback offset for browsers without CSS Anchor Positioning */
-  inset-block-start: 4.75rem;
-  inset-block-start: anchor(--menu-button bottom);
-  inset-inline-end: 1rem;
-  inline-size: min(85dvw, 22rem);
-  max-inline-size: calc(100dvw - 2rem);
-  block-size: fit-content;
-  max-block-size: calc(100dvh - 6rem);
-  margin-block-start: 0.5rem;
-  overflow: auto;
-  border-radius: 0.75rem;
-  border: 1px solid var(--color-border-subtle);
-  background-color: var(--color-surface-white);
-  padding: 0.75rem;
-  box-shadow: 0 18px 40px -12px rgb(2 32 70 / 0.22);
-}
-
-.site-header .site-menu::backdrop {
-  background-color: rgb(2 32 70 / 0.35);
-}
-
-/* Optional entry/exit animation for the collapsed popover menu */
-@media (prefers-reduced-motion: no-preference) {
-  .site-header:not(.is-wide) .site-menu {
+/* Subtle architectural editorial entrance for Hero headline only */
+@keyframes hero-reveal {
+  from {
     opacity: 0;
-    translate: 0 -0.35rem;
-    transition:
-      opacity 180ms ease,
-      translate 180ms ease,
-      display 180ms,
-      overlay 180ms;
-    transition-behavior: allow-discrete;
+    transform: translateY(10px);
   }
-
-  .site-header:not(.is-wide) .site-menu:is(:popover-open, .\:popover-open) {
+  to {
     opacity: 1;
-    translate: 0 0;
-  }
-
-  @starting-style {
-    .site-header:not(.is-wide) .site-menu:is(:popover-open, .\:popover-open) {
-      opacity: 0;
-      translate: 0 -0.35rem;
-    }
+    transform: translateY(0);
   }
 }
 
-/* Wide inline navigation state */
-.site-header:not(.is-wide) .header-cta {
-  display: none;
-}
-
-.site-header.is-wide .menu-button {
-  display: none;
-}
-
-.site-header.is-wide .site-menu {
-  position: static;
-  display: flex;
-  align-items: center;
-  gap: 0.25rem;
-  inline-size: auto;
-  max-inline-size: none;
-  block-size: auto;
-  max-block-size: none;
-  overflow: visible;
-  margin: 0;
-  padding: 0;
-  border: 0;
-  border-radius: 0;
-  background: transparent;
-  box-shadow: none;
-}
-
-.site-header.is-wide .site-menu::backdrop {
-  display: none;
-}
-
-/* Current page indicator: underline bar + font weight (not color alone) */
-.site-header .nav-link[aria-current="page"] {
-  color: var(--color-navy-950);
-  font-weight: 700;
-}
-
-.site-header.is-wide .nav-link[aria-current="page"]::after {
-  content: "";
-  position: absolute;
-  inset-inline: 0.75rem;
-  inset-block-end: 0.125rem;
-  block-size: 2px;
-  border-radius: 9999px;
-  background-color: var(--color-gold-600);
-}
-
-.site-header:not(.is-wide) .nav-link[aria-current="page"] {
-  background-color: var(--color-gold-100);
-  border-inline-start: 3px solid var(--color-gold-600);
-}
-
-/* Transparent overlay state over Home hero */
-.site-header.is-overlay.is-wide .nav-link {
-  color: rgb(253 253 251 / 0.92);
-}
-
-.site-header.is-overlay.is-wide .nav-link:hover {
-  background-color: rgb(253 253 251 / 0.12);
-  color: var(--color-gold-500);
-}
-
-.site-header.is-overlay.is-wide .nav-link[aria-current="page"] {
-  color: var(--color-surface-white);
-}
-
-.site-header.is-overlay.is-wide .nav-link[aria-current="page"]::after {
-  background-color: var(--color-gold-500);
-}
-
-/* Angled bottom edge utility for the Mission & Impact Stats band */
-.angled-band-bottom {
-  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 1.5rem), 0 100%);
-}
-
-@media (min-width: 768px) {
-  .angled-band-bottom {
-    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 2.5rem), 0 100%);
-  }
-}
-
-/* Comfortable touch targets inside mobile popover navigation */
-.site-header:not(.is-wide) .nav-link {
-  padding-block: 0.75rem;
-  padding-inline: 1rem;
-  font-size: 0.9375rem;
-}
-
-@media (forced-colors: active) {
-  .site-header .nav-link[aria-current="page"] {
-    outline: 2px solid LinkText;
-  }
-
-  .site-header.is-wide .nav-link[aria-current="page"]::after {
-    background-color: LinkText;
+@media (prefers-reduced-motion: no-preference) {
+  .animate-hero-reveal {
+    animation: hero-reveal 650ms cubic-bezier(0.22, 1, 0.36, 1) both;
   }
 }
 
 /* ==========================================================================
-   Modal <dialog> Scroll Containment (Lightbox)
+   Modal <dialog> Scroll Containment (Gallery Lightbox)
    ========================================================================== */
 
 dialog:modal {
@@ -225,7 +110,8 @@ dialog:modal {
 dialog::backdrop {
   overflow: hidden;
   overscroll-behavior: contain;
-  background-color: rgb(2 32 70 / 0.82);
+  background-color: rgb(8 21 43 / 0.88);
+  backdrop-filter: blur(4px);
 }
 
 /* ==========================================================================
@@ -253,4 +139,3 @@ dialog::backdrop {
 .form-control:is(:user-valid, .user-valid-fallback) {
   border-color: #15803d;
 }
-

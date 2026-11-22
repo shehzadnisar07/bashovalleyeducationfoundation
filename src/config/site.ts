@@ -10,7 +10,9 @@ export interface SiteConfig {
   description: string;
   domain: string;
   registrationNumber: string;
+  isRegistrationPending: boolean;
   contact: {
+    isPlaceholder: boolean;
     email: string;
     phone: string;
     address: string;
@@ -25,6 +27,11 @@ export interface SiteConfig {
   stats: {
     altitude: string;
     distanceFromSkardu: string;
+    distanceFromK2: string;
+    distanceFromNangaParbat: string;
+    distanceFromRakaposhi: string;
+    totalVillages: number;
+    highSchoolsInValley: number;
     activePartnerSchools: number;
     plannedNextYearSchools: number;
     villagesWaiting: number;
@@ -36,28 +43,35 @@ export interface SiteConfig {
 export const siteConfig: SiteConfig = {
   name: "Basho Valley Education Foundation",
   shortName: "BVEF",
-  tagline: "Transforming Learning Outcomes in Basho Valley",
+  tagline: "Community-Led STEM Education Across the High Himalayas",
   description:
-    "A registered charitable Trust improving STEM learning outcomes for children in Basho Valley through local Three-Teacher Teams and offline digital classrooms.",
+    "A duly registered charitable Trust established by the residents of Basho Valley to improve STEM learning outcomes inside existing public schools through local Three-Teacher Teams and offline digital classrooms.",
   // Deferred production details — update once finalized
-  domain: "https://example.org", // TBD: replace with custom domain
-  registrationNumber: "TBD (Registered Charitable Trust)",
+  domain: "https://bashovalleyeducationfoundation.vercel.app", // TBD: replace with custom domain once registered
+  registrationNumber: "Registered Charitable Trust",
+  isRegistrationPending: true, // Flip to false once official registration number is added above
   contact: {
+    isPlaceholder: true, // Flip to false once official email & phone are finalized
     email: "contact@bvef-placeholder.org", // TBD: replace with official email
     phone: "+92 (TBD) 000-0000", // TBD: replace with official phone/WhatsApp
-    address: "Basho Valley, District Skardu, Gilgit-Baltistan", // TBD: add mailing address
+    address: "Basho Valley, District Skardu, Gilgit-Baltistan",
   },
   donation: {
-    status: "pending",
+    status: "pending", // Flip to "active" once official Trust bank/IBAN details are finalized
     instructionsPlaceholder:
-      "Official Trust bank transfer and online donation details are being finalized. Please contact us directly to sponsor a Three-Teacher Team or equip a digital classroom.",
+      "Verified Trust bank transfer instructions and international remittance details are shared directly upon inquiry while our public banking page is being finalized.",
     bankName: "TBD",
     accountTitle: "Basho Valley Education Foundation",
     iban: "TBD",
   },
   stats: {
     altitude: "8,800–11,800 ft",
-    distanceFromSkardu: "20 km mountain track",
+    distanceFromSkardu: "20 km unpaved mountain track",
+    distanceFromK2: "68 mi from K2",
+    distanceFromNangaParbat: "46 mi from Nanga Parbat",
+    distanceFromRakaposhi: "66 mi from Rakaposhi",
+    totalVillages: 17,
+    highSchoolsInValley: 1,
     activePartnerSchools: 1,
     plannedNextYearSchools: 1,
     villagesWaiting: 16,
