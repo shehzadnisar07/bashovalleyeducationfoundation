@@ -3,6 +3,14 @@ export interface NavItem {
   href: string;
 }
 
+export interface LeadershipExperience {
+  organization: string;
+  role: string;
+  period: string;
+  location: string;
+  summary: string;
+}
+
 export interface SiteConfig {
   name: string;
   shortName: string;
@@ -10,10 +18,18 @@ export interface SiteConfig {
   description: string;
   domain: string;
   registrationNumber: string;
-  isRegistrationPending: boolean;
-  contact: {
-    isPlaceholder: boolean;
+  ceo: {
+    name: string;
+    title: string;
     email: string;
+    phone: string;
+    linkedIn: string;
+    bio: string;
+    experience: LeadershipExperience[];
+  };
+  contact: {
+    email: string;
+    ceoEmail: string;
     phone: string;
     address: string;
   };
@@ -27,11 +43,6 @@ export interface SiteConfig {
   stats: {
     altitude: string;
     distanceFromSkardu: string;
-    distanceFromK2: string;
-    distanceFromNangaParbat: string;
-    distanceFromRakaposhi: string;
-    totalVillages: number;
-    highSchoolsInValley: number;
     activePartnerSchools: number;
     plannedNextYearSchools: number;
     villagesWaiting: number;
@@ -43,35 +54,54 @@ export interface SiteConfig {
 export const siteConfig: SiteConfig = {
   name: "Basho Valley Education Foundation",
   shortName: "BVEF",
-  tagline: "Community-Led STEM Education Across the High Himalayas",
+  tagline: "Transforming Learning Outcomes in Basho Valley",
   description:
-    "A duly registered charitable Trust established by the residents of Basho Valley to improve STEM learning outcomes inside existing public schools through local Three-Teacher Teams and offline digital classrooms.",
-  // Deferred production details — update once finalized
-  domain: "https://bashovalleyeducationfoundation.vercel.app", // TBD: replace with custom domain once registered
-  registrationNumber: "Registered Charitable Trust",
-  isRegistrationPending: true, // Flip to false once official registration number is added above
+    "A registered charitable Trust improving STEM learning outcomes for children in Basho Valley through local Three-Teacher Teams and offline digital classrooms.",
+  domain: "https://example.org", // TBD: replace with custom domain
+  registrationNumber: "TBD (Registered Charitable Trust)",
+  ceo: {
+    name: "Taj Muhammad",
+    title: "Chief Executive Officer",
+    email: "CEO.bvef@outlook.com",
+    phone: "+92 341 7888621",
+    linkedIn: "https://www.linkedin.com/in/taj-muhammad-9628531b6/",
+    bio: "Brings over a decade of grassroots teaching in Basho Valley and large-scale nonprofit operations leadership across Pakistan, uniting community trust with proven digital learning execution.",
+    experience: [
+      {
+        organization: "Teach the World Foundation",
+        role: "Regional Operations Manager & Regional Manager (7+ Years)",
+        period: "Sep 2019 – Present",
+        location: "Karachi, Lahore & Islamabad, Pakistan",
+        summary:
+          "Leads field execution, strategy implementation, and program quality for digital literacy MicroSchools across South Sindh; previously served as Regional Manager Punjab, Project Manager for Smartphone Homeschooling, and Project Officer.",
+      },
+      {
+        organization: "Iqra Fund",
+        role: "Teacher — Govt Middle School Sultanabad, Basho",
+        period: "Aug 2014 – Aug 2019 (5 Years)",
+        location: "Basho Valley, Gilgit-Baltistan",
+        summary:
+          "Taught in one of Baltistan's remotest mountain communities, driving student enrollment with a focus on girls' education until reaching zero out-of-school children in the catchment area.",
+      },
+    ],
+  },
   contact: {
-    isPlaceholder: true, // Flip to false once official email & phone are finalized
-    email: "contact@bvef-placeholder.org", // TBD: replace with official email
-    phone: "+92 (TBD) 000-0000", // TBD: replace with official phone/WhatsApp
+    email: "bvef2025@outlook.com",
+    ceoEmail: "CEO.bvef@outlook.com",
+    phone: "+92 341 7888621",
     address: "Basho Valley, District Skardu, Gilgit-Baltistan",
   },
   donation: {
-    status: "pending", // Flip to "active" once official Trust bank/IBAN details are finalized
+    status: "pending",
     instructionsPlaceholder:
-      "Verified Trust bank transfer instructions and international remittance details are shared directly upon inquiry while our public banking page is being finalized.",
+      "Official Trust bank transfer and online donation details are being finalized. Please contact us directly to sponsor a Three-Teacher Team or equip a digital classroom.",
     bankName: "TBD",
     accountTitle: "Basho Valley Education Foundation",
     iban: "TBD",
   },
   stats: {
     altitude: "8,800–11,800 ft",
-    distanceFromSkardu: "20 km unpaved mountain track",
-    distanceFromK2: "68 mi from K2",
-    distanceFromNangaParbat: "46 mi from Nanga Parbat",
-    distanceFromRakaposhi: "66 mi from Rakaposhi",
-    totalVillages: 17,
-    highSchoolsInValley: 1,
+    distanceFromSkardu: "20 km mountain track",
     activePartnerSchools: 1,
     plannedNextYearSchools: 1,
     villagesWaiting: 16,
@@ -82,7 +112,6 @@ export const siteConfig: SiteConfig = {
     { label: "About Us", href: "/about" },
     { label: "Program", href: "/program" },
     { label: "Gallery", href: "/gallery" },
-    { label: "Support", href: "/support" },
     { label: "Contact", href: "/contact" },
   ],
 };

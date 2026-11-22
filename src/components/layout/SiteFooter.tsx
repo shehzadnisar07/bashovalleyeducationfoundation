@@ -4,11 +4,11 @@ import { siteConfig } from "@/config/site";
 
 export function SiteFooter() {
   return (
-    <footer className="bg-brand-primary text-surface-white">
-      <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
-        <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-12">
-          {/* Institutional Identity */}
-          <div className="space-y-4 lg:col-span-5">
+    <footer className="bg-surface-footer text-surface-white">
+      <div className="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8">
+        {/* Top Row: Organization, Address & Direct Contacts */}
+        <div className="flex flex-col justify-between gap-6 pb-8 sm:flex-row sm:items-start">
+          <div className="space-y-3">
             <Link
               href="/"
               aria-label={siteConfig.name}
@@ -18,135 +18,152 @@ export function SiteFooter() {
                 src="/images/logo-white.svg"
                 alt=""
                 width={36}
-                height={46}
+                height={44}
                 className="h-10 w-auto"
               />
-              <div>
-                <p className="font-serif text-xl font-semibold leading-none text-surface-white">
-                  Basho Valley
-                </p>
-                <p className="mt-1 text-xs text-surface-white/70">
-                  Education Foundation
-                </p>
-              </div>
+              <span className="font-serif text-lg font-bold uppercase tracking-wide text-surface-white">
+                {siteConfig.name}
+              </span>
             </Link>
-
-            <p className="max-w-md text-sm leading-relaxed text-surface-white/75">
-              {siteConfig.description}
+            <p className="text-sm text-surface-white/80">
+              {siteConfig.contact.address}
             </p>
-
-            <p className="text-xs font-medium text-ochre-400">
-              {siteConfig.isRegistrationPending
-                ? "Registered Charitable Trust · Seven Local Trustees"
-                : `${siteConfig.registrationNumber} · Seven Local Trustees`}
-            </p>
+            <div className="space-y-1 text-sm text-surface-white/85">
+              <p>
+                <strong className="font-semibold text-surface-white">
+                  General Inquiries:
+                </strong>{" "}
+                <a
+                  href={`mailto:${siteConfig.contact.email}`}
+                  className="underline decoration-surface-white/40 underline-offset-4 transition-colors hover:text-saffron-100"
+                >
+                  {siteConfig.contact.email}
+                </a>
+              </p>
+              <p>
+                <strong className="font-semibold text-surface-white">
+                  CEO ({siteConfig.ceo.name}):
+                </strong>{" "}
+                <a
+                  href={`mailto:${siteConfig.ceo.email}`}
+                  className="underline decoration-surface-white/40 underline-offset-4 transition-colors hover:text-saffron-100"
+                >
+                  {siteConfig.ceo.email}
+                </a>{" "}
+                &bull; WhatsApp / Phone:{" "}
+                <a
+                  href="tel:+923417888621"
+                  className="underline decoration-surface-white/40 underline-offset-4 transition-colors hover:text-saffron-100"
+                >
+                  {siteConfig.ceo.phone}
+                </a>
+              </p>
+            </div>
           </div>
 
-          {/* Navigation */}
-          <div className="lg:col-span-2">
-            <h2 className="text-xs font-semibold tracking-wide text-surface-white/60">
-              Foundation
-            </h2>
-            <ul className="mt-4 space-y-2.5 text-sm">
-              {siteConfig.nav.map((item) => (
-                <li key={item.href}>
-                  <Link
-                    href={item.href}
-                    className="text-surface-white/80 transition-colors hover:text-ochre-400"
-                  >
-                    {item.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Model Pillars */}
-          <div className="lg:col-span-2">
-            <h2 className="text-xs font-semibold tracking-wide text-surface-white/60">
-              Our Approach
-            </h2>
-            <ul className="mt-4 space-y-2.5 text-sm text-surface-white/80">
-              <li>
-                <Link
-                  href="/program#partnership"
-                  className="transition-colors hover:text-ochre-400"
-                >
-                  Education Dept. MOU
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/program#classroom"
-                  className="transition-colors hover:text-ochre-400"
-                >
-                  Three-Teacher STEM Teams
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/program#classroom-kit"
-                  className="transition-colors hover:text-ochre-400"
-                >
-                  Offline Solar Classrooms
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/program#accountability"
-                  className="transition-colors hover:text-ochre-400"
-                >
-                  Exam-Linked Incentives
-                </Link>
-              </li>
-            </ul>
-          </div>
-
-          {/* Location & Inquiries */}
-          <div className="lg:col-span-3">
-            <h2 className="text-xs font-semibold tracking-wide text-surface-white/60">
-              Location &amp; Inquiries
-            </h2>
-            <dl className="mt-4 space-y-3 text-sm text-surface-white/80">
-              <div>
-                <dt className="text-xs text-surface-white/50">Valley Location</dt>
-                <dd className="mt-0.5">{siteConfig.contact.address}</dd>
-                <dd className="mt-0.5 text-xs text-surface-white/60">
-                  Altitude {siteConfig.stats.altitude} · {siteConfig.stats.distanceFromK2}
-                </dd>
-              </div>
-              <div>
-                <dt className="text-xs text-surface-white/50">Direct Inquiries</dt>
-                <dd className="mt-0.5">
-                  {siteConfig.contact.isPlaceholder ? (
-                    <Link
-                      href="/contact"
-                      className="underline decoration-ochre-500/70 underline-offset-4 transition-colors hover:text-ochre-400"
-                    >
-                      Submit an inquiry via Contact
-                    </Link>
-                  ) : (
-                    <a
-                      href={`mailto:${siteConfig.contact.email}`}
-                      className="transition-colors hover:text-ochre-400"
-                    >
-                      {siteConfig.contact.email}
-                    </a>
-                  )}
-                </dd>
-              </div>
-            </dl>
+          <div className="shrink-0">
+            <span className="inline-flex items-center rounded-full border border-surface-white/25 bg-surface-white/5 px-3.5 py-1.5 text-xs font-medium text-surface-white/90">
+              {siteConfig.registrationNumber}
+            </span>
           </div>
         </div>
 
-        {/* Bottom Strip */}
-        <div className="mt-14 flex flex-col items-start justify-between gap-3 border-t border-surface-white/10 pt-6 text-xs text-surface-white/60 sm:flex-row sm:items-center">
+        {/* Full-Width Thin Divider Rule */}
+        <div className="border-t border-surface-white/25 pt-10">
+          {/* 3-Column Link Grid */}
+          <div className="grid gap-8 sm:grid-cols-3">
+            <div>
+              <h2 className="text-xs font-bold uppercase tracking-widest text-surface-white">
+                About Us
+              </h2>
+              <ul className="mt-4 space-y-2.5 text-sm text-surface-white/80">
+                <li>
+                  <Link href="/about" className="hover:text-surface-white">
+                    Vision, Mission &amp; Story
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/about#leadership"
+                    className="hover:text-surface-white"
+                  >
+                    Leadership &amp; Trustees
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/gallery" className="hover:text-surface-white">
+                    Field Photo Gallery
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/contact" className="hover:text-surface-white">
+                    Contact Us
+                  </Link>
+                </li>
+              </ul>
+            </div>
+
+            <div>
+              <h2 className="text-xs font-bold uppercase tracking-widest text-surface-white">
+                What We Do
+              </h2>
+              <ul className="mt-4 space-y-2.5 text-sm text-surface-white/80">
+                <li>
+                  <Link href="/program" className="hover:text-surface-white">
+                    School-Partnership Program
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/program" className="hover:text-surface-white">
+                    Three-Teacher STEM Team
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/program" className="hover:text-surface-white">
+                    Offline Digital Classrooms
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/program" className="hover:text-surface-white">
+                    17-Village Expansion
+                  </Link>
+                </li>
+              </ul>
+            </div>
+
+            <div>
+              <h2 className="text-xs font-bold uppercase tracking-widest text-surface-white">
+                Support &amp; Impact
+              </h2>
+              <ul className="mt-4 space-y-2.5 text-sm text-surface-white/80">
+                <li>
+                  <Link href="/support" className="hover:text-surface-white">
+                    Donate Now
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/support" className="hover:text-surface-white">
+                    Sponsor a Classroom Kit
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/about" className="hover:text-surface-white">
+                    Basho Valley Footprint
+                  </Link>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        {/* Bottom Centered Copyright */}
+        <div className="mt-12 text-center text-xs text-surface-white/70">
           <p>
-            &copy; 2026 {siteConfig.name} ({siteConfig.shortName}). All rights reserved.
-          </p>
-          <p>
-            {siteConfig.stats.activePartnerSchools} active partner school ·{" "}
-            {siteConfig.stats.villagesWaiting} villages awaiting expansion
+            &copy; Copyright 2026{" "}
+            <strong className="font-bold uppercase text-surface-white">
+              {siteConfig.name}
+            </strong>{" "}
+            ({siteConfig.shortName}) - All Rights Reserved
           </p>
         </div>
       </div>

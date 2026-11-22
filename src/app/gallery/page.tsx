@@ -1,35 +1,37 @@
 import type { Metadata } from "next";
 import { PhotoGallery } from "@/components/gallery/PhotoGallery";
-import { PageHero } from "@/components/ui/PageHero";
-import { SupportBanner } from "@/components/ui/SupportBanner";
-import { GALLERY_CATEGORIES, GALLERY_PHOTOS } from "@/data/gallery";
+import { GALLERY_PHOTOS } from "@/data/gallery";
 
 export const metadata: Metadata = {
   title: "Photo Gallery",
   description:
-    "Browse 28 documentary photographs from Basho Valley: the River Sind suspension bridge, alpine terrain, morning assemblies, classrooms, examinations, educators, and parent-teacher meetings.",
+    "Browse 28 categorized photographs from Basho Valley: valley views, villages, morning assemblies, classrooms, exams, teachers, and parent-teacher meetings.",
 };
 
 export default function GalleryPage() {
   return (
     <>
-      <PageHero
-        sectionLabel="Photo Gallery"
-        title="Documentary photography from Basho Valley"
-        lead={`Explore ${GALLERY_PHOTOS.length} photographs across ${GALLERY_CATEGORIES.length - 1} themes—from the suspension bridge over the River Sind to morning assemblies, classroom lessons, written examinations, and community parent-teacher meetings.`}
-        meta="Select any photograph for full-screen viewing · Use arrow keys or Escape to navigate"
-      />
-
-      <section className="bg-surface-ivory">
-        <div className="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8 lg:py-18">
-          <PhotoGallery />
+      <section className="bg-spruce-900 text-surface-white">
+        <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8">
+          <p className="text-xs font-bold uppercase tracking-widest text-saffron-100">
+            Field Photography
+          </p>
+          <h1 className="mt-2 font-serif text-4xl font-normal tracking-tight sm:text-5xl">
+            Basho Valley <em className="italic">Photo Gallery</em>
+          </h1>
+          <p className="mt-4 max-w-2xl text-base leading-relaxed text-surface-white/85">
+            Explore {GALLERY_PHOTOS.length} photographs from across Basho Valley
+            and our partner school—filter by category or select any photo to
+            view it full size.
+          </p>
         </div>
       </section>
 
-      <SupportBanner
-        title="Help turn these classrooms into a foundation for university and careers"
-        description="Every photograph here reflects a community investing its own leadership into education. Partner with BVEF to reach the 16 villages still waiting."
-      />
+      <section className="bg-surface-mist">
+        <div className="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8">
+          <PhotoGallery />
+        </div>
+      </section>
     </>
   );
 }
