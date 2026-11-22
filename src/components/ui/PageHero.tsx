@@ -21,8 +21,8 @@ export function PageHero({
   meta,
 }: PageHeroProps) {
   return (
-    <section className="relative overflow-hidden bg-navy-950 text-surface-white">
-      <div className="mx-auto max-w-7xl px-4 py-14 sm:px-6 sm:py-18 lg:px-8 lg:py-20">
+    <section className="relative overflow-hidden border-b border-border-subtle bg-surface-linen text-navy-950">
+      <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 sm:py-14 lg:px-8 lg:py-16">
         <div
           className={
             imageSrc
@@ -33,28 +33,28 @@ export function PageHero({
           <div className={imageSrc ? "lg:col-span-7" : ""}>
             <nav
               aria-label="Breadcrumb"
-              className="flex items-center gap-2 text-xs text-surface-white/65"
+              className="flex items-center gap-2 text-xs text-text-muted"
             >
               <Link
                 href="/"
-                className="transition-colors hover:text-surface-white"
+                className="transition-colors hover:text-navy-950"
               >
                 Home
               </Link>
               <span aria-hidden="true">/</span>
-              <span className="text-ochre-400">{sectionLabel}</span>
+              <span className="font-medium text-ochre-600">{sectionLabel}</span>
             </nav>
 
-            <h1 className="mt-5 font-serif text-4xl font-medium leading-[1.12] tracking-tight text-surface-white sm:text-5xl lg:text-[3.25rem]">
+            <h1 className="mt-4 font-serif text-4xl font-medium leading-[1.12] tracking-tight text-navy-950 sm:text-5xl lg:text-[3.15rem]">
               {title}
             </h1>
 
-            <p className="mt-5 max-w-[60ch] text-base leading-relaxed text-surface-white/80 sm:text-lg">
+            <p className="mt-4 max-w-[60ch] text-base leading-relaxed text-text-body sm:text-lg">
               {lead}
             </p>
 
             {meta && (
-              <p className="mt-7 border-t border-surface-white/15 pt-4 text-xs font-medium tracking-wide text-surface-white/70">
+              <p className="mt-6 border-t border-border-subtle pt-4 text-xs font-medium tracking-wide text-text-muted">
                 {meta}
               </p>
             )}
@@ -62,18 +62,20 @@ export function PageHero({
 
           {imageSrc && imageAlt && (
             <figure className="lg:col-span-5">
-              <div className="relative aspect-[4/3] w-full overflow-hidden rounded-sm border border-surface-white/15 bg-navy-900">
-                <Image
-                  src={imageSrc}
-                  alt={imageAlt}
-                  fill
-                  priority
-                  sizes="(max-width: 1024px) 100vw, 42vw"
-                  className="object-cover"
-                />
+              <div className="rounded-sm border border-border-subtle bg-surface-white p-1.5">
+                <div className="relative aspect-[4/3] w-full overflow-hidden rounded-[2px] bg-surface-ivory">
+                  <Image
+                    src={imageSrc}
+                    alt={imageAlt}
+                    fill
+                    priority
+                    sizes="(max-width: 1024px) 100vw, 42vw"
+                    className="object-cover"
+                  />
+                </div>
               </div>
               {imageCaption && (
-                <figcaption className="mt-2.5 text-xs text-surface-white/65">
+                <figcaption className="mt-2.5 text-xs text-text-muted">
                   {imageCaption}
                 </figcaption>
               )}

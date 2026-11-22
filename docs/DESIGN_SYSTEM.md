@@ -9,7 +9,7 @@ This design system establishes the visual identity for **Basho Valley Education 
 ### Primary Brand Navy
 | Token | Hex | Usage |
 | :--- | :--- | :--- |
-| `--color-brand-primary` / `--color-navy-950` | `#0E2243` | **Primary organizational brand color** (site footer, editorial dark bands, inner page heroes, headings, primary buttons) |
+| `--color-brand-primary` / `--color-navy-950` | `#0E2243` | **Primary organizational brand color** (site footer, editorial dark bands, headings, primary buttons) |
 | `--color-navy-980` | `#08152B` | High-contrast ink on ochre buttons and gallery lightbox backdrop stage |
 | `--color-navy-900` | `#162E57` | Dark surface containers and primary navy button hover |
 | `--color-navy-850` | `#1E3A68` | Secondary navy elevation |
@@ -28,7 +28,7 @@ This design system establishes the visual identity for **Basho Valley Education 
 | Token | Hex | Usage |
 | :--- | :--- | :--- |
 | `--color-surface-ivory` | `#FCF8F7` | **Primary page surface (`bg-surface-ivory`)** |
-| `--color-surface-linen` | `#F3EDE6` | Alternating warm tonal bands |
+| `--color-surface-linen` | `#F3EDE6` | Inner page editorial heroes, support banner, and alternating warm tonal bands |
 | `--color-surface-white` | `#FFFFFF` | High-clarity reading containers, forms, and editorial cards |
 | `--color-border-subtle` | `#DDD6CE` | Architectural 1px hairlines and dividers |
 | `--color-border-strong` | `#C5BCB1` | Outlined secondary buttons and section borders |
