@@ -1,0 +1,239 @@
+@import "tailwindcss";
+
+@theme inline {
+  /* Primary Blues (Navy, Brand Royal Blue & Slate) */
+  --color-brand-blue: #0A06C4;
+  --color-brand-blue-dark: #07049A;
+  --color-brand-blue-100: #EEEEFC;
+  --color-navy-950: #022046;
+  --color-navy-900: #0B223D;
+  --color-navy-850: #141E2A;
+  --color-navy-800: #1B2330;
+  --color-slate-500: #72809A;
+
+  /* Accent Gold / Amber */
+  --color-gold-500: #F3AE2C;
+  --color-gold-600: #D79D2F;
+  --color-gold-100: #FEF6E6;
+
+  /* Surfaces & Neutrals */
+  --color-surface-white: #FDFDFB;
+  --color-surface-ivory: #FCF8F7;
+  --color-border-subtle: #E6E2DC;
+  --color-text-body: #334155;
+
+  /* Typography */
+  --font-serif: var(--font-playfair-display), Georgia, "Times New Roman", serif;
+  --font-sans: var(--font-plus-jakarta-sans), system-ui, -apple-system, sans-serif;
+}
+
+:root {
+  color-scheme: light;
+  --background: #FCF8F7;
+  --foreground: #334155;
+}
+
+body {
+  background-color: var(--color-surface-ivory);
+  color: var(--color-text-body);
+  font-family: var(--font-sans);
+}
+
+h1, h2, h3, h4, .font-serif {
+  font-family: var(--font-serif);
+}
+
+/* Visible keyboard focus ring across light and dark surfaces */
+:focus-visible {
+  outline: 2px solid var(--color-gold-500);
+  outline-offset: 2px;
+}
+
+/* ==========================================================================
+   Responsive Site Navigation (Single Semantic Tree + Native Popover)
+   ========================================================================== */
+
+.site-header .header-inner > * {
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+.site-header.is-measuring * {
+  transition: none !important;
+}
+
+.site-header .menu-button {
+  anchor-name: --menu-button;
+}
+
+.site-header .site-menu {
+  position: fixed;
+  inset: auto;
+  /* Fixed fallback offset for browsers without CSS Anchor Positioning */
+  inset-block-start: 4.75rem;
+  inset-block-start: anchor(--menu-button bottom);
+  inset-inline-end: 1rem;
+  inline-size: min(85dvw, 22rem);
+  max-inline-size: calc(100dvw - 2rem);
+  block-size: fit-content;
+  max-block-size: calc(100dvh - 6rem);
+  margin-block-start: 0.5rem;
+  overflow: auto;
+  border-radius: 0.75rem;
+  border: 1px solid var(--color-border-subtle);
+  background-color: var(--color-surface-white);
+  padding: 0.75rem;
+  box-shadow: 0 18px 40px -12px rgb(2 32 70 / 0.22);
+}
+
+.site-header .site-menu::backdrop {
+  background-color: rgb(2 32 70 / 0.35);
+}
+
+/* Optional entry/exit animation for the collapsed popover menu */
+@media (prefers-reduced-motion: no-preference) {
+  .site-header:not(.is-wide) .site-menu {
+    opacity: 0;
+    translate: 0 -0.35rem;
+    transition:
+      opacity 180ms ease,
+      translate 180ms ease,
+      display 180ms,
+      overlay 180ms;
+    transition-behavior: allow-discrete;
+  }
+
+  .site-header:not(.is-wide) .site-menu:is(:popover-open, .\:popover-open) {
+    opacity: 1;
+    translate: 0 0;
+  }
+
+  @starting-style {
+    .site-header:not(.is-wide) .site-menu:is(:popover-open, .\:popover-open) {
+      opacity: 0;
+      translate: 0 -0.35rem;
+    }
+  }
+}
+
+/* Wide inline navigation state */
+.site-header.is-wide .menu-button {
+  display: none;
+}
+
+.site-header.is-wide .site-menu {
+  position: static;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  inline-size: auto;
+  max-inline-size: none;
+  block-size: auto;
+  max-block-size: none;
+  overflow: visible;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+.site-header.is-wide .site-menu::backdrop {
+  display: none;
+}
+
+/* Current page indicator: underline bar + font weight (not color alone) */
+.site-header .nav-link[aria-current="page"] {
+  color: var(--color-navy-950);
+  font-weight: 700;
+}
+
+.site-header.is-wide .nav-link[aria-current="page"]::after {
+  content: "";
+  position: absolute;
+  inset-inline: 0.75rem;
+  inset-block-end: 0.125rem;
+  block-size: 2px;
+  border-radius: 9999px;
+  background-color: var(--color-gold-600);
+}
+
+.site-header:not(.is-wide) .nav-link[aria-current="page"] {
+  background-color: var(--color-gold-100);
+  border-inline-start: 3px solid var(--color-gold-600);
+}
+
+/* Transparent overlay state over Home hero */
+.site-header.is-overlay.is-wide .nav-link {
+  color: rgb(253 253 251 / 0.92);
+}
+
+.site-header.is-overlay.is-wide .nav-link:hover {
+  background-color: rgb(253 253 251 / 0.12);
+  color: var(--color-gold-500);
+}
+
+.site-header.is-overlay.is-wide .nav-link[aria-current="page"] {
+  color: var(--color-surface-white);
+}
+
+.site-header.is-overlay.is-wide .nav-link[aria-current="page"]::after {
+  background-color: var(--color-gold-500);
+}
+
+/* Angled bottom edge utility for the Mission & Impact Stats band */
+.angled-band-bottom {
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 2.5rem), 0 100%);
+}
+
+@media (forced-colors: active) {
+  .site-header .nav-link[aria-current="page"] {
+    outline: 2px solid LinkText;
+  }
+
+  .site-header.is-wide .nav-link[aria-current="page"]::after {
+    background-color: LinkText;
+  }
+}
+
+/* ==========================================================================
+   Modal <dialog> Scroll Containment (Lightbox)
+   ========================================================================== */
+
+dialog:modal {
+  overscroll-behavior: contain;
+}
+
+dialog::backdrop {
+  overflow: hidden;
+  overscroll-behavior: contain;
+  background-color: rgb(2 32 70 / 0.82);
+}
+
+/* ==========================================================================
+   Post-Interaction Form Validation (:user-invalid / :user-valid)
+   ========================================================================== */
+
+.field-error-msg {
+  display: none;
+  color: #b91c1c;
+  font-size: 0.875rem;
+  margin-block-start: 0.375rem;
+}
+
+.form-control:is(:user-invalid, .user-invalid-fallback) {
+  border-color: #b91c1c;
+  background-color: #fef2f2;
+}
+
+.form-control:is(:user-invalid, .user-invalid-fallback) + .field-error-msg {
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+}
+
+.form-control:is(:user-valid, .user-valid-fallback) {
+  border-color: #15803d;
+}
+

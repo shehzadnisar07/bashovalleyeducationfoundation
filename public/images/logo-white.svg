@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 128" fill="none" aria-hidden="true">
+  <defs>
+    <g id="bvef-figure-white">
+      <circle cx="0" cy="-14" r="5" fill="#FDFDFB" />
+      <path
+        d="M -1 14.5 C -11.5 8.5 -14.5 -2.5 -12.5 -10.5 C -8 -5 -3.5 -2.5 -1 -1.5 Z"
+        fill="#FDFDFB"
+      />
+      <path
+        d="M 1 14.5 C 11.5 8.5 14.5 -2.5 12.5 -10.5 C 8 -5 3.5 -2.5 1 -1.5 Z"
+        fill="#FDFDFB"
+      />
+    </g>
+  </defs>
+
+  <!-- Outer Shield Outline (Transparent Interior, Crisp White) -->
+  <path
+    d="M 8 6 H 92 V 40 C 92 78 72 104 50 120 C 28 104 8 78 8 40 Z"
+    stroke="#FDFDFB"
+    stroke-width="6.5"
+    stroke-linejoin="miter"
+  />
+
+  <!-- Three Figures -->
+  <use href="#bvef-figure-white" transform="translate(33, 44)" />
+  <use href="#bvef-figure-white" transform="translate(67, 44)" />
+  <use href="#bvef-figure-white" transform="translate(50, 82)" />
+</svg>

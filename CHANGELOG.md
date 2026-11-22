@@ -1,0 +1,30 @@
+# Changelog
+
+All notable changes to the **Basho Valley Education Foundation (BVEF)** project will be documented in this file.
+
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
+
+## [Unreleased]
+
+### Added
+- Official BVEF shield logo (`public/images/logo.png`) integrated in `SiteHeader` and `SiteFooter`, with deep navy (`#022046`, `--color-navy-950`) as the main primary brand color alongside warm gold (`#F3AE2C` / `#D79D2F`).
+- Phase 3 core pages & interactive components:
+  - Structured data modules in `src/data/gallery.ts` (28 categorized photos across 9 categories) and `src/data/program.ts` (9-point School-Partnership model and Digital Classroom Kit).
+  - Home (`src/app/page.tsx`), About Us (`src/app/about/page.tsx`), Program (`src/app/program/page.tsx`), Gallery (`src/app/gallery/page.tsx`), Support (`src/app/support/page.tsx`), and Contact (`src/app/contact/page.tsx`).
+  - Interactive `PhotoGallery` (`src/components/gallery/PhotoGallery.tsx`) with category filter pills and native modal `<dialog>` lightbox.
+  - Accessible `ContactForm` (`src/components/contact/ContactForm.tsx`) with `:user-invalid` post-interaction validation, `aria-invalid` syncing, and `mailto:` fallback.
+- Phase 2 design system & shared layout:
+  - Navy/Gold color tokens (`#022046`, `#0B223D`, `#141E2A`, `#1B2330`, `#72809A`, `#F3AE2C`, `#D79D2F`, `#FEF6E6`, `#FDFDFB`, `#FCF8F7`, `#E6E2DC`, `#334155`) and responsive navigation styles in `src/app/globals.css`.
+  - `Playfair Display` (serif) and `Plus Jakarta Sans` (sans-serif) typography via `next/font/google` and skip-to-content link in `src/app/layout.tsx`.
+  - Responsive `SiteHeader` (`src/components/layout/SiteHeader.tsx`) with top utility bar, `ResizeObserver`-based adaptive inline/popover navigation, and `aria-current="page"` active indicator.
+  - Responsive `SiteFooter` (`src/components/layout/SiteFooter.tsx`) reading deferred Trust/contact details from `src/config/site.ts`.
+  - Branded Phase 2 home shell in `src/app/page.tsx`.
+- Phase 1 scaffolding: Next.js `16.4.6` (App Router), React `19.3.0`, TypeScript, Tailwind CSS `4.3.3`, ESLint.
+- Centralized site configuration in `src/config/site.ts` with `TBD` placeholders for deferred production details.
+- Vector logo `public/images/logo.svg` and 28 categorized photos copied to `public/images/`.
+- Root documentation: `AGENTS.md`, `README.md`, `CHANGELOG.md`, `CONTRIBUTING.md`.
+- Technical documentation suite in `docs/` (`PROJECT_OVERVIEW.md`, `REQUIREMENTS.md`, `SYSTEM_ARCHITECTURE.md`, `DATABASE_DESIGN.md`, `API_DOCUMENTATION.md`, `AUTHENTICATION_AUTHORIZATION.md`, `SECURITY.md`, `UI_UX_DESIGN_SYSTEM.md`, `TESTING_STRATEGY.md`, `DEPLOYMENT.md`, `BACKUP_DISASTER_RECOVERY.md`, `PROJECT_STATUS.md`).
+- Architecture Decision Records in `docs/decisions/` (`ADR-0001`, `ADR-0002`).
+- Antigravity workspace rules in `.agents/rules/` and reusable skills in `.agents/skills/`.
+- Initial asset organization: moved `About-Us.pdf` and `Photo-Collection-for-AF.pptx` to `assets/source/`, extracted 25 categorized photos and 3 village photos to `assets/photos/`.
+- Extracted initial blue/gold color palette from reference image into `docs/DESIGN_SYSTEM.md`.
