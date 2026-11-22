@@ -57,21 +57,25 @@ export default function Home() {
 
   return (
     <>
-      {/* 1. Cinematic Documentary Hero */}
-      <section className="relative isolate flex min-h-[86dvh] items-end overflow-hidden bg-navy-950 sm:min-h-[90dvh]">
-        <HeroSlideshow />
+      {/* 1. Documentary Hero — stacked on mobile for unobstructed photography, full-bleed cinematic on desktop */}
+      <section className="relative isolate flex flex-col overflow-hidden bg-navy-950 md:min-h-[88dvh] md:justify-end">
+        {/* Photo Stage: dedicated top frame on mobile, full-bleed background on desktop */}
+        <div className="relative h-[46dvh] min-h-[300px] max-h-[390px] w-full overflow-hidden md:absolute md:inset-0 md:h-full md:min-h-0 md:max-h-none">
+          <HeroSlideshow />
 
-        {/* Dual scrim: guarantees crisp nav contrast at top and editorial readability at bottom-left */}
-        <div
-          className="pointer-events-none absolute inset-0 bg-gradient-to-b from-navy-980/75 via-navy-950/25 to-navy-980/85"
-          aria-hidden="true"
-        />
-        <div
-          className="pointer-events-none absolute inset-0 bg-gradient-to-r from-navy-980/80 via-navy-950/35 to-transparent"
-          aria-hidden="true"
-        />
+          {/* Top scrim keeps transparent header crisp; desktop adds full editorial directional scrim */}
+          <div
+            className="pointer-events-none absolute inset-0 bg-gradient-to-b from-navy-980/70 via-transparent to-navy-980/45 md:from-navy-980/75 md:via-navy-950/25 md:to-navy-980/85"
+            aria-hidden="true"
+          />
+          <div
+            className="pointer-events-none absolute inset-0 hidden bg-gradient-to-r from-navy-980/80 via-navy-950/35 to-transparent md:block"
+            aria-hidden="true"
+          />
+        </div>
 
-        <div className="relative z-10 mx-auto w-full max-w-7xl px-4 pt-32 pb-28 sm:px-6 sm:pt-36 sm:pb-32 lg:px-8">
+        {/* Hero Copy: stacked cleanly below photo on mobile, overlaid bottom-left on desktop */}
+        <div className="relative z-10 mx-auto w-full max-w-7xl px-4 py-8 sm:px-6 md:pt-36 md:pb-28 lg:px-8">
           <div className="animate-hero-reveal max-w-2xl">
             <p className="inline-flex items-center gap-2 text-xs font-medium tracking-wide text-ochre-400 sm:text-sm">
               <span>{siteConfig.stats.altitude}</span>
@@ -79,28 +83,26 @@ export default function Home() {
               <span>District Skardu, Gilgit-Baltistan</span>
             </p>
 
-            <h1 className="mt-4 font-serif text-4xl font-medium leading-[1.08] tracking-tight text-surface-white sm:text-5xl lg:text-[4rem]">
+            <h1 className="mt-3 font-serif text-[2rem] font-medium leading-[1.12] tracking-tight text-surface-white sm:text-5xl md:mt-4 lg:text-[4rem] lg:leading-[1.08]">
               Bringing STEM education to the high villages of Basho Valley
             </h1>
 
-            <p className="mt-5 max-w-[54ch] text-base leading-relaxed text-surface-white/90 sm:text-lg">
-              Established by the residents and teachers of Basho Valley, BVEF
-              partners with existing public schools to place local Three-Teacher
-              STEM Teams and solar-powered offline digital classrooms where
-              children need them most.
+            <p className="mt-3.5 max-w-[48ch] text-[15px] leading-relaxed text-surface-white/85 sm:text-lg md:mt-5">
+              Community-led Three-Teacher STEM Teams and offline solar
+              classrooms inside existing government schools.
             </p>
 
-            <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
+            <div className="mt-6 flex flex-col gap-2.5 sm:flex-row sm:items-center sm:gap-3 md:mt-8">
               <Link
                 href="/support"
-                className="inline-flex items-center justify-center gap-2 rounded-md bg-ochre-500 px-6 py-3.5 text-sm font-semibold text-navy-980 transition-colors hover:bg-ochre-400"
+                className="inline-flex items-center justify-center gap-2 rounded-md bg-ochre-500 px-6 py-3 text-sm font-semibold text-navy-980 transition-colors hover:bg-ochre-400 md:py-3.5"
               >
                 <span>Support a classroom</span>
                 <ArrowRightIcon className="h-4 w-4" />
               </Link>
               <Link
                 href="/program"
-                className="inline-flex items-center justify-center rounded-md border border-surface-white/40 bg-navy-950/40 px-6 py-3.5 text-sm font-medium text-surface-white backdrop-blur-xs transition-colors hover:border-surface-white/75 hover:bg-navy-950/70"
+                className="inline-flex items-center justify-center rounded-md border border-surface-white/35 bg-navy-900/50 px-6 py-3 text-sm font-medium text-surface-white backdrop-blur-xs transition-colors hover:border-surface-white/75 hover:bg-navy-900 md:py-3.5"
               >
                 Read the 9-Point Model
               </Link>
@@ -110,7 +112,7 @@ export default function Home() {
       </section>
 
       {/* 2. Institutional Mandate & Key Valley Figures (#0E2243) */}
-      <section className="bg-navy-950 text-surface-white">
+      <section className="border-t border-surface-white/15 bg-navy-950 text-surface-white md:border-t-0">
         <div className="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8 lg:py-16">
           <div className="grid gap-10 lg:grid-cols-12 lg:items-end">
             <div className="lg:col-span-5">

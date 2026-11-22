@@ -56,6 +56,7 @@ export function HeroSlideshow() {
               alt={slide.alt}
               fill
               priority={index === 0}
+              loading="eager"
               sizes="100vw"
               className="object-cover object-center"
             />
@@ -65,13 +66,13 @@ export function HeroSlideshow() {
 
       {/* Editorial bottom caption & slide selector */}
       <div className="absolute inset-x-0 bottom-0 z-20 border-t border-surface-white/15 bg-navy-980/55 backdrop-blur-xs">
-        <div className="mx-auto flex max-w-7xl flex-col items-start justify-between gap-3 px-4 py-3.5 sm:flex-row sm:items-center sm:px-6 lg:px-8">
-          <p className="text-xs text-surface-white/85">
+        <div className="mx-auto flex max-w-7xl items-center justify-between gap-3 px-4 py-2.5 sm:px-6 sm:py-3.5 lg:px-8">
+          <p className="truncate text-[11px] text-surface-white/85 sm:text-xs">
             {currentSlide.caption}
           </p>
 
           <div
-            className="flex items-center gap-2"
+            className="flex shrink-0 items-center gap-2"
             role="group"
             aria-label="Select hero photograph"
           >
