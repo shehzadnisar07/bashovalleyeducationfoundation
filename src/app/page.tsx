@@ -65,35 +65,20 @@ export default function Home() {
         <HeroSlideshow />
 
         <div
-          className="pointer-events-none absolute inset-0 bg-gradient-to-r from-black/70 via-black/35 to-transparent"
+          className="pointer-events-none absolute inset-0 bg-gradient-to-r from-black/75 via-black/40 to-transparent"
           aria-hidden="true"
         />
 
         <div className="relative z-10 mx-auto flex min-h-[58dvh] max-w-7xl items-center px-4 py-16 sm:min-h-[78dvh] sm:px-6 lg:px-8">
-          <div className="max-w-2xl space-y-5 sm:space-y-6">
-            <h1 className="font-serif text-3xl font-normal leading-[1.16] tracking-tight text-surface-white drop-shadow-sm sm:text-5xl lg:text-[3.5rem]">
+          <div className="max-w-3xl space-y-5 sm:space-y-6">
+            <h1 className="font-serif text-4xl font-normal leading-[1.12] tracking-tight text-surface-white drop-shadow-md sm:text-5xl lg:text-[4rem]">
               Transforming learning outcomes{" "}
               <em className="italic">in Basho Valley.</em>
             </h1>
 
-            <p className="max-w-xl text-base leading-relaxed text-surface-white/90 sm:text-lg">
+            <p className="max-w-2xl text-lg font-medium leading-relaxed text-surface-white/95 drop-shadow-sm sm:text-xl">
               {siteConfig.description}
             </p>
-
-            <div className="flex flex-col gap-3 pt-2 sm:flex-row sm:items-center sm:gap-4">
-              <Link
-                href="/support"
-                className="inline-flex w-full items-center justify-center rounded-full bg-saffron-600 px-8 py-3.5 text-sm font-semibold text-surface-white transition-colors hover:bg-saffron-700 sm:w-auto"
-              >
-                Donate Now
-              </Link>
-              <Link
-                href="/program"
-                className="inline-flex w-full items-center justify-center rounded-full border border-surface-white/70 bg-black/25 px-8 py-3.5 text-sm font-semibold text-surface-white backdrop-blur-xs transition-colors hover:bg-surface-white hover:text-spruce-950 sm:w-auto"
-              >
-                Explore Our Program
-              </Link>
-            </div>
           </div>
         </div>
       </section>
