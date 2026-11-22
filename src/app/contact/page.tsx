@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Suspense } from "react";
 import { ContactForm } from "@/components/contact/ContactForm";
 import { siteConfig } from "@/config/site";
 
@@ -30,7 +31,15 @@ export default function ContactPage() {
       <section className="bg-surface-mist">
         <div className="mx-auto grid max-w-7xl gap-10 px-4 py-16 sm:px-6 lg:grid-cols-5 lg:px-8">
           <div className="lg:col-span-3">
-            <ContactForm />
+            <Suspense
+              fallback={
+                <div className="rounded-xl border border-border-subtle bg-surface-white p-8 text-sm text-slate-500">
+                  Loading contact form...
+                </div>
+              }
+            >
+              <ContactForm />
+            </Suspense>
           </div>
 
           <aside className="space-y-6 lg:col-span-2">
