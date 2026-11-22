@@ -46,6 +46,7 @@ export interface SiteConfig {
     activePartnerSchools: number;
     plannedNextYearSchools: number;
     villagesWaiting: number;
+    totalVillages: number;
     trusteesCount: number;
   };
   nav: NavItem[];
@@ -105,6 +106,7 @@ export const siteConfig: SiteConfig = {
     activePartnerSchools: 1,
     plannedNextYearSchools: 1,
     villagesWaiting: 16,
+    totalVillages: 17,
     trusteesCount: 7,
   },
   nav: [
