@@ -23,9 +23,9 @@ export function SiteFooter() {
               />
               <div>
                 <p className="text-2xl tracking-tight text-surface-white">
-                  <span className="font-serif font-bold">basho </span>
+                  <span className="font-serif font-bold">Basho </span>
                   <span className="font-sans font-light text-surface-white/90">
-                    valley
+                    Valley
                   </span>
                 </p>
                 <p className="text-xs text-surface-white/75">{siteConfig.name}</p>

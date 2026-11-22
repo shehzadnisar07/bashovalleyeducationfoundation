@@ -117,6 +117,10 @@ h1, h2, h3, h4, .font-serif {
 }
 
 /* Wide inline navigation state */
+.site-header:not(.is-wide) .header-cta {
+  display: none;
+}
+
 .site-header.is-wide .menu-button {
   display: none;
 }
@@ -184,7 +188,20 @@ h1, h2, h3, h4, .font-serif {
 
 /* Angled bottom edge utility for the Mission & Impact Stats band */
 .angled-band-bottom {
-  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 2.5rem), 0 100%);
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 1.5rem), 0 100%);
+}
+
+@media (min-width: 768px) {
+  .angled-band-bottom {
+    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 2.5rem), 0 100%);
+  }
+}
+
+/* Comfortable touch targets inside mobile popover navigation */
+.site-header:not(.is-wide) .nav-link {
+  padding-block: 0.75rem;
+  padding-inline: 1rem;
+  font-size: 0.9375rem;
 }
 
 @media (forced-colors: active) {

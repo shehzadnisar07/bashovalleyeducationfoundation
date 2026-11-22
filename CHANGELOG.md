@@ -6,6 +6,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+### Changed
+- Redesigned Home (`/`) hero and section rhythm following `iqrafund.org` layout patterns with Deep Navy (`#022046`), Warm Gold (`#F3AE2C`), and Ivory (`#FCF8F7`): 3-photo village slideshow (`HeroSlideshow.tsx`) with neutral dark scrim, angled `#022046` mission/stats band, split appeal + 3-card "Why" grid, 9-point program spotlight, and dark field gallery showcase.
+- Converted BVEF shield emblem to transparent SVGs (`public/images/logo.svg` and `public/images/logo-white.svg`) paired with the capitalized `Basho Valley` / `Basho Valley Education Foundation` wordmark lockup in `SiteHeader` and `SiteFooter`.
+- Updated `SiteHeader` for mobile-first responsiveness: transparent overlay header attached to the Home hero, clean borderless 3-bar hamburger menu on mobile, and solid sticky navbar on inner pages.
+
 ### Added
 - Official BVEF shield logo (`public/images/logo.png`) integrated in `SiteHeader` and `SiteFooter`, with deep navy (`#022046`, `--color-navy-950`) as the main primary brand color alongside warm gold (`#F3AE2C` / `#D79D2F`).
 - Phase 3 core pages & interactive components:

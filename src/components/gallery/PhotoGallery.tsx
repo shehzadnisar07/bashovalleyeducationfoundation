@@ -108,9 +108,9 @@ export function PhotoGallery() {
 
   return (
     <div className="space-y-8">
-      {/* Category Filter Bar */}
+      {/* Category Filter Bar (horizontally scrollable on mobile) */}
       <div
-        className="flex flex-wrap gap-2"
+        className="flex gap-2 overflow-x-auto pb-2 sm:flex-wrap sm:overflow-visible sm:pb-0"
         role="group"
         aria-label="Filter gallery by category"
       >
@@ -127,7 +127,7 @@ export function PhotoGallery() {
                 setSelectedIndex(null);
               }}
               aria-pressed={isSelected}
-              className={`rounded-full px-4 py-2 text-sm font-medium transition-colors ${
+              className={`shrink-0 rounded-full px-4 py-2 text-sm font-medium transition-colors ${
                 isSelected
                   ? "bg-navy-900 text-surface-white shadow-xs"
                   : "border border-border-subtle bg-surface-white text-text-body hover:border-navy-900/40 hover:bg-gold-100/60"

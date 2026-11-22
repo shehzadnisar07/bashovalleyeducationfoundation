@@ -222,7 +222,7 @@ export function ContactForm() {
           minLength={2}
           autoComplete="name"
           data-error="contact-name-error"
-          className="form-control mt-1.5 block w-full rounded-lg border border-border-subtle bg-surface-white px-3.5 py-2.5 text-sm text-navy-950"
+          className="form-control mt-1.5 block w-full rounded-lg border border-border-subtle bg-surface-white px-3.5 py-2.5 text-base text-navy-950 sm:text-sm"
           placeholder="Your name"
         />
         <div id="contact-name-error" className="field-error-msg">
@@ -251,7 +251,7 @@ export function ContactForm() {
           autoComplete="email"
           aria-describedby="contact-email-hint"
           data-error="contact-email-error"
-          className="form-control mt-1.5 block w-full rounded-lg border border-border-subtle bg-surface-white px-3.5 py-2.5 text-sm text-navy-950"
+          className="form-control mt-1.5 block w-full rounded-lg border border-border-subtle bg-surface-white px-3.5 py-2.5 text-base text-navy-950 sm:text-sm"
           placeholder="you@example.com"
         />
         <div id="contact-email-error" className="field-error-msg">
@@ -273,7 +273,7 @@ export function ContactForm() {
           id="contact-topic"
           name="topic"
           defaultValue="Sponsor a School or Classroom"
-          className="form-control mt-1.5 block w-full rounded-lg border border-border-subtle bg-surface-white px-3.5 py-2.5 text-sm text-navy-950"
+          className="form-control mt-1.5 block w-full rounded-lg border border-border-subtle bg-surface-white px-3.5 py-2.5 text-base text-navy-950 sm:text-sm"
         >
           <option value="Sponsor a School or Classroom">
             Sponsor a School or Classroom
@@ -300,7 +300,7 @@ export function ContactForm() {
           required
           minLength={10}
           data-error="contact-message-error"
-          className="form-control mt-1.5 block w-full rounded-lg border border-border-subtle bg-surface-white px-3.5 py-2.5 text-sm text-navy-950"
+          className="form-control mt-1.5 block w-full rounded-lg border border-border-subtle bg-surface-white px-3.5 py-2.5 text-base text-navy-950 sm:text-sm"
           placeholder="Tell us how you would like to connect with Basho Valley Education Foundation..."
         />
         <div id="contact-message-error" className="field-error-msg">

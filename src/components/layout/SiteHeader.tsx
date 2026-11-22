@@ -116,35 +116,44 @@ export function SiteHeader() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div
           ref={innerRef}
-          className="header-inner flex h-18 items-center justify-between gap-4"
+          className="header-inner flex h-18 items-center justify-between gap-2 sm:h-22 sm:gap-4"
         >
           <Link
             href="/"
             aria-label={siteConfig.name}
-            className="site-logo inline-flex items-center gap-2.5 rounded-md py-1 transition-opacity hover:opacity-90"
+            className="site-logo inline-flex items-center gap-2.5 rounded-md py-1 transition-opacity hover:opacity-90 sm:gap-3"
           >
             <Image
               src={isOverlay ? "/images/logo-white.svg" : "/images/logo.svg"}
               alt=""
-              width={36}
-              height={46}
+              width={44}
+              height={56}
               priority
-              className="h-10 w-auto"
+              className="h-9 w-auto sm:h-12"
             />
-            <span className="text-2xl tracking-tight sm:text-[1.65rem]">
-              <span
-                className={`font-serif font-bold ${
-                  isOverlay ? "text-surface-white" : "text-navy-950"
-                }`}
-              >
-                basho{" "}
+            <span className="flex flex-col leading-tight">
+              <span className="text-xl tracking-tight sm:text-[1.75rem]">
+                <span
+                  className={`font-serif font-bold ${
+                    isOverlay ? "text-surface-white" : "text-navy-950"
+                  }`}
+                >
+                  Basho{" "}
+                </span>
+                <span
+                  className={`font-sans font-light ${
+                    isOverlay ? "text-surface-white/90" : "text-navy-900/80"
+                  }`}
+                >
+                  Valley
+                </span>
               </span>
               <span
-                className={`font-sans font-light ${
-                  isOverlay ? "text-surface-white/90" : "text-navy-900/80"
+                className={`hidden text-[11px] font-medium tracking-wide sm:block ${
+                  isOverlay ? "text-surface-white/80" : "text-slate-500"
                 }`}
               >
-                valley
+                {siteConfig.name}
               </span>
             </span>
           </Link>
@@ -152,28 +161,27 @@ export function SiteHeader() {
           <div className="flex items-center gap-3 sm:gap-5">
             <nav className="site-nav flex items-center" aria-label="Primary">
               <button
-                className={`menu-button inline-flex items-center gap-2 rounded-lg border px-3 py-2 text-sm font-semibold transition-colors ${
-                  isOverlay
-                    ? "border-surface-white/40 bg-black/30 text-surface-white backdrop-blur-sm hover:bg-black/45"
-                    : "border-border-subtle bg-surface-white text-navy-900 hover:bg-surface-ivory"
+                className={`menu-button inline-flex h-11 w-11 items-center justify-center rounded-md transition-opacity hover:opacity-80 ${
+                  isOverlay ? "text-surface-white" : "text-navy-950"
                 }`}
                 type="button"
                 popoverTarget="site-menu"
                 popoverTargetAction="toggle"
                 aria-controls="site-menu"
+                aria-label="Menu"
               >
                 <svg
-                  className="h-4 w-4"
+                  className="h-7 w-7"
                   viewBox="0 0 24 24"
                   fill="none"
                   stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
+                  strokeWidth="2.4"
+                  strokeLinecap="square"
                   aria-hidden="true"
                 >
-                  <path d="M4 6h16M4 12h16M4 18h16" />
+                  <path d="M3 6h18M3 12h18M3 18h18" />
                 </svg>
-                <span>Menu</span>
+                <span className="sr-only">Menu</span>
               </button>
 
               <ul id="site-menu" ref={menuRef} className="site-menu" popover="auto">
@@ -201,7 +209,7 @@ export function SiteHeader() {
 
             <Link
               href="/support"
-              className="inline-flex items-center justify-center rounded-full bg-gold-500 px-5 py-2 text-xs font-bold uppercase tracking-wider text-navy-950 shadow-xs transition-colors hover:bg-gold-600"
+              className="header-cta inline-flex items-center justify-center rounded-full bg-gold-500 px-5 py-2 text-xs font-bold uppercase tracking-wider text-navy-950 shadow-xs transition-colors hover:bg-gold-600"
             >
               Support Us
             </Link>

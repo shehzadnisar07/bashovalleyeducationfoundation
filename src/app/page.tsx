@@ -48,17 +48,9 @@ export default function Home() {
           aria-hidden="true"
         />
 
-        <div className="relative z-10 mx-auto flex min-h-[85vh] max-w-7xl items-center px-4 pt-28 pb-20 sm:px-6 lg:px-8 lg:pt-32 lg:pb-24">
-          <div className="max-w-2xl space-y-6">
-            <span className="inline-flex items-center gap-2 rounded-full border border-gold-500/40 bg-navy-900/80 px-4 py-1.5 text-xs font-semibold tracking-wide text-gold-500 backdrop-blur-sm">
-              <span
-                className="h-1.5 w-1.5 rounded-full bg-gold-500"
-                aria-hidden="true"
-              />
-              Basho Valley, District Skardu &bull; {siteConfig.stats.altitude}
-            </span>
-
-            <h1 className="font-serif text-4xl font-bold leading-[1.12] tracking-tight text-surface-white drop-shadow-sm sm:text-5xl lg:text-6xl">
+        <div className="relative z-10 mx-auto flex min-h-[82dvh] max-w-7xl items-center px-4 pt-24 pb-20 sm:min-h-[85dvh] sm:px-6 sm:pt-28 lg:px-8 lg:pt-32 lg:pb-24">
+          <div className="max-w-2xl space-y-5 sm:space-y-6">
+            <h1 className="font-serif text-3xl font-bold leading-[1.14] tracking-tight text-surface-white drop-shadow-sm sm:text-5xl lg:text-6xl">
               Transforming Learning Outcomes{" "}
               <span className="text-gold-500">in Basho Valley</span>
             </h1>
@@ -67,16 +59,16 @@ export default function Home() {
               {siteConfig.description}
             </p>
 
-            <div className="flex flex-wrap items-center gap-4 pt-2">
+            <div className="flex flex-col gap-3 pt-2 sm:flex-row sm:flex-wrap sm:items-center sm:gap-4">
               <Link
                 href="/support"
-                className="inline-flex items-center justify-center rounded-full bg-gold-500 px-7 py-3.5 text-sm font-semibold text-navy-950 shadow-md transition-colors hover:bg-gold-600"
+                className="inline-flex w-full items-center justify-center rounded-full bg-gold-500 px-7 py-3.5 text-sm font-semibold text-navy-950 shadow-md transition-colors hover:bg-gold-600 sm:w-auto"
               >
                 Support a Classroom
               </Link>
               <Link
                 href="/program"
-                className="inline-flex items-center justify-center rounded-full border border-surface-white/50 bg-navy-950/35 px-7 py-3.5 text-sm font-semibold text-surface-white backdrop-blur-sm transition-colors hover:border-gold-500/70 hover:bg-navy-900/70"
+                className="inline-flex w-full items-center justify-center rounded-full border border-surface-white/50 bg-navy-950/35 px-7 py-3.5 text-sm font-semibold text-surface-white backdrop-blur-sm transition-colors hover:border-gold-500/70 hover:bg-navy-900/70 sm:w-auto"
               >
                 Explore Our 9-Point Model
               </Link>
@@ -87,43 +79,43 @@ export default function Home() {
 
       {/* 2. Angled Deep Navy Mission & Impact Stats Band (#022046) */}
       <section className="angled-band-bottom bg-navy-950 text-surface-white">
-        <div className="mx-auto max-w-6xl px-4 pt-14 pb-24 text-center sm:px-6 lg:px-8">
-          <h2 className="mx-auto max-w-4xl font-serif text-2xl font-medium leading-snug text-surface-white sm:text-3xl">
+        <div className="mx-auto max-w-6xl px-4 pt-12 pb-18 text-center sm:px-6 sm:pt-14 sm:pb-24 lg:px-8">
+          <h2 className="mx-auto max-w-4xl font-serif text-xl font-medium leading-snug text-surface-white sm:text-3xl">
             Basho Valley Education Foundation establishes high-impact,
             community-led STEM learning inside existing public schools across
             remote Himalayan villages.
           </h2>
 
-          <div className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="mt-10 grid grid-cols-2 gap-6 sm:mt-12 sm:gap-8 lg:grid-cols-4">
             <div>
-              <p className="font-serif text-4xl font-bold text-gold-500 sm:text-5xl">
+              <p className="font-serif text-2xl font-bold text-gold-500 sm:text-4xl lg:text-5xl">
                 {siteConfig.stats.altitude}
               </p>
-              <p className="mt-2 text-sm text-surface-white/80">
+              <p className="mt-1.5 text-xs text-surface-white/80 sm:mt-2 sm:text-sm">
                 Himalayan Valley Altitude
               </p>
             </div>
             <div>
-              <p className="font-serif text-4xl font-bold text-gold-500 sm:text-5xl">
+              <p className="font-serif text-3xl font-bold text-gold-500 sm:text-4xl lg:text-5xl">
                 {siteConfig.stats.activePartnerSchools}
               </p>
-              <p className="mt-2 text-sm text-surface-white/80">
+              <p className="mt-1.5 text-xs text-surface-white/80 sm:mt-2 sm:text-sm">
                 Active Partner School
               </p>
             </div>
             <div>
-              <p className="font-serif text-4xl font-bold text-gold-500 sm:text-5xl">
+              <p className="font-serif text-3xl font-bold text-gold-500 sm:text-4xl lg:text-5xl">
                 {siteConfig.stats.villagesWaiting}
               </p>
-              <p className="mt-2 text-sm text-surface-white/80">
+              <p className="mt-1.5 text-xs text-surface-white/80 sm:mt-2 sm:text-sm">
                 Remaining Villages Waiting
               </p>
             </div>
             <div>
-              <p className="font-serif text-4xl font-bold text-gold-500 sm:text-5xl">
+              <p className="font-serif text-3xl font-bold text-gold-500 sm:text-4xl lg:text-5xl">
                 {siteConfig.stats.trusteesCount}
               </p>
-              <p className="mt-2 text-sm text-surface-white/80">
+              <p className="mt-1.5 text-xs text-surface-white/80 sm:mt-2 sm:text-sm">
                 Trustees Guiding BVEF
               </p>
             </div>
