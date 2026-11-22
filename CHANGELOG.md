@@ -7,6 +7,16 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 ## [Unreleased]
 
 ### Changed
+- **Full Digital Experience Transformation (`feat/digital-experience-redesign`):**
+  - Established the *Himalayan Editorial Institutionalism* design system anchored on required primary brand color `#0E2243` (`--color-brand-primary` / `--color-navy-950`) and `bg-surface-ivory` (`#FCF8F7`), accented with Marigold Ochre (`#C98A2C`) and Glacial Sind (`#2B5B6C`) in `src/app/globals.css`.
+  - Upgraded typography to `Newsreader` (editorial serif) and `DM Sans` (geometric sans with tabular numerals) in `src/app/layout.tsx`, plus Open Graph and Twitter metadata.
+  - Redesigned all 6 routes (`/`, `/about`, `/program`, `/gallery`, `/support`, `/contact`) with asymmetric editorial layouts, unified button/frame geometry, and rich factual narrative from `assets/source/About-Us.pdf` (including Point 09 dual administrative/academic accountability).
+  - Audited and corrected all 28 documentary photo captions and portrait focal framing (`object-top`) in `src/data/gallery.ts`; replaced camping-meadow hero imagery with authentic Basho Valley village, morning assembly, and River Sind suspension bridge photography in `HeroSlideshow.tsx`.
+  - Upgraded `PhotoGallery.tsx` lightbox with `ArrowLeft`/`ArrowRight`/`Escape` keyboard navigation and eager image loading.
+  - Upgraded `ContactForm.tsx` with `?topic=` query-parameter pre-selection from `/support` and `/program` CTAs while maintaining honest `mailto:` draft handoff.
+  - Replaced raw public `"TBD"` badges/buttons with dignified config-driven pre-launch institutional framing via `src/config/site.ts`.
+- Added shared UI architecture (`PageHero.tsx`, `ValleyFootprint.tsx`, `SupportBanner.tsx`, `Icons.tsx`) and SEO routes (`src/app/sitemap.ts`, `src/app/robots.ts`).
+
 - Redesigned Home (`/`) hero and section rhythm following `iqrafund.org` layout patterns with Deep Navy (`#022046`), Warm Gold (`#F3AE2C`), and Ivory (`#FCF8F7`): 3-photo village slideshow (`HeroSlideshow.tsx`) with neutral dark scrim, angled `#022046` mission/stats band, split appeal + 3-card "Why" grid, 9-point program spotlight, and dark field gallery showcase.
 - Converted BVEF shield emblem to transparent SVGs (`public/images/logo.svg` and `public/images/logo-white.svg`) paired with the capitalized `Basho Valley` / `Basho Valley Education Foundation` wordmark lockup in `SiteHeader` and `SiteFooter`.
 - Updated `SiteHeader` for mobile-first responsiveness: transparent overlay header attached to the Home hero, clean borderless 3-bar hamburger menu on mobile, and solid sticky navbar on inner pages.

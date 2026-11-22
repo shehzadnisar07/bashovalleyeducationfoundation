@@ -1,21 +1,19 @@
 # Project Status
 
 **Last Updated:** 2026-11-22  
-**Current Phase:** Phase 3 Complete + Design/Mobile Refinements Verified (Ready for Phase 4)
+**Current Phase:** Full Digital Experience Transformation & Phase 4 Production Polish Complete (Branch: `feat/digital-experience-redesign`)
 
 ## Verified Repository Audit
 | Area | Status | Notes |
 | :--- | :--- | :--- |
-| Application Code | Phase 3 Complete | Next.js `16.4.6` (App Router), 6 static pages (`/`, `/about`, `/program`, `/gallery`, `/support`, `/contact`), `iqrafund.org`-inspired homepage with 3-photo village slideshow, transparent `logo.svg`/`logo-white.svg`, mobile-first responsive header, 28-photo gallery with `<dialog>` lightbox, and accessible contact form. |
-| Backend / APIs | Not Applicable (v1) | Option A selected: static/config-driven public website for v1. |
-| Database | Not Applicable (v1) | Option A selected: no database required for v1. |
-| Authentication | Not Applicable (v1) | Option A selected: no `/admin` login portal for v1. |
-| Testing | Static Checks Passing | `npm run lint`, `npx tsc --noEmit`, and `npx next build --webpack` verified passing. |
-| Deployment / CI | Not Started | No hosting, domain, or remote Git origin configured yet. |
-| Source Content | Ready | `assets/source/About-Us.pdf` and `Photo-Collection-for-AF.pptx` organized. |
-| Photography & Logo | Ready in `public/images/` | 25 PPTX photos + 3 village PNGs + `public/images/logo.svg` in place. |
-| Design System | Ready | Navy/Gold palette documented in `docs/DESIGN_SYSTEM.md`. |
-| Documentation & Agent System | Complete | Root docs, `docs/`, `docs/decisions/`, `.agents/rules/`, `.agents/skills/` established. |
+| Application Code | Transformation Complete | Next.js `16.4.6` (App Router, Turbopack), 6 redesigned editorial pages (`/`, `/about`, `/program`, `/gallery`, `/support`, `/contact`), `PageHero`, `ValleyFootprint`, `SupportBanner`, `Icons`, scroll-aware `SiteHeader`, `Newsreader` + `DM Sans` typography, `#0E2243` + `bg-surface-ivory` design system. |
+| SEO & Metadata | Complete | Open Graph / Twitter metadata in `src/app/layout.tsx`, plus `src/app/sitemap.ts` and `src/app/robots.ts`. |
+| Photography & Captions | Verified | All 28 photographs in `public/images/` audited visually with accurate documentary captions and portrait focal framing (`object-top`). |
+| Backend / APIs | Not Applicable (v1) | Static/config-driven public website; `ContactForm` prepares an honest `mailto:` inquiry draft without simulating a backend. |
+| Database / Auth | Not Applicable (v1) | No database or admin portal required for v1. |
+| Static Checks & Build | Passing | `npm run lint`, `npx tsc --noEmit`, and `npx next build` verified passing with zero errors. |
+| Browser & Visual QA | Passing | Verified via Playwright across `1440px`, `1366px`, `768px`, and `390px` viewports: zero horizontal overflow, zero console/page errors, all interactive flows (mobile drawer, gallery filter + keyboard lightbox, Support → Contact topic pre-selection) passing. |
+| Deferred Production Config | Pending BVEF Details | Official email, phone/WhatsApp, Trust registration number, bank/IBAN details, and custom domain remain centralized in `src/config/site.ts` with graceful pre-launch framing. |
 
 ## Next Milestone
-- **Phase 4:** Production Polish & Verification (Open Graph tags, `sitemap.xml`, `robots.txt`, mobile/accessibility audit, final lint & build).
+- Merge `feat/digital-experience-redesign` into `main` after stakeholder review and populate finalized Trust registration, contact, and banking details in `src/config/site.ts`.

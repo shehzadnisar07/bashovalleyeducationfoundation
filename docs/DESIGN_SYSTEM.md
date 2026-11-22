@@ -1,48 +1,50 @@
-# BVEF Design System (Extracted from Reference)
+# BVEF Design System — Himalayan Editorial Institutionalism
 
-This design system is derived from the uploaded reference layout (`Bright Future International School`), tailored for **Basho Valley Education Foundation (BVEF)** with a deep navy blue primary palette, warm gold accents, and crisp off-white surfaces.
-
----
-
-## 1. Color Palette
-
-### Primary Blues (Main Deep Navy & Slate)
-| Token | Hex | Usage |
-| :--- | :--- | :--- |
-| `--color-navy-950` | `#022046` | **Main primary color** (page hero headers, footer background, primary buttons & headings) |
-| `--color-navy-900` | `#0B223D` | Top utility bar, dark CTA buttons, primary headings |
-| `--color-navy-850` | `#141E2A` | Feature highlight strip & dark stats banner |
-| `--color-navy-800` | `#1B2330` | Secondary dark banner surface & dark card accents |
-| `--color-slate-500` | `#72809A` | Muted text, subtle icons, secondary metadata |
-
-### Accent Gold / Amber
-| Token | Hex | Usage |
-| :--- | :--- | :--- |
-| `--color-gold-500` | `#F3AE2C` | Primary CTA buttons (e.g., "Support Us", "Donate Now") |
-| `--color-gold-600` | `#D79D2F` | Hover state for gold buttons, highlighted serif headline text, accent icons |
-| `--color-gold-100` | `#FEF6E6` | Soft tinted badge / highlight backgrounds |
-
-### Surfaces & Neutrals
-| Token | Hex | Usage |
-| :--- | :--- | :--- |
-| `--color-surface-white` | `#FDFDFB` | Header, cards, and clean content blocks |
-| `--color-surface-ivory` | `#FCF8F7` | Alternating warm off-white section backgrounds |
-| `--color-border-subtle` | `#E6E2DC` | Hairline card borders and section dividers |
-| `--color-text-body` | `#334155` | Body copy (high-contrast readable slate) |
+This design system establishes the visual identity for **Basho Valley Education Foundation (BVEF)** around the organization's required primary brand color (**`#0E2243`**) and primary surface token (**`bg-surface-ivory` / `#FCF8F7`**).
 
 ---
 
-## 2. Typography
-- **Display / Headings:** Classic editorial **Serif** (e.g., `Playfair Display` or `Lora` via `next/font/google`) — paired with two-tone emphasis where the first line is `--color-navy-900` and the second emphasis phrase is `--color-gold-600`.
-- **Body / UI:** Clean geometric **Sans-Serif** (e.g., `Plus Jakarta Sans` or `Inter` via `next/font/google`) for navigation, body paragraphs, stats, and buttons.
+## 1. Color Palette (`src/app/globals.css`)
+
+### Primary Brand Navy
+| Token | Hex | Usage |
+| :--- | :--- | :--- |
+| `--color-brand-primary` / `--color-navy-950` | `#0E2243` | **Primary organizational brand color** (editorial dark bands, inner page heroes, headings, primary buttons) |
+| `--color-navy-980` | `#08152B` | Deep summit footer base and gallery lightbox stage |
+| `--color-navy-900` | `#162E57` | Dark surface containers and primary navy button hover |
+| `--color-navy-850` | `#1E3A68` | Secondary navy elevation |
+
+### Editorial Accents
+| Token | Hex | Usage |
+| :--- | :--- | :--- |
+| `--color-ochre-500` | `#C98A2C` | Primary donor CTAs, active navigation underline, planned-school footprint marker |
+| `--color-ochre-400` | `#DEA448` | High-contrast ochre accents on `#0E2243` / `#08152B` dark surfaces, button hover |
+| `--color-ochre-600` | `#A86F1B` | Editorial accent text on light ivory/white surfaces |
+| `--color-ochre-100` | `#FBF3E4` | Soft warm highlight surfaces |
+| `--color-glacial-600` | `#2B5B6C` | Drawn from the River Sind; geographic metadata, category labels, and secondary accents |
+| `--color-glacial-100` | `#EAF1F4` | Soft cool tint |
+
+### Surfaces, Borders & Ink
+| Token | Hex | Usage |
+| :--- | :--- | :--- |
+| `--color-surface-ivory` | `#FCF8F7` | **Primary page surface (`bg-surface-ivory`)** |
+| `--color-surface-linen` | `#F3EDE6` | Alternating warm tonal bands |
+| `--color-surface-white` | `#FFFFFF` | High-clarity reading containers, forms, and editorial cards |
+| `--color-border-subtle` | `#DDD6CE` | Architectural 1px hairlines and dividers |
+| `--color-border-strong` | `#C5BCB1` | Outlined secondary buttons and section borders |
+| `--color-text-primary` | `#0E2243` | Headings and emphasized copy |
+| `--color-text-body` | `#2E3A4D` | Primary body copy (WCAG AAA on ivory) |
+| `--color-text-muted` | `#5A677A` | Captions, metadata, and secondary labels |
 
 ---
 
-## 3. Layout & Section Rhythm
-1. **Top Utility Bar (`#0B223D`)**: Contact info placeholders on the left, quick links on the right.
-2. **Sticky White Navbar (`#FDFDFB`)**: BVEF shield logo + wordmark on left, clean links in center, Gold CTA button (`#F3AE2C`) on right.
-3. **Hero Section**: Two-tone serif headline, concise mission statement, primary dark navy CTA + secondary outline button, paired with high-impact Basho Valley / classroom photography.
-4. **Dark Navy Feature Strip (`#141E2A`)**: 5-column horizontal pillar strip with gold line icons (e.g., *Three-Teacher STEM Team*, *Offline Digital Classrooms*, *Local Female Educators*, *Exam-Linked Accountability*, *Zero Bricks-and-Mortar Overhead*).
-5. **Alternating Content & Cards (`#FCF8F7` / `#FDFDFB`)**: About BVEF, 3-card impact metrics, and program cards.
-6. **Dark Stats Banner (`#1B2330`)**: Key numbers in gold + white (Altitude `8,800–11,800 ft`, `1` Active Partner School, `16` Villages Waiting, `7` Trustees).
-7. **Footer (`#022046`)**: BVEF logo & mission, Quick Links, Programs, Contact Info placeholders, and Trust registration placeholder.
+## 2. Typography (`src/app/layout.tsx`)
+- **Display / Editorial Serif:** `Newsreader` (`--font-newsreader`, normal & italic) via `next/font/google`. Unified single-color editorial headlines without cliché two-tone last-word splits.
+- **UI / Body Sans:** `DM Sans` (`--font-dm-sans`) via `next/font/google` with `tabular-nums` for altitude, village footprint, and photo counters.
+
+---
+
+## 3. Component & Layout Principles
+- **Unified Geometry:** `rounded-md` (6px) buttons and form inputs, `rounded-sm` (4px) photographic frames and editorial panels across all routes.
+- **Documentary Photography:** Accurate captions verified against each photograph, `object-top` framing on student and educator portraits, and native `<dialog>` lightbox with `ArrowLeft`/`ArrowRight`/`Escape` keyboard navigation.
+- **Graceful Pre-Launch Config:** Deferred organizational details (`src/config/site.ts`) render dignified pre-launch institutional notices instead of raw `"TBD"` badges while supporting one-line activation when finalized.
