@@ -69,14 +69,14 @@ export default function Home() {
           aria-hidden="true"
         />
 
-        <div className="relative z-10 mx-auto flex min-h-[58dvh] max-w-7xl items-center px-4 py-16 sm:min-h-[78dvh] sm:px-6 lg:px-8">
-          <div className="max-w-3xl space-y-5 sm:space-y-6">
-            <h1 className="font-serif text-4xl font-normal leading-[1.12] tracking-tight text-surface-white drop-shadow-md sm:text-5xl lg:text-[4rem]">
+        <div className="relative z-10 mx-auto flex min-h-[44dvh] max-w-7xl items-center px-4 py-10 sm:min-h-[78dvh] sm:px-6 sm:py-16 lg:px-8">
+          <div className="max-w-xs space-y-2.5 sm:max-w-3xl sm:space-y-6">
+            <h1 className="font-serif text-2xl font-normal leading-[1.16] tracking-tight text-surface-white drop-shadow-md sm:text-5xl lg:text-[4rem]">
               Transforming learning outcomes{" "}
               <em className="italic">in Basho Valley.</em>
             </h1>
 
-            <p className="max-w-2xl text-lg font-medium leading-relaxed text-surface-white/95 drop-shadow-sm sm:text-xl">
+            <p className="max-w-xs text-xs font-medium leading-relaxed text-surface-white/95 drop-shadow-sm sm:max-w-2xl sm:text-xl">
               {siteConfig.description}
             </p>
           </div>
