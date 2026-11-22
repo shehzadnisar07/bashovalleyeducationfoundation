@@ -9,8 +9,8 @@ This design system establishes the visual identity for **Basho Valley Education 
 ### Primary Brand Navy
 | Token | Hex | Usage |
 | :--- | :--- | :--- |
-| `--color-brand-primary` / `--color-navy-950` | `#0E2243` | **Primary organizational brand color** (editorial dark bands, inner page heroes, headings, primary buttons) |
-| `--color-navy-980` | `#08152B` | Deep summit footer base and gallery lightbox stage |
+| `--color-brand-primary` / `--color-navy-950` | `#0E2243` | **Primary organizational brand color** (site footer, editorial dark bands, inner page heroes, headings, primary buttons) |
+| `--color-navy-980` | `#08152B` | High-contrast ink on ochre buttons and gallery lightbox backdrop stage |
 | `--color-navy-900` | `#162E57` | Dark surface containers and primary navy button hover |
 | `--color-navy-850` | `#1E3A68` | Secondary navy elevation |
 

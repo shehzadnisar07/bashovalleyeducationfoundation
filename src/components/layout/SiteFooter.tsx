@@ -4,7 +4,7 @@ import { siteConfig } from "@/config/site";
 
 export function SiteFooter() {
   return (
-    <footer className="bg-navy-980 text-surface-white">
+    <footer className="bg-brand-primary text-surface-white">
       <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
         <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-12">
           {/* Institutional Identity */}

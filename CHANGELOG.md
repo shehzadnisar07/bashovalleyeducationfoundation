@@ -14,6 +14,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
   - Audited and corrected all 28 documentary photo captions and portrait focal framing (`object-top`) in `src/data/gallery.ts`; replaced camping-meadow hero imagery with authentic Basho Valley village, morning assembly, and River Sind suspension bridge photography in `HeroSlideshow.tsx`.
   - Upgraded `PhotoGallery.tsx` lightbox with `ArrowLeft`/`ArrowRight`/`Escape` keyboard navigation and eager image loading.
   - Upgraded `ContactForm.tsx` with `?topic=` query-parameter pre-selection from `/support` and `/program` CTAs while maintaining honest `mailto:` draft handoff.
+  - Updated `SiteFooter` to use the exact primary brand navy (`#0E2243` / `bg-brand-primary`) and refined `SupportBanner` to warm linen (`bg-surface-linen`) so every page transitions cleanly from light editorial surfaces into the `#0E2243` footer without stacked dark bands.
   - Replaced raw public `"TBD"` badges/buttons with dignified config-driven pre-launch institutional framing via `src/config/site.ts`.
 - Added shared UI architecture (`PageHero.tsx`, `ValleyFootprint.tsx`, `SupportBanner.tsx`, `Icons.tsx`) and SEO routes (`src/app/sitemap.ts`, `src/app/robots.ts`).
 

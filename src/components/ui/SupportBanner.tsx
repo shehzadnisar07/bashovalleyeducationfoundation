@@ -19,14 +19,14 @@ export function SupportBanner({
   secondaryLabel = "Speak with the Trust",
 }: SupportBannerProps) {
   return (
-    <section className="bg-navy-950 text-surface-white">
+    <section className="border-t border-border-subtle bg-surface-linen text-navy-950">
       <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
         <div className="grid items-center gap-8 lg:grid-cols-12">
           <div className="lg:col-span-7">
-            <h2 className="font-serif text-3xl font-medium leading-tight text-surface-white sm:text-4xl">
+            <h2 className="font-serif text-3xl font-medium leading-tight text-navy-950 sm:text-4xl">
               {title}
             </h2>
-            <p className="mt-4 max-w-[58ch] text-base leading-relaxed text-surface-white/80">
+            <p className="mt-4 max-w-[58ch] text-base leading-relaxed text-text-body">
               {description}
             </p>
           </div>
@@ -41,7 +41,7 @@ export function SupportBanner({
             </Link>
             <Link
               href={secondaryHref}
-              className="inline-flex items-center justify-center rounded-md border border-surface-white/30 px-6 py-3 text-sm font-medium text-surface-white transition-colors hover:border-surface-white/60 hover:bg-navy-900"
+              className="inline-flex items-center justify-center rounded-md border border-border-strong bg-surface-white px-6 py-3 text-sm font-medium text-navy-950 transition-colors hover:border-navy-950 hover:bg-surface-ivory"
             >
               {secondaryLabel}
             </Link>
