@@ -123,13 +123,13 @@ export function SiteHeader() {
               width={44}
               height={56}
               priority
-              className="h-10 w-auto shrink-0 sm:h-11"
+              className="h-7 w-auto shrink-0 sm:h-11"
             />
             <span className="flex flex-col justify-center leading-none">
-              <span className="font-logo text-[17px] font-extrabold uppercase tracking-[0.06em] text-spruce-900 sm:text-[20px]">
+              <span className="font-logo text-[13px] font-extrabold uppercase tracking-[0.06em] text-spruce-900 sm:text-[19px]">
                 BASHO VALLEY
               </span>
-              <span className="mt-1 font-logo text-[9px] font-bold uppercase tracking-[0.18em] text-slate-500 sm:text-[10px]">
+              <span className="mt-0.5 font-logo text-[8px] font-bold uppercase tracking-[0.16em] text-slate-500 sm:mt-1 sm:text-[10px]">
                 EDUCATION FOUNDATION
               </span>
             </span>
