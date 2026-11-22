@@ -113,9 +113,12 @@ export default function Home() {
 
       {/* 2. Institutional Mandate & Key Valley Figures (#0E2243) */}
       <section className="border-t border-surface-white/15 bg-navy-950 text-surface-white md:border-t-0">
-        <div className="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8 lg:py-16">
-          <div className="grid gap-10 lg:grid-cols-12 lg:items-end">
-            <div className="lg:col-span-5">
+        <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8 lg:py-16">
+          <div className="grid gap-8 lg:grid-cols-12 lg:items-center lg:gap-12">
+            <div className="space-y-3 lg:col-span-5">
+              <p className="text-xs font-medium tracking-wide text-ochre-400">
+                Community-Governed Charitable Trust
+              </p>
               <p className="font-serif text-2xl font-normal leading-snug text-surface-white sm:text-[1.75rem]">
                 A duly registered charitable Trust governed by{" "}
                 <span className="italic text-ochre-400">seven Trustees</span>—most
@@ -123,36 +126,53 @@ export default function Home() {
               </p>
             </div>
 
-            <dl className="grid grid-cols-2 gap-6 border-t border-surface-white/15 pt-8 sm:grid-cols-4 lg:col-span-7 lg:border-t-0 lg:border-l lg:pt-0 lg:pl-10">
-              <div>
-                <dt className="text-xs text-surface-white/65">Altitude</dt>
-                <dd className="mt-1.5 font-serif text-2xl font-medium tabular-nums text-ochre-400 sm:text-3xl">
-                  8,800–11,800<span className="ml-1 text-base">ft</span>
+            <dl className="grid grid-cols-2 gap-3.5 sm:gap-4 lg:col-span-7">
+              <div className="rounded-sm border border-surface-white/12 bg-navy-900/55 p-4 sm:p-5">
+                <dt className="text-xs font-medium text-surface-white/65">
+                  Valley Altitude
+                </dt>
+                <dd className="mt-1.5 whitespace-nowrap font-serif text-xl font-medium tabular-nums text-ochre-400 sm:text-3xl">
+                  8,800–11,800<span className="ml-1 text-sm sm:text-base">ft</span>
                 </dd>
+                <p className="mt-1 text-[11px] text-surface-white/60 sm:text-xs">
+                  68 mi from K2 · Skardu
+                </p>
               </div>
-              <div>
-                <dt className="text-xs text-surface-white/65">
+
+              <div className="rounded-sm border border-surface-white/12 bg-navy-900/55 p-4 sm:p-5">
+                <dt className="text-xs font-medium text-surface-white/65">
                   Active Partner School
                 </dt>
-                <dd className="mt-1.5 font-serif text-2xl font-medium tabular-nums text-surface-white sm:text-3xl">
+                <dd className="mt-1.5 font-serif text-xl font-medium tabular-nums text-surface-white sm:text-3xl">
                   {siteConfig.stats.activePartnerSchools}
                 </dd>
+                <p className="mt-1 text-[11px] text-surface-white/60 sm:text-xs">
+                  2nd school planned this year
+                </p>
               </div>
-              <div>
-                <dt className="text-xs text-surface-white/65">
+
+              <div className="rounded-sm border border-surface-white/12 bg-navy-900/55 p-4 sm:p-5">
+                <dt className="text-xs font-medium text-surface-white/65">
                   Villages Waiting
                 </dt>
-                <dd className="mt-1.5 font-serif text-2xl font-medium tabular-nums text-surface-white sm:text-3xl">
+                <dd className="mt-1.5 font-serif text-xl font-medium tabular-nums text-surface-white sm:text-3xl">
                   {siteConfig.stats.villagesWaiting}
                 </dd>
+                <p className="mt-1 text-[11px] text-surface-white/60 sm:text-xs">
+                  17 villages · 1 high school
+                </p>
               </div>
-              <div>
-                <dt className="text-xs text-surface-white/65">
+
+              <div className="rounded-sm border border-surface-white/12 bg-navy-900/55 p-4 sm:p-5">
+                <dt className="text-xs font-medium text-surface-white/65">
                   Local Trustees
                 </dt>
-                <dd className="mt-1.5 font-serif text-2xl font-medium tabular-nums text-surface-white sm:text-3xl">
+                <dd className="mt-1.5 font-serif text-xl font-medium tabular-nums text-surface-white sm:text-3xl">
                   {siteConfig.stats.trusteesCount}
                 </dd>
+                <p className="mt-1 text-[11px] text-surface-white/60 sm:text-xs">
+                  Mostly valley teachers
+                </p>
               </div>
             </dl>
           </div>
