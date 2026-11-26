@@ -73,12 +73,12 @@ export default function Home() {
         <div className="mx-auto w-full max-w-3xl px-6 text-center sm:px-8">
           <Link
             href="/support"
-            className="inline-flex w-full max-w-[260px] items-center justify-center rounded-full bg-spruce-900 px-10 py-3.5 text-sm font-semibold text-surface-white transition-colors hover:bg-spruce-950 sm:w-auto sm:px-12"
+            className="type-btn inline-flex w-full max-w-[260px] items-center justify-center rounded-full bg-spruce-900 px-10 py-3.5 text-surface-white transition-colors hover:bg-spruce-950 sm:w-auto sm:px-12"
           >
             Donate Now
           </Link>
 
-          <h1 className="mt-10 text-left font-serif text-[clamp(1.625rem,1.25rem+1.75vw,2.5rem)] font-normal leading-[1.28] text-balance text-spruce-900 sm:mt-14">
+          <h1 className="type-section mt-10 text-left text-spruce-950 sm:mt-14">
             Every child in Basho Valley deserves quality education —{" "}
             <em className="italic">
               but mountain isolation leaves too many classrooms underserved.
@@ -91,11 +91,11 @@ export default function Home() {
       <section className="bg-surface-white">
         <div className="mx-auto grid max-w-7xl items-center gap-10 px-4 py-16 sm:px-6 sm:py-20 lg:grid-cols-2 lg:gap-16 lg:px-8">
           <div className="space-y-5">
-            <h2 className="font-serif text-3xl font-normal leading-tight text-spruce-900 sm:text-4xl">
+            <h2 className="type-section text-spruce-950">
               Closing the STEM learning gap,{" "}
               <em className="italic">one partner school at a time</em>
             </h2>
-            <p className="text-base leading-relaxed text-text-body">
+            <p className="type-body max-w-[65ch] text-text-body">
               Rather than spending donor funds on new buildings, BVEF signs an
               MOU with the local Education Department to place a{" "}
               <strong className="font-semibold text-spruce-950">
@@ -107,7 +107,7 @@ export default function Home() {
             <div className="pt-2">
               <Link
                 href="/about"
-                className="inline-flex items-center justify-center rounded-full border border-spruce-900 px-7 py-3 text-sm font-semibold text-spruce-900 transition-colors hover:bg-spruce-900 hover:text-surface-white"
+                className="type-btn inline-flex items-center justify-center rounded-full border border-spruce-900 px-7 py-3 text-spruce-900 transition-colors hover:bg-spruce-900 hover:text-surface-white"
               >
                 Read Our Story
               </Link>
@@ -132,7 +132,7 @@ export default function Home() {
           <div className="grid gap-12 text-center md:grid-cols-3 md:gap-8">
             {IMPACT_STATS.map((stat) => (
               <div key={stat.figure} className="flex flex-col items-center">
-                <p className="font-serif text-4xl font-normal tracking-tight sm:text-5xl">
+                <p className="type-section tabular-nums text-surface-white">
                   {stat.figure}
                 </p>
                 {/* Signature curved white underline */}
@@ -149,10 +149,10 @@ export default function Home() {
                     strokeLinecap="round"
                   />
                 </svg>
-                <p className="mt-5 max-w-xs text-sm leading-relaxed text-surface-white/90 sm:text-base">
+                <p className="type-body mt-5 max-w-xs text-surface-white/90">
                   {stat.description}
                 </p>
-                <p className="mt-4 text-xs italic text-surface-white/75 underline decoration-surface-white/40 underline-offset-4">
+                <p className="type-label mt-4 italic text-surface-white/75 underline decoration-surface-white/40 underline-offset-4">
                   {stat.source}
                 </p>
               </div>
@@ -175,17 +175,17 @@ export default function Home() {
 
         <div className="flex items-center px-6 py-14 sm:px-12 lg:px-16 lg:py-20">
           <div className="max-w-lg space-y-5">
-            <h2 className="font-serif text-3xl font-normal leading-tight text-spruce-900 sm:text-4xl">
+            <h2 className="type-section text-spruce-950">
               Offline digital classrooms.{" "}
               <em className="italic">Solar-powered reliability.</em>
             </h2>
-            <p className="text-base leading-relaxed text-text-body">
+            <p className="type-body max-w-[65ch] text-text-body">
               Because internet and grid power are scarce at high altitude, every
               supported classroom is equipped with a TV screen, two laptops,
               extra speakers, curated offline learning resources, and solar
               panels with battery backup.
             </p>
-            <p className="text-base leading-relaxed text-text-body">
+            <p className="type-body max-w-[65ch] text-text-body">
               Students gain engaging, visual Science, Mathematics, and English
               lessons every single school day—regardless of weather or
               connectivity.
@@ -198,16 +198,16 @@ export default function Home() {
       <section className="grid border-t border-border-subtle bg-surface-mist lg:grid-cols-2">
         <div className="order-2 flex items-center px-6 py-14 sm:px-12 lg:order-1 lg:px-16 lg:py-20">
           <div className="max-w-lg space-y-5">
-            <h2 className="font-serif text-3xl font-normal leading-tight text-spruce-900 sm:text-4xl">
+            <h2 className="type-section text-spruce-950">
               Community-anchored{" "}
               <em className="italic">local female educators</em>
             </h2>
-            <p className="text-base leading-relaxed text-text-body">
+            <p className="type-body max-w-[65ch] text-text-body">
               BVEF prioritizes hiring qualified local female teachers who live
               in Basho Valley—ensuring long-term retention, trusted mentorship
               for girls, and year-round classroom continuity.
             </p>
-            <p className="font-serif text-lg font-medium text-spruce-950">
+            <p className="type-card text-spruce-950">
               {siteConfig.stats.activePartnerSchools} partner school active
               &bull; 2nd planned this year &bull;{" "}
               {siteConfig.stats.villagesWaiting} villages waiting.
@@ -241,10 +241,10 @@ export default function Home() {
         />
         <div className="relative z-10 mx-auto w-full max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
           <div className="max-w-xl space-y-3">
-            <h2 className="font-serif text-4xl font-normal text-surface-white sm:text-5xl">
+            <h2 className="type-hero text-surface-white">
               Life in Basho Valley
             </h2>
-            <p className="font-serif text-xl italic text-surface-white/90">
+            <p className="type-body text-surface-white/90">
               Seven Trustees, local teachers, and communities working together
             </p>
           </div>
@@ -269,16 +269,16 @@ export default function Home() {
                     className="object-cover"
                   />
                 </div>
-                <h3 className="mt-6 font-serif text-2xl font-normal text-spruce-900">
+                <h3 className="type-card mt-6 text-spruce-950">
                   {card.title}
                 </h3>
-                <p className="mt-3 flex-1 text-sm leading-relaxed text-text-body">
+                <p className="type-body mt-3 flex-1 text-text-body">
                   {card.description}
                 </p>
                 <div className="mt-6">
                   <Link
                     href={card.href}
-                    className={`inline-flex items-center justify-center rounded-full px-8 py-2.5 text-sm font-semibold text-surface-white transition-colors ${
+                    className={`type-btn inline-flex items-center justify-center rounded-full px-8 py-2.5 text-surface-white transition-colors ${
                       card.variant === "accent"
                         ? "bg-saffron-600 hover:bg-saffron-700"
                         : "bg-spruce-900 hover:bg-spruce-950"
@@ -291,7 +291,7 @@ export default function Home() {
             ))}
           </div>
 
-          <p className="mt-12 text-center text-xs text-slate-500">
+          <p className="type-label mt-12 text-center text-slate-500">
             Explore all {GALLERY_PHOTOS.length} documented field photographs in
             our{" "}
             <Link

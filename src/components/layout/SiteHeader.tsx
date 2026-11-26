@@ -210,9 +210,9 @@ export function SiteHeader() {
                         href={item.href}
                         onClick={handleNavClick}
                         aria-current={isActive ? "page" : undefined}
-                        className={`nav-link relative block rounded-md px-3 py-2 text-xs font-semibold uppercase tracking-widest transition-colors hover:bg-surface-mist hover:text-spruce-900 ${
+                        className={`nav-link type-nav relative block rounded-md px-3 py-2 transition-colors hover:bg-surface-mist hover:text-spruce-900 ${
                           isActive
-                            ? "text-spruce-900 underline decoration-spruce-900 decoration-2 underline-offset-8"
+                            ? "font-semibold text-spruce-900 underline decoration-spruce-900 decoration-2 underline-offset-8"
                             : "text-text-body"
                         }`}
                       >
@@ -226,7 +226,7 @@ export function SiteHeader() {
 
             <Link
               href="/support"
-              className="header-cta inline-flex items-center justify-center rounded-full bg-saffron-600 px-6 py-2.5 text-xs font-bold uppercase tracking-wider text-surface-white transition-colors hover:bg-saffron-700"
+              className="header-cta type-btn inline-flex items-center justify-center rounded-full bg-saffron-600 px-6 py-2.5 text-surface-white transition-colors hover:bg-saffron-700"
             >
               Donate Now
             </Link>

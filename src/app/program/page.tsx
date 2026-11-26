@@ -16,14 +16,14 @@ export default function ProgramPage() {
       {/* Page Header */}
       <section className="bg-spruce-900 text-surface-white">
         <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8">
-          <p className="text-xs font-bold uppercase tracking-widest text-saffron-100">
+          <p className="type-label text-saffron-100">
             Operational Model
           </p>
-          <h1 className="mt-2 font-serif text-4xl font-normal tracking-tight sm:text-5xl">
+          <h1 className="type-hero mt-2 text-surface-white">
             School-Partnership{" "}
             <em className="italic">Program</em>
           </h1>
-          <p className="mt-4 max-w-2xl text-base leading-relaxed text-surface-white/85">
+          <p className="type-body mt-4 max-w-[65ch] text-surface-white/85">
             A practical, accountable 9-point model that pairs local educators
             with offline digital classrooms inside existing public schools.
           </p>
@@ -34,10 +34,10 @@ export default function ProgramPage() {
       <section className="bg-surface-white">
         <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
           <div className="max-w-2xl">
-            <h2 className="font-serif text-3xl font-normal text-spruce-900 sm:text-4xl">
+            <h2 className="type-section text-spruce-950">
               How the 9-Point Model Works
             </h2>
-            <p className="mt-3 text-base text-text-body">
+            <p className="type-body mt-3 max-w-[65ch] text-text-body">
               Every partner school follows a clear operating framework designed
               for high-altitude, low-connectivity mountain communities.
             </p>
@@ -49,13 +49,13 @@ export default function ProgramPage() {
                 key={point.number}
                 className="rounded-xl border border-border-subtle bg-surface-mist p-6"
               >
-                <span className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-spruce-900 font-serif text-sm font-bold text-surface-white">
+                <span className="type-label inline-flex h-9 w-9 items-center justify-center rounded-full bg-spruce-900 font-semibold text-surface-white">
                   {point.number}
                 </span>
-                <h3 className="mt-4 font-serif text-xl font-normal text-spruce-900">
+                <h3 className="type-card mt-4 text-spruce-950">
                   {point.title}
                 </h3>
-                <p className="mt-2 text-sm leading-relaxed text-text-body">
+                <p className="type-body mt-2 text-text-body">
                   {point.description}
                 </p>
               </article>
@@ -78,13 +78,13 @@ export default function ProgramPage() {
           </div>
 
           <div>
-            <p className="text-xs font-bold uppercase tracking-widest text-saffron-600">
+            <p className="type-label text-saffron-600">
               Classroom Technology
             </p>
-            <h2 className="mt-2 font-serif text-3xl font-normal text-spruce-900 sm:text-4xl">
+            <h2 className="type-section mt-2 text-spruce-950">
               Offline Digital Classroom Kit
             </h2>
-            <p className="mt-3 text-base leading-relaxed text-text-body">
+            <p className="type-body mt-3 max-w-[65ch] text-text-body">
               Because internet connectivity is limited in Basho Valley, each
               supported classroom runs entirely offline with solar-backed power:
             </p>
@@ -95,8 +95,8 @@ export default function ProgramPage() {
                   key={item.name}
                   className="rounded-xl border border-border-subtle bg-surface-white p-4"
                 >
-                  <p className="font-semibold text-spruce-900">{item.name}</p>
-                  <p className="mt-1 text-sm text-text-body">{item.detail}</p>
+                  <p className="type-card text-spruce-950">{item.name}</p>
+                  <p className="type-body mt-1 text-text-body">{item.detail}</p>
                 </li>
               ))}
             </ul>
@@ -109,13 +109,13 @@ export default function ProgramPage() {
         <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
           <div className="grid items-center gap-8 lg:grid-cols-2">
             <div>
-              <p className="text-xs font-bold uppercase tracking-widest text-saffron-100">
+              <p className="type-label text-saffron-100">
                 Current Footprint &amp; Expansion
               </p>
-              <h2 className="mt-2 font-serif text-3xl font-normal sm:text-4xl">
+              <h2 className="type-section mt-2 text-surface-white">
                 From 1 Partner School to All 17 Villages
               </h2>
-              <p className="mt-4 text-base leading-relaxed text-surface-white/85">
+              <p className="type-body mt-4 max-w-[65ch] text-surface-white/85">
                 BVEF currently supports{" "}
                 <strong className="font-semibold text-surface-white">
                   {siteConfig.stats.activePartnerSchools} active partner school
@@ -135,7 +135,7 @@ export default function ProgramPage() {
             <div className="flex flex-wrap gap-4 lg:justify-end">
               <Link
                 href="/support"
-                className="inline-flex items-center justify-center rounded-full bg-saffron-600 px-8 py-3 text-sm font-semibold text-surface-white transition-colors hover:bg-saffron-700"
+                className="type-btn inline-flex items-center justify-center rounded-full bg-saffron-600 px-8 py-3 text-surface-white transition-colors hover:bg-saffron-700"
               >
                 Sponsor a Partner School
               </Link>

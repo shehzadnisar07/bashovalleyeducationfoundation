@@ -131,10 +131,10 @@ export function LeadershipCarousel({ members }: LeadershipCarouselProps) {
                     )}
                   </div>
 
-                  <h3 className="mt-5 font-serif text-xl font-normal text-spruce-950">
+                  <h3 className="type-card mt-5 text-spruce-950">
                     {member.name}
                   </h3>
-                  <span className="mt-1 text-sm font-medium text-spruce-800 underline decoration-spruce-800/60 underline-offset-4 transition-colors group-hover:text-spruce-950 group-hover:decoration-spruce-950">
+                  <span className="type-label mt-1 text-spruce-800 underline decoration-spruce-800/60 underline-offset-4 transition-colors group-hover:text-spruce-950 group-hover:decoration-spruce-950">
                     {member.designation}
                   </span>
                 </button>

@@ -53,11 +53,11 @@ export default function AboutPage() {
         />
         <div className="relative z-10 mx-auto flex min-h-[380px] max-w-7xl items-end px-4 pb-12 sm:min-h-[480px] sm:px-6 lg:px-8">
           <div className="max-w-2xl text-surface-white">
-            <p className="text-xs font-bold uppercase tracking-widest text-saffron-100">
+            <p className="type-label text-saffron-100">
               Who We Are
             </p>
-            <h1 className="mt-2 font-serif text-4xl font-normal tracking-tight sm:text-5xl">
-              About <strong className="font-bold uppercase">{siteConfig.name}</strong>
+            <h1 className="type-hero mt-2 text-surface-white">
+              About {siteConfig.name}
             </h1>
           </div>
         </div>
@@ -66,16 +66,16 @@ export default function AboutPage() {
       {/* 2. Our Vision (White Background, Centered Heading + Editorial Copy) */}
       <section className="bg-surface-white">
         <div className="mx-auto max-w-4xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8">
-          <h2 className="text-center font-serif text-3xl font-normal text-spruce-900 sm:text-4xl">
+          <h2 className="type-section text-center text-spruce-950">
             Our Vision
           </h2>
-          <p className="mt-8 text-base leading-relaxed text-text-body sm:text-lg">
+          <p className="type-body mx-auto mt-8 max-w-[65ch] text-text-body">
             Our vision is to unlock human potential across Basho Valley by{" "}
             <strong className="font-semibold text-spruce-950">
               transforming STEM and English learning outcomes for every child.
             </strong>
           </p>
-          <p className="mt-4 text-base leading-relaxed text-text-body">
+          <p className="type-body mx-auto mt-4 max-w-[65ch] text-text-body">
             Quality education stands as a beacon of hope in remote mountain
             communities—uplifting families, strengthening economic stability,
             and opening doors to opportunity across all 17 villages of Basho
@@ -98,17 +98,17 @@ export default function AboutPage() {
 
         <div className="flex items-center px-6 py-14 sm:px-12 lg:px-16 lg:py-20">
           <div className="mx-auto max-w-lg space-y-5">
-            <h2 className="text-center font-serif text-3xl font-normal text-spruce-900 sm:text-4xl lg:text-left">
+            <h2 className="type-section text-center text-spruce-950 lg:text-left">
               Our Mission
             </h2>
-            <p className="text-base leading-relaxed text-text-body">
+            <p className="type-body max-w-[65ch] text-text-body">
               Our mission is to establish{" "}
               <strong className="font-semibold italic text-spruce-950">
                 effective and scalable school-partnership classrooms
               </strong>{" "}
               by combining local educators with offline digital technology.
             </p>
-            <p className="text-base leading-relaxed text-text-body">
+            <p className="type-body max-w-[65ch] text-text-body">
               Rather than spending donor funds on bricks-and-mortar buildings,
               BVEF signs formal MOUs with the local Education Department to
               supplement public school staff with a dedicated{" "}
@@ -117,7 +117,7 @@ export default function AboutPage() {
               </strong>
               .
             </p>
-            <p className="text-base leading-relaxed text-text-body">
+            <p className="type-body max-w-[65ch] text-text-body">
               Each classroom is equipped with a TV screen, two laptops, extra
               speakers, offline lessons, and solar panels with battery backup.
             </p>
@@ -129,10 +129,10 @@ export default function AboutPage() {
       <section className="grid border-t border-border-subtle bg-surface-mist lg:grid-cols-2">
         <div className="order-2 flex items-center px-6 py-14 sm:px-12 lg:order-1 lg:px-16 lg:py-20">
           <div className="mx-auto max-w-lg space-y-5">
-            <h2 className="font-serif text-3xl font-normal text-spruce-900 sm:text-4xl">
+            <h2 className="type-section text-spruce-950">
               Our Story
             </h2>
-            <p className="text-base leading-relaxed text-text-body">
+            <p className="type-body max-w-[65ch] text-text-body">
               Basho Valley lies across a suspension bridge over the River Sind
               and a{" "}
               <strong className="font-semibold text-spruce-950">
@@ -146,7 +146,7 @@ export default function AboutPage() {
               harsh winters left local schools struggling to retain specialist
               teachers.
             </p>
-            <p className="text-base leading-relaxed text-text-body">
+            <p className="type-body max-w-[65ch] text-text-body">
               Guided by seven Trustees—most of whom are teachers working in
               Basho Valley—BVEF launched its first partner school, is preparing a
               second before year-end, and is working toward reaching the
@@ -170,10 +170,10 @@ export default function AboutPage() {
       <section id="leadership" className="bg-surface-white">
         <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8">
           <div className="mx-auto max-w-2xl text-center">
-            <h2 className="font-serif text-3xl font-normal text-spruce-950 sm:text-4xl">
+            <h2 className="type-section text-spruce-950">
               Meet Our Leadership
             </h2>
-            <p className="mt-3 text-base leading-relaxed text-text-body">
+            <p className="type-body mt-3 text-text-body">
               Dedicated leadership. Community experience. A shared commitment to
               education.
             </p>
@@ -186,7 +186,7 @@ export default function AboutPage() {
       {/* 6. Partnership & Model Pillars (White Background + 4 Icon Columns + Outlined Pill CTA) */}
       <section className="border-t border-border-subtle bg-surface-white">
         <div className="mx-auto max-w-6xl px-4 py-16 text-center sm:px-6 sm:py-20 lg:px-8">
-          <h2 className="font-serif text-3xl font-normal text-spruce-900 sm:text-4xl">
+          <h2 className="type-section text-spruce-950">
             Closing the learning gap requires strong partnerships
           </h2>
 
@@ -247,10 +247,10 @@ export default function AboutPage() {
                     </svg>
                   )}
                 </div>
-                <h3 className="font-serif text-lg font-normal text-spruce-900">
+                <h3 className="type-card text-spruce-950">
                   {pillar.title}
                 </h3>
-                <p className="text-sm leading-relaxed text-text-body">
+                <p className="type-body text-text-body">
                   {pillar.detail}
                 </p>
               </div>
@@ -260,13 +260,13 @@ export default function AboutPage() {
           <div className="mt-12 flex flex-wrap justify-center gap-4">
             <Link
               href="/program"
-              className="inline-flex items-center justify-center rounded-full border border-spruce-900 px-8 py-3 text-sm font-semibold text-spruce-900 transition-colors hover:bg-spruce-900 hover:text-surface-white"
+              className="type-btn inline-flex items-center justify-center rounded-full border border-spruce-900 px-8 py-3 text-spruce-900 transition-colors hover:bg-spruce-900 hover:text-surface-white"
             >
               Explore Our 9-Point Program
             </Link>
             <Link
               href="/support"
-              className="inline-flex items-center justify-center rounded-full bg-saffron-600 px-8 py-3 text-sm font-semibold text-surface-white transition-colors hover:bg-saffron-700"
+              className="type-btn inline-flex items-center justify-center rounded-full bg-saffron-600 px-8 py-3 text-surface-white transition-colors hover:bg-saffron-700"
             >
               Partner &amp; Donate
             </Link>

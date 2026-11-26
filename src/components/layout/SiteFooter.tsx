@@ -21,7 +21,7 @@ export function SiteFooter() {
                 height={44}
                 className="h-10 w-auto"
               />
-              <span className="font-serif text-lg font-bold uppercase tracking-wide text-surface-white">
+              <span className="font-heading text-lg font-bold tracking-tight text-surface-white">
                 {siteConfig.name}
               </span>
             </Link>
@@ -62,7 +62,7 @@ export function SiteFooter() {
           </div>
 
           <div className="shrink-0">
-            <span className="inline-flex items-center rounded-full border border-surface-white/25 bg-surface-white/5 px-3.5 py-1.5 text-xs font-medium text-surface-white/90">
+            <span className="type-label inline-flex items-center rounded-full border border-surface-white/25 bg-surface-white/5 px-3.5 py-1.5 text-surface-white/90">
               {siteConfig.registrationNumber}
             </span>
           </div>
@@ -73,7 +73,7 @@ export function SiteFooter() {
           {/* 3-Column Link Grid */}
           <div className="grid gap-8 sm:grid-cols-3">
             <div>
-              <h2 className="text-xs font-bold uppercase tracking-widest text-surface-white">
+              <h2 className="type-label font-semibold text-surface-white">
                 About Us
               </h2>
               <ul className="mt-4 space-y-2.5 text-sm text-surface-white/80">
@@ -104,7 +104,7 @@ export function SiteFooter() {
             </div>
 
             <div>
-              <h2 className="text-xs font-bold uppercase tracking-widest text-surface-white">
+              <h2 className="type-label font-semibold text-surface-white">
                 What We Do
               </h2>
               <ul className="mt-4 space-y-2.5 text-sm text-surface-white/80">
@@ -132,7 +132,7 @@ export function SiteFooter() {
             </div>
 
             <div>
-              <h2 className="text-xs font-bold uppercase tracking-widest text-surface-white">
+              <h2 className="type-label font-semibold text-surface-white">
                 Support &amp; Impact
               </h2>
               <ul className="mt-4 space-y-2.5 text-sm text-surface-white/80">
@@ -157,10 +157,10 @@ export function SiteFooter() {
         </div>
 
         {/* Bottom Centered Copyright */}
-        <div className="mt-12 text-center text-xs text-surface-white/70">
+        <div className="type-label mt-12 text-center text-surface-white/70">
           <p>
             &copy; Copyright 2026{" "}
-            <strong className="font-bold uppercase text-surface-white">
+            <strong className="font-semibold text-surface-white">
               {siteConfig.name}
             </strong>{" "}
             ({siteConfig.shortName}) - All Rights Reserved

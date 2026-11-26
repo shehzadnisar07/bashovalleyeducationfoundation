@@ -41,16 +41,16 @@ export function LeadershipProfile({ member }: LeadershipProfileProps) {
 
         {/* Right Column: Identity, Bio, Expertise, Contact & Professional Journey */}
         <div className="min-w-0 md:col-span-8 lg:col-span-9">
-          <p className="text-xs font-bold uppercase tracking-widest text-spruce-800">
+          <p className="type-label text-spruce-800">
             {member.designation}
           </p>
 
-          <h3 className="mt-1.5 font-serif text-2xl font-normal tracking-tight text-spruce-950 sm:text-3xl">
+          <h3 className="type-subsection mt-1.5 text-spruce-950">
             {member.name}
           </h3>
 
           {member.location && (
-            <p className="mt-1 flex items-center gap-1.5 text-sm text-slate-500">
+            <p className="type-label mt-1 flex items-center gap-1.5 text-slate-500">
               <svg
                 className="h-4 w-4 shrink-0 text-spruce-800"
                 viewBox="0 0 24 24"
@@ -66,7 +66,7 @@ export function LeadershipProfile({ member }: LeadershipProfileProps) {
             </p>
           )}
 
-          <p className="mt-4 max-w-3xl text-base leading-relaxed text-text-body">
+          <p className="type-body mt-4 max-w-[65ch] text-text-body">
             {member.bio}
           </p>
 
@@ -79,7 +79,7 @@ export function LeadershipProfile({ member }: LeadershipProfileProps) {
               {expertiseTags.map((label) => (
                 <li
                   key={label}
-                  className="inline-flex items-center rounded-full border border-spruce-800/20 bg-brand-blue-100 px-3 py-1 text-xs font-semibold text-spruce-900"
+                  className="type-label inline-flex items-center rounded-full border border-spruce-800/20 bg-brand-blue-100 px-3 py-1 text-spruce-900"
                 >
                   {label}
                 </li>
@@ -172,7 +172,7 @@ export function LeadershipProfile({ member }: LeadershipProfileProps) {
           {/* Professional Journey Vertical Career Timeline */}
           {hasExperience && (
             <div className="mt-7 border-t border-border-subtle pt-6">
-              <h4 className="text-xs font-bold uppercase tracking-widest text-spruce-950">
+              <h4 className="type-label font-semibold text-spruce-950">
                 Professional Journey
               </h4>
 
@@ -186,13 +186,13 @@ export function LeadershipProfile({ member }: LeadershipProfileProps) {
                       className="absolute -start-[1.5625rem] top-1.5 h-2.5 w-2.5 rounded-full bg-spruce-800 ring-4 ring-surface-white sm:-start-[1.8125rem]"
                       aria-hidden="true"
                     />
-                    <p className="text-xs font-bold uppercase tracking-wider text-spruce-800">
+                    <p className="type-label text-spruce-800">
                       {exp.period} &middot; {exp.organization}
                     </p>
-                    <p className="mt-1 font-serif text-lg font-normal text-spruce-950">
+                    <p className="type-card mt-1 text-spruce-950">
                       {exp.role}
                     </p>
-                    <p className="mt-1 text-sm leading-relaxed text-text-body">
+                    <p className="type-body mt-1 max-w-[65ch] text-text-body">
                       {exp.summary}
                     </p>
                   </li>
