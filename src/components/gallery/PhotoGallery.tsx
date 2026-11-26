@@ -154,16 +154,16 @@ export function PhotoGallery() {
                   setSelectedIndex(null);
                 }}
                 aria-pressed={isSelected}
-                className={`shrink-0 rounded-md px-3.5 py-2 text-sm font-medium transition-colors ${
+                className={`type-label shrink-0 rounded-md px-3.5 py-2.5 transition-colors ${
                   isSelected
-                    ? "bg-navy-950 text-surface-white"
-                    : "border border-border-subtle bg-surface-white text-text-body hover:border-navy-950/40 hover:text-navy-950"
+                    ? "bg-spruce-950 text-surface-white"
+                    : "border border-border-subtle bg-surface-white text-text-body hover:border-spruce-900/40 hover:text-spruce-950"
                 }`}
               >
                 {category.label}
                 <span
                   className={`ml-1.5 text-xs tabular-nums ${
-                    isSelected ? "text-ochre-400" : "text-text-muted"
+                    isSelected ? "text-saffron-100" : "text-slate-500"
                   }`}
                 >
                   {count}
@@ -184,12 +184,12 @@ export function PhotoGallery() {
               className="block w-full text-left"
               aria-label={`View full photograph: ${photo.caption}`}
             >
-              <div className="relative aspect-[4/3] w-full overflow-hidden rounded-sm border border-border-subtle bg-surface-linen">
+              <div className="relative aspect-[4/3] w-full overflow-hidden rounded-sm border border-border-subtle bg-surface-mist">
                 <Image
                   src={photo.src}
                   alt={photo.alt}
                   fill
-                  loading="eager"
+                  loading="lazy"
                   sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                   className={`object-cover transition-transform duration-300 group-hover:scale-[1.03] ${
                     photo.objectPosition === "top"
@@ -199,10 +199,10 @@ export function PhotoGallery() {
                 />
               </div>
               <figcaption className="mt-3 space-y-1">
-                <span className="block text-xs font-medium text-glacial-600">
+                <span className="type-label block text-spruce-800">
                   {CATEGORY_LABEL_MAP[photo.category]}
                 </span>
-                <p className="text-sm font-medium leading-snug text-navy-950 group-hover:text-ochre-600">
+                <p className="type-body font-medium leading-snug text-spruce-950 group-hover:text-saffron-700">
                   {photo.caption}
                 </p>
               </figcaption>
@@ -216,18 +216,18 @@ export function PhotoGallery() {
         ref={dialogRef}
         aria-labelledby="lightbox-title"
         {...({ closedby: "any" } as Record<string, string>)}
-        className="m-auto max-h-[92dvh] w-[min(94dvw,60rem)] overflow-hidden rounded-sm border border-surface-white/15 bg-navy-980 p-0 text-surface-white shadow-2xl"
+        className="m-auto max-h-[92dvh] w-[min(94dvw,60rem)] overflow-hidden rounded-sm border border-surface-white/15 bg-spruce-950 p-0 text-surface-white shadow-2xl"
       >
         {activePhoto && (
           <div className="flex flex-col">
             <div className="flex items-center justify-between gap-4 border-b border-surface-white/10 px-5 py-4">
               <div className="min-w-0">
-                <span className="block text-xs font-medium text-ochre-400">
+                <span className="type-label block text-saffron-100">
                   {CATEGORY_LABEL_MAP[activePhoto.category]}
                 </span>
                 <h2
                   id="lightbox-title"
-                  className="mt-0.5 truncate font-serif text-base font-medium text-surface-white sm:text-lg"
+                  className="type-card mt-0.5 truncate text-surface-white"
                 >
                   {activePhoto.caption}
                 </h2>
@@ -237,7 +237,7 @@ export function PhotoGallery() {
                 onClick={closeLightbox}
                 autoFocus
                 aria-label="Close photograph viewer"
-                className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-md border border-surface-white/20 text-surface-white transition-colors hover:bg-navy-900"
+                className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-md border border-surface-white/20 text-surface-white transition-colors hover:bg-spruce-900"
               >
                 <CloseIcon className="h-4 w-4" />
               </button>
@@ -253,15 +253,15 @@ export function PhotoGallery() {
               />
             </div>
 
-            <div className="flex items-center justify-between gap-4 border-t border-surface-white/10 px-5 py-3.5">
-              <span className="text-xs font-medium tabular-nums text-surface-white/70">
+            <div className="flex flex-wrap items-center justify-between gap-3 border-t border-surface-white/10 px-5 py-3.5">
+              <span className="type-label tabular-nums text-surface-white/70">
                 Photograph {(selectedIndex ?? 0) + 1} of {filteredPhotos.length}
               </span>
               <div className="flex items-center gap-2">
                 <button
                   type="button"
                   onClick={showPrevious}
-                  className="inline-flex items-center gap-1.5 rounded-md border border-surface-white/20 px-3.5 py-1.5 text-sm font-medium text-surface-white transition-colors hover:bg-navy-900"
+                  className="type-btn inline-flex min-h-10 items-center gap-1.5 rounded-md border border-surface-white/20 px-3.5 py-1.5 text-surface-white transition-colors hover:bg-spruce-900"
                 >
                   <ChevronLeftIcon className="h-4 w-4" />
                   <span>Previous</span>
@@ -269,7 +269,7 @@ export function PhotoGallery() {
                 <button
                   type="button"
                   onClick={showNext}
-                  className="inline-flex items-center gap-1.5 rounded-md bg-ochre-500 px-3.5 py-1.5 text-sm font-semibold text-navy-980 transition-colors hover:bg-ochre-400"
+                  className="type-btn inline-flex min-h-10 items-center gap-1.5 rounded-md bg-saffron-600 px-3.5 py-1.5 text-surface-white transition-colors hover:bg-saffron-700"
                 >
                   <span>Next</span>
                   <ChevronRightIcon className="h-4 w-4" />

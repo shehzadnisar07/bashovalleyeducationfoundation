@@ -78,20 +78,20 @@ export default function ContactPage() {
                   </dd>
                 </div>
                 <div>
-                  <dt className="text-xs uppercase tracking-wider text-slate-500">
+                  <dt className="type-label text-slate-500">
                     Foundation Email
                   </dt>
                   <dd className="mt-1">
                     <a
                       href={`mailto:${siteConfig.contact.email}`}
-                      className="font-medium text-spruce-900 underline decoration-saffron-600/60 underline-offset-4 hover:text-saffron-700"
+                      className="break-words font-medium text-spruce-900 underline decoration-saffron-600/60 underline-offset-4 hover:text-saffron-700"
                     >
                       {siteConfig.contact.email}
                     </a>
                   </dd>
                 </div>
                 <div>
-                  <dt className="text-xs uppercase tracking-wider text-slate-500">
+                  <dt className="type-label text-slate-500">
                     Phone / WhatsApp
                   </dt>
                   <dd className="mt-1 font-medium text-text-body">
@@ -104,7 +104,7 @@ export default function ContactPage() {
                   </dd>
                 </div>
                 <div>
-                  <dt className="text-xs uppercase tracking-wider text-slate-500">
+                  <dt className="type-label text-slate-500">
                     Location
                   </dt>
                   <dd className="mt-1 text-text-body">

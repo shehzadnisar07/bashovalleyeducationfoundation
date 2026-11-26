@@ -200,34 +200,34 @@ export function ContactForm() {
     );
 
     return (
-      <div className="rounded-sm border border-border-subtle bg-surface-white p-7 sm:p-10">
-        <div className="inline-flex h-10 w-10 items-center justify-center rounded-sm bg-ochre-100 text-ochre-600">
+      <div className="rounded-xl border border-border-subtle bg-surface-white p-7 shadow-xs sm:p-10">
+        <div className="inline-flex h-10 w-10 items-center justify-center rounded-md bg-saffron-100 text-saffron-700">
           <CheckIcon className="h-5 w-5" />
         </div>
-        <h2 className="mt-5 font-serif text-2xl font-medium text-navy-950 sm:text-3xl">
+        <h2 className="type-subsection mt-5 text-spruce-950">
           Inquiry prepared for {submitted.name}
         </h2>
-        <p className="mt-3 text-sm leading-relaxed text-text-body sm:text-base">
+        <p className="type-body mt-3 max-w-[65ch] text-text-body">
           This website operates without an automated server-side mail relay. To
           deliver your inquiry directly to the Trust, open the pre-filled draft
           in your email application below.
         </p>
 
-        <dl className="mt-6 space-y-2 rounded-sm border border-border-subtle bg-surface-ivory p-4 text-xs sm:text-sm">
+        <dl className="mt-6 space-y-2 rounded-md border border-border-subtle bg-surface-mist/50 p-4 text-xs sm:text-sm">
           <div className="flex flex-wrap gap-x-2">
-            <dt className="font-semibold text-navy-950">Topic:</dt>
+            <dt className="font-semibold text-spruce-950">Topic:</dt>
             <dd className="text-text-body">{submitted.topic}</dd>
           </div>
           <div className="flex flex-wrap gap-x-2">
-            <dt className="font-semibold text-navy-950">Reply-to:</dt>
-            <dd className="text-text-body">{submitted.email}</dd>
+            <dt className="font-semibold text-spruce-950">Reply-to:</dt>
+            <dd className="break-words text-text-body">{submitted.email}</dd>
           </div>
         </dl>
 
         <div className="mt-6 flex flex-wrap gap-3">
           <a
             href={`mailto:${siteConfig.contact.email}?subject=${mailtoSubject}&body=${mailtoBody}`}
-            className="inline-flex items-center justify-center gap-2 rounded-md bg-navy-950 px-5 py-2.5 text-sm font-semibold text-surface-white transition-colors hover:bg-navy-900"
+            className="type-btn inline-flex items-center justify-center gap-2 rounded-md bg-spruce-950 px-5 py-2.5 text-surface-white transition-colors hover:bg-spruce-900"
           >
             <MailIcon className="h-4 w-4" />
             <span>Open draft in email app</span>
@@ -235,7 +235,7 @@ export function ContactForm() {
           <button
             type="button"
             onClick={() => setSubmitted(null)}
-            className="inline-flex items-center justify-center rounded-md border border-border-strong bg-surface-white px-5 py-2.5 text-sm font-medium text-navy-950 transition-colors hover:bg-surface-ivory"
+            className="type-btn inline-flex items-center justify-center rounded-md border border-border-subtle bg-surface-white px-5 py-2.5 text-spruce-950 transition-colors hover:bg-surface-mist"
           >
             Prepare another inquiry
           </button>
@@ -248,15 +248,15 @@ export function ContactForm() {
     <form
       ref={formRef}
       onSubmit={handleSubmit}
-      className="space-y-6 rounded-sm border border-border-subtle bg-surface-white p-7 sm:p-10"
+      className="space-y-6 rounded-xl border border-border-subtle bg-surface-white p-6 shadow-xs sm:p-10"
     >
       <div ref={announcerRef} aria-live="polite" className="sr-only" />
 
       <div className="border-b border-border-subtle pb-5">
-        <h2 className="font-serif text-2xl font-medium text-navy-950">
+        <h2 className="type-subsection text-spruce-950">
           Write to the Foundation
         </h2>
-        <p className="mt-1.5 text-sm text-text-muted">
+        <p className="type-body mt-1.5 text-slate-500">
           Complete the fields below to prepare a structured inquiry draft for
           BVEF&apos;s Trustees.
         </p>
@@ -266,7 +266,7 @@ export function ContactForm() {
         <div>
           <label
             htmlFor="contact-name"
-            className="block text-sm font-medium text-navy-950"
+            className="type-label block font-semibold text-spruce-950"
           >
             Full name
           </label>
@@ -278,7 +278,7 @@ export function ContactForm() {
             minLength={2}
             autoComplete="name"
             data-error="contact-name-error"
-            className="form-control mt-1.5 block w-full rounded-md border border-border-subtle bg-surface-ivory/50 px-3.5 py-2.5 text-base text-navy-950 transition-colors focus:border-navy-950 focus:bg-surface-white sm:text-sm"
+            className="form-control mt-1.5 block w-full rounded-md border border-border-subtle bg-surface-mist/40 px-3.5 py-2.5 text-base text-spruce-950 transition-colors focus:border-spruce-950 focus:bg-surface-white sm:text-sm"
             placeholder="Your full name"
           />
           <div id="contact-name-error" className="field-error-msg">
@@ -289,7 +289,7 @@ export function ContactForm() {
         <div>
           <label
             htmlFor="contact-email"
-            className="block text-sm font-medium text-navy-950"
+            className="type-label block font-semibold text-spruce-950"
           >
             Email address
           </label>
@@ -300,7 +300,7 @@ export function ContactForm() {
             required
             autoComplete="email"
             data-error="contact-email-error"
-            className="form-control mt-1.5 block w-full rounded-md border border-border-subtle bg-surface-ivory/50 px-3.5 py-2.5 text-base text-navy-950 transition-colors focus:border-navy-950 focus:bg-surface-white sm:text-sm"
+            className="form-control mt-1.5 block w-full rounded-md border border-border-subtle bg-surface-mist/40 px-3.5 py-2.5 text-base text-spruce-950 transition-colors focus:border-spruce-950 focus:bg-surface-white sm:text-sm"
             placeholder="you@example.com"
           />
           <div id="contact-email-error" className="field-error-msg">
@@ -313,17 +313,17 @@ export function ContactForm() {
         <div>
           <label
             htmlFor="contact-organization"
-            className="block text-sm font-medium text-navy-950"
+            className="type-label block font-semibold text-spruce-950"
           >
             Organization{" "}
-            <span className="font-normal text-text-muted">(optional)</span>
+            <span className="font-normal text-slate-500">(optional)</span>
           </label>
           <input
             id="contact-organization"
             name="organization"
             type="text"
             autoComplete="organization"
-            className="form-control mt-1.5 block w-full rounded-md border border-border-subtle bg-surface-ivory/50 px-3.5 py-2.5 text-base text-navy-950 transition-colors focus:border-navy-950 focus:bg-surface-white sm:text-sm"
+            className="form-control mt-1.5 block w-full rounded-md border border-border-subtle bg-surface-mist/40 px-3.5 py-2.5 text-base text-spruce-950 transition-colors focus:border-spruce-950 focus:bg-surface-white sm:text-sm"
             placeholder="Foundation, school, or group"
           />
         </div>
@@ -331,7 +331,7 @@ export function ContactForm() {
         <div>
           <label
             htmlFor="contact-topic"
-            className="block text-sm font-medium text-navy-950"
+            className="type-label block font-semibold text-spruce-950"
           >
             Inquiry topic
           </label>
@@ -340,7 +340,7 @@ export function ContactForm() {
             name="topic"
             value={selectedTopic}
             onChange={(e) => setUserSelectedTopic(e.target.value)}
-            className="form-control mt-1.5 block w-full rounded-md border border-border-subtle bg-surface-ivory/50 px-3.5 py-2.5 text-base text-navy-950 transition-colors focus:border-navy-950 focus:bg-surface-white sm:text-sm"
+            className="form-control mt-1.5 block w-full rounded-md border border-border-subtle bg-surface-mist/40 px-3.5 py-2.5 text-base text-spruce-950 transition-colors focus:border-spruce-950 focus:bg-surface-white sm:text-sm"
           >
             {INQUIRY_TOPICS.map((topic) => (
               <option key={topic} value={topic}>
@@ -354,7 +354,7 @@ export function ContactForm() {
       <div>
         <label
           htmlFor="contact-message"
-          className="block text-sm font-medium text-navy-950"
+          className="type-label block font-semibold text-spruce-950"
         >
           Message
         </label>
@@ -365,7 +365,7 @@ export function ContactForm() {
           required
           minLength={10}
           data-error="contact-message-error"
-          className="form-control mt-1.5 block w-full rounded-md border border-border-subtle bg-surface-ivory/50 px-3.5 py-2.5 text-base text-navy-950 transition-colors focus:border-navy-950 focus:bg-surface-white sm:text-sm"
+          className="form-control mt-1.5 block w-full rounded-md border border-border-subtle bg-surface-mist/40 px-3.5 py-2.5 text-base text-spruce-950 transition-colors focus:border-spruce-950 focus:bg-surface-white sm:text-sm"
           placeholder="Share how you would like to support or partner with Basho Valley Education Foundation..."
         />
         <div id="contact-message-error" className="field-error-msg">
@@ -374,13 +374,13 @@ export function ContactForm() {
       </div>
 
       <div className="flex flex-col items-start justify-between gap-4 border-t border-border-subtle pt-5 sm:flex-row sm:items-center">
-        <p className="text-xs text-text-muted">
+        <p className="type-label text-slate-500">
           Prepares a structured email draft; no data is stored on external
           servers.
         </p>
         <button
           type="submit"
-          className="inline-flex w-full items-center justify-center gap-2 rounded-md bg-navy-950 px-6 py-3 text-sm font-semibold text-surface-white transition-colors hover:bg-navy-900 sm:w-auto"
+          className="type-btn inline-flex w-full items-center justify-center gap-2 rounded-md bg-spruce-950 px-6 py-3 text-surface-white transition-colors hover:bg-spruce-900 sm:w-auto"
         >
           <span>Prepare inquiry draft</span>
           <ArrowRightIcon className="h-4 w-4" />

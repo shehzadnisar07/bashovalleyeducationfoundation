@@ -45,6 +45,10 @@
   --foreground: #2E3538;
 }
 
+html {
+  scroll-padding-top: 6rem;
+}
+
 body {
   background-color: var(--color-surface-white);
   color: var(--color-text-body);
@@ -97,7 +101,11 @@ h1, h2, h3, h4, .font-serif, .font-heading {
   text-wrap: balance;
 }
 
-.type-body {
+.type-html {
+  scroll-padding-top: 6rem;
+}
+
+body {
   font-family: var(--font-sans);
   font-size: clamp(1rem, 0.96rem + 0.15vw, 1.0625rem);
   font-weight: 400;

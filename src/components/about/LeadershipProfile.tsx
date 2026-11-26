@@ -104,10 +104,10 @@ export function LeadershipProfile({ member }: LeadershipProfileProps) {
                     <rect x="2" y="4" width="20" height="16" rx="2" />
                     <path d="m22 7-10 6L2 7" />
                   </svg>
-                  <dd>
+                  <dd className="min-w-0">
                     <a
                       href={`mailto:${member.contact.email}`}
-                      className="font-medium text-spruce-900 underline decoration-spruce-800/45 underline-offset-4 transition-colors hover:text-spruce-950 hover:decoration-spruce-950"
+                      className="break-words font-medium text-spruce-900 underline decoration-spruce-800/45 underline-offset-4 transition-colors hover:text-spruce-950 hover:decoration-spruce-950"
                     >
                       {member.contact.email}
                     </a>

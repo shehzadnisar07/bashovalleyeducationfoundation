@@ -207,7 +207,7 @@ export function LeadershipCarousel({ members }: LeadershipCarouselProps) {
               type="button"
               onClick={() => setSelectedMember(null)}
               aria-label="Close profile"
-              className="absolute right-4 top-4 z-10 inline-flex h-9 w-9 items-center justify-center rounded-full border border-border-subtle bg-surface-white text-spruce-950 shadow-xs transition-colors hover:bg-surface-mist sm:right-6 sm:top-6"
+              className="absolute right-4 top-4 z-10 inline-flex h-11 w-11 items-center justify-center rounded-full border border-border-subtle bg-surface-white text-spruce-950 shadow-xs transition-colors hover:bg-surface-mist sm:right-6 sm:top-6"
             >
               <svg
                 className="h-4 w-4"

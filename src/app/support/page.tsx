@@ -126,7 +126,7 @@ export default function SupportPage() {
               </Link>
               <a
                 href={`mailto:${siteConfig.ceo.email}`}
-                className="type-btn inline-flex items-center justify-center rounded-full border border-spruce-900 bg-surface-white px-7 py-3 text-spruce-900 transition-colors hover:bg-surface-mist"
+                className="type-btn inline-flex items-center justify-center rounded-full border border-spruce-900 bg-surface-white px-6 py-3 text-center break-words text-spruce-900 transition-colors hover:bg-surface-mist"
               >
                 Email CEO ({siteConfig.ceo.email})
               </a>
