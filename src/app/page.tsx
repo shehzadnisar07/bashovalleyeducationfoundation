@@ -69,16 +69,16 @@ export default function Home() {
       </section>
 
       {/* 2. Intro Statement & Donate CTA (Soft Glacier Mist) */}
-      <section className="bg-surface-mist">
-        <div className="mx-auto max-w-4xl px-5 py-10 text-center sm:px-6 sm:py-16 lg:px-8">
+      <section className="flex min-h-dvh items-center bg-surface-mist">
+        <div className="mx-auto w-full max-w-5xl px-5 py-16 text-center sm:px-8 sm:py-20">
           <Link
             href="/support"
-            className="inline-flex items-center justify-center rounded-full bg-spruce-900 px-8 py-3 text-sm font-semibold text-surface-white transition-colors hover:bg-spruce-950 sm:px-10 sm:py-3.5"
+            className="inline-flex items-center justify-center rounded-full bg-spruce-900 px-8 py-3.5 text-sm font-semibold text-surface-white transition-colors hover:bg-spruce-950 sm:px-11 sm:py-4 sm:text-base"
           >
             Donate Now
           </Link>
 
-          <h1 className="mt-8 text-left font-serif text-[clamp(1.5rem,1.125rem+2vw,2.25rem)] font-normal leading-snug text-balance text-spruce-900 sm:mt-10">
+          <h1 className="mt-8 text-left font-serif text-[clamp(1.75rem,1.1rem+3vw,3.25rem)] font-normal leading-[1.2] text-balance text-spruce-900 sm:mt-12">
             Every child in Basho Valley deserves quality education —{" "}
             <em className="italic">
               but mountain isolation leaves too many classrooms underserved.

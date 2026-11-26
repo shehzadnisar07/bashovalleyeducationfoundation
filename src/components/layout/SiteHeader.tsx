@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useCallback, useEffect, useRef } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { siteConfig } from "@/config/site";
 
 export function SiteHeader() {
@@ -13,6 +13,8 @@ export function SiteHeader() {
   const menuRef = useRef<HTMLUListElement>(null);
   const lastCollapsedWidthRef = useRef<number>(0);
   const rafRef = useRef<number | null>(null);
+  const lastScrollYRef = useRef<number>(0);
+  const [isHidden, setIsHidden] = useState(false);
 
   const syncLayout = useCallback(() => {
     const header = headerRef.current;
@@ -88,6 +90,40 @@ export function SiteHeader() {
     };
   }, [syncLayout]);
 
+  useEffect(() => {
+    lastScrollYRef.current = window.scrollY;
+    let ticking = false;
+
+    const updateVisibility = () => {
+      const currentY = window.scrollY;
+      const menuOpen = menuRef.current?.matches(":popover-open") ?? false;
+
+      if (currentY <= 80 || menuOpen) {
+        setIsHidden(false);
+        lastScrollYRef.current = currentY;
+        ticking = false;
+        return;
+      }
+
+      const delta = currentY - lastScrollYRef.current;
+      if (Math.abs(delta) >= 8) {
+        setIsHidden(delta > 0);
+        lastScrollYRef.current = currentY;
+      }
+
+      ticking = false;
+    };
+
+    const handleScroll = () => {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(updateVisibility);
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [pathname]);
+
   const handleNavClick = () => {
     const header = headerRef.current;
     const menu = menuRef.current;
@@ -104,7 +140,9 @@ export function SiteHeader() {
   return (
     <header
       ref={headerRef}
-      className="site-header sticky top-0 z-40 border-b border-border-subtle bg-surface-white/95 shadow-xs backdrop-blur-sm"
+      className={`site-header sticky top-0 z-40 border-b border-border-subtle bg-surface-white/95 shadow-xs backdrop-blur-sm transition-transform duration-300 ease-out motion-reduce:transition-none ${
+        isHidden ? "-translate-y-full" : "translate-y-0"
+      }`}
     >
       {/* Main Navbar */}
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">

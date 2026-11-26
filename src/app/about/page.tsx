@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import { LeadershipCarousel } from "@/components/about/LeadershipCarousel";
 import { siteConfig } from "@/config/site";
+import { LEADERSHIP_MEMBERS } from "@/data/leadership";
 
 export const metadata: Metadata = {
   title: "About Us",
@@ -164,189 +166,25 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* 5. Leadership & Experience Cards (White Background + Warm Himalayan Sand Cards) */}
+      {/* 5. Meet Our Leadership (Consistent Executive Leadership Directory) */}
       <section id="leadership" className="bg-surface-white">
-        <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8">
-          <h2 className="text-center font-serif text-3xl font-normal text-spruce-900 sm:text-4xl">
-            Meet Our Leadership
-          </h2>
-
-          <div className="mt-10 grid gap-8 lg:grid-cols-3">
-            {/* CEO Profile Card */}
-            <article className="rounded-xl bg-surface-sand p-7">
-              <p className="text-xs font-bold uppercase tracking-widest text-saffron-700">
-                {siteConfig.ceo.title}
-              </p>
-              <h3 className="mt-2 font-serif text-2xl font-normal text-spruce-900">
-                {siteConfig.ceo.name}
-              </h3>
-              <p className="mt-3 text-sm leading-relaxed text-text-body">
-                {siteConfig.ceo.bio}
-              </p>
-              <dl className="mt-5 space-y-2 border-t border-spruce-900/15 pt-4 text-sm">
-                <div>
-                  <dt className="sr-only">Email</dt>
-                  <dd>
-                    <a
-                      href={`mailto:${siteConfig.ceo.email}`}
-                      className="font-medium text-spruce-900 underline decoration-saffron-600/60 underline-offset-4 hover:text-saffron-700"
-                    >
-                      {siteConfig.ceo.email}
-                    </a>
-                  </dd>
-                </div>
-                <div>
-                  <dt className="sr-only">Phone</dt>
-                  <dd>
-                    <a
-                      href="tel:+923417888621"
-                      className="font-medium text-text-body hover:text-spruce-900"
-                    >
-                      {siteConfig.ceo.phone}
-                    </a>
-                  </dd>
-                </div>
-                <div>
-                  <dt className="sr-only">LinkedIn</dt>
-                  <dd>
-                    <a
-                      href={siteConfig.ceo.linkedIn}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-xs font-semibold uppercase tracking-wider text-spruce-900 underline underline-offset-4 hover:text-saffron-700"
-                    >
-                      LinkedIn Profile
-                    </a>
-                  </dd>
-                </div>
-              </dl>
-            </article>
-
-            {/* Experience Cards */}
-            {siteConfig.ceo.experience.map((exp) => (
-              <article
-                key={exp.organization}
-                className="rounded-xl bg-surface-sand p-7"
-              >
-                <p className="text-xs font-bold uppercase tracking-widest text-spruce-800">
-                  {exp.period}
-                </p>
-                <h3 className="mt-2 font-serif text-2xl font-normal text-spruce-900">
-                  {exp.organization}
-                </h3>
-                <p className="mt-1 text-sm font-semibold text-saffron-700">
-                  {exp.role}
-                </p>
-                <p className="mt-1 text-xs text-slate-500">{exp.location}</p>
-                <p className="mt-4 text-sm leading-relaxed text-text-body">
-                  {exp.summary}
-                </p>
-              </article>
-            ))}
+        <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8">
+          <div className="mx-auto max-w-2xl text-center">
+            <h2 className="font-serif text-3xl font-normal text-spruce-950 sm:text-4xl">
+              Meet Our Leadership
+            </h2>
+            <p className="mt-3 text-base leading-relaxed text-text-body">
+              Dedicated leadership. Community experience. A shared commitment to
+              education.
+            </p>
           </div>
+
+          <LeadershipCarousel members={LEADERSHIP_MEMBERS} />
         </div>
       </section>
 
-      {/* 6. Meet Our Educators & Trustees (Glacier Mist Band with Circular Photos) */}
-      <section className="bg-surface-mist">
-        <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8">
-          <h2 className="text-center font-serif text-3xl font-normal text-spruce-900 sm:text-4xl">
-            Our Valley Team &amp; Trustees
-          </h2>
-          <p className="mx-auto mt-3 max-w-2xl text-center text-sm text-text-body sm:text-base">
-            Seven Trustees—most of whom teach in Basho Valley—alongside local
-            female educators and community leaders.
-          </p>
-
-          <div className="mt-10 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
-            <div className="flex flex-col items-center text-center">
-              <div className="relative h-40 w-40 overflow-hidden rounded-full border-4 border-surface-white shadow-xs">
-                <Image
-                  src="/images/teachers/image23.jpg"
-                  alt="Teachers and staff at a Basho Valley partner school"
-                  fill
-                  sizes="160px"
-                  className="object-cover"
-                />
-              </div>
-              <h3 className="mt-4 font-serif text-xl font-normal text-spruce-900">
-                Three-Teacher Team
-              </h3>
-              <p className="mt-1 text-xs text-slate-500">
-                Dedicated STEM &amp; English Instruction
-              </p>
-            </div>
-
-            <div className="flex flex-col items-center text-center">
-              <div className="relative h-40 w-40 overflow-hidden rounded-full border-4 border-surface-white shadow-xs">
-                <Image
-                  src="/images/parent-teacher-meeting/image24.jpg"
-                  alt="Parent-teacher meeting in Basho Valley"
-                  fill
-                  sizes="160px"
-                  className="object-cover"
-                />
-              </div>
-              <h3 className="mt-4 font-serif text-xl font-normal text-spruce-900">
-                {siteConfig.stats.trusteesCount} Trustees
-              </h3>
-              <p className="mt-1 text-xs text-slate-500">
-                Registered Charitable Trust Governance
-              </p>
-            </div>
-
-            <div className="flex flex-col items-center text-center">
-              <div className="relative h-40 w-40 overflow-hidden rounded-full border-4 border-surface-white shadow-xs">
-                <Image
-                  src="/images/morning-assembly/image8.jpeg"
-                  alt="Students gathered at morning school assembly"
-                  fill
-                  sizes="160px"
-                  className="object-cover"
-                />
-              </div>
-              <h3 className="mt-4 font-serif text-xl font-normal text-spruce-900">
-                Local Female Teachers
-              </h3>
-              <p className="mt-1 text-xs text-slate-500">
-                High Retention &amp; Mentorship
-              </p>
-            </div>
-
-            <div className="flex flex-col items-center text-center">
-              <div className="relative h-40 w-40 overflow-hidden rounded-full border-4 border-surface-white shadow-xs">
-                <Image
-                  src="/images/village/village-01.png"
-                  alt="Basho Valley village community"
-                  fill
-                  sizes="160px"
-                  className="object-cover"
-                />
-              </div>
-              <h3 className="mt-4 font-serif text-xl font-normal text-spruce-900">
-                17 Valley Villages
-              </h3>
-              <p className="mt-1 text-xs text-slate-500">
-                1 Active · 2nd Planned · 16 Waiting
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* 7. Full-Bleed Field Photo Divider */}
-      <section className="relative min-h-[340px] overflow-hidden bg-spruce-950 sm:min-h-[460px]">
-        <Image
-          src="/images/children/image21.jpg"
-          alt="Smiling students at the BVEF partner school in Basho Valley"
-          fill
-          sizes="100vw"
-          className="object-cover"
-        />
-      </section>
-
-      {/* 8. Partnership & Model Pillars (White Background + 4 Icon Columns + Outlined Pill CTA) */}
-      <section className="bg-surface-white">
+      {/* 6. Partnership & Model Pillars (White Background + 4 Icon Columns + Outlined Pill CTA) */}
+      <section className="border-t border-border-subtle bg-surface-white">
         <div className="mx-auto max-w-6xl px-4 py-16 text-center sm:px-6 sm:py-20 lg:px-8">
           <h2 className="font-serif text-3xl font-normal text-spruce-900 sm:text-4xl">
             Closing the learning gap requires strong partnerships
