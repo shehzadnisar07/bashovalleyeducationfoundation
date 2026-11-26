@@ -5,19 +5,20 @@ import { useEffect, useState } from "react";
 
 const HERO_SLIDES = [
   {
-    src: "/images/valley-views/image4.jpg",
-    alt: "Basho Valley village, terraced fields, and partner public school nestled beneath golden Himalayan cliffs",
-    caption: "Basho Valley village and partner public school · 8,800–11,800 ft",
+    src: "/images/hero-section/image1.jpg",
+    alt: "Snow-dusted suspension bridge crossing the River Sind toward Basho Valley in winter",
   },
   {
-    src: "/images/morning-assembly/image7.jpeg",
-    alt: "Students lined up in morning assembly in the sunlit courtyard of the partner school in Basho Valley",
-    caption: "Morning assembly at the Basho Valley partner school",
+    src: "/images/hero-section/image2.jpeg",
+    alt: "Students in blue and white uniforms gathered in morning assembly prayer outside the Basho Valley partner school",
   },
   {
-    src: "/images/valley-views/image1.jpg",
-    alt: "Wooden suspension bridge with blue railings spanning the River Sind into Basho Valley",
-    caption: "Crossing the River Sind suspension bridge toward the valley",
+    src: "/images/hero-section/image3.jpeg",
+    alt: "Boys and girls standing in rows during morning assembly in the sunlit courtyard of the Basho Valley partner school",
+  },
+  {
+    src: "/images/hero-section/image4.jpeg",
+    alt: "Students sitting outdoors in the sunlit courtyard completing written work at the Basho Valley partner school",
   },
 ];
 
@@ -36,8 +37,6 @@ export function HeroSlideshow() {
 
     return () => clearInterval(timer);
   }, []);
-
-  const currentSlide = HERO_SLIDES[activeIndex];
 
   return (
     <>
@@ -63,39 +62,6 @@ export function HeroSlideshow() {
           </div>
         );
       })}
-
-      {/* Editorial bottom caption & slide selector */}
-      <div className="absolute inset-x-0 bottom-0 z-20 border-t border-surface-white/15 bg-navy-980/55 backdrop-blur-xs">
-        <div className="mx-auto flex max-w-7xl items-center justify-between gap-3 px-4 py-2.5 sm:px-6 sm:py-3.5 lg:px-8">
-          <p className="truncate text-[11px] text-surface-white/85 sm:text-xs">
-            {currentSlide.caption}
-          </p>
-
-          <div
-            className="flex shrink-0 items-center gap-2"
-            role="group"
-            aria-label="Select hero photograph"
-          >
-            {HERO_SLIDES.map((slide, index) => {
-              const isActive = index === activeIndex;
-              return (
-                <button
-                  key={slide.src}
-                  type="button"
-                  onClick={() => setActiveIndex(index)}
-                  aria-label={`Show photograph ${index + 1}: ${slide.caption}`}
-                  aria-pressed={isActive}
-                  className={`h-1.5 rounded-xs transition-all ${
-                    isActive
-                      ? "w-8 bg-ochre-500"
-                      : "w-4 bg-surface-white/45 hover:bg-surface-white/80"
-                  }`}
-                />
-              );
-            })}
-          </div>
-        </div>
-      </div>
     </>
   );
 }

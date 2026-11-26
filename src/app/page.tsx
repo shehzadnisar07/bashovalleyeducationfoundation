@@ -61,26 +61,11 @@ export default function Home() {
   return (
     <>
       {/* 1. Full-Bleed Village Slideshow Hero */}
-      <section className="relative isolate overflow-hidden bg-spruce-950">
+      <section
+        aria-label="Basho Valley partner school photography"
+        className="relative isolate min-h-[42dvh] overflow-hidden bg-spruce-950 sm:min-h-[calc(100dvh-5.5rem-1px)]"
+      >
         <HeroSlideshow />
-
-        <div
-          className="pointer-events-none absolute inset-0 bg-gradient-to-r from-black/75 via-black/40 to-transparent"
-          aria-hidden="true"
-        />
-
-        <div className="relative z-10 mx-auto flex min-h-[44dvh] max-w-7xl items-center px-4 py-10 sm:min-h-[78dvh] sm:px-6 sm:py-16 lg:px-8">
-          <div className="max-w-xs space-y-2.5 sm:max-w-3xl sm:space-y-6">
-            <h1 className="font-serif text-2xl font-normal leading-[1.16] tracking-tight text-surface-white drop-shadow-md sm:text-5xl lg:text-[4rem]">
-              Transforming learning outcomes{" "}
-              <em className="italic">in Basho Valley.</em>
-            </h1>
-
-            <p className="max-w-xs text-xs font-medium leading-relaxed text-surface-white/95 drop-shadow-sm sm:max-w-2xl sm:text-xl">
-              {siteConfig.description}
-            </p>
-          </div>
-        </div>
       </section>
 
       {/* 2. Intro Statement & Donate CTA (Soft Glacier Mist) */}
@@ -93,12 +78,12 @@ export default function Home() {
             Donate Now
           </Link>
 
-          <h2 className="mt-10 text-left font-serif text-2xl font-normal leading-snug text-spruce-900 sm:text-4xl">
+          <h1 className="mt-10 text-left font-serif text-2xl font-normal leading-snug text-spruce-900 sm:text-4xl">
             Every child in Basho Valley deserves quality education . . .{" "}
             <em className="italic">
               yet mountain isolation keeps classrooms underserved.
             </em>
-          </h2>
+          </h1>
 
           <p className="mt-5 text-left text-base leading-relaxed text-text-body sm:text-lg">
             Across a suspension bridge over the River Sind and a{" "}
