@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { siteConfig } from "@/config/site";
 import { CLASSROOM_KIT_ITEMS } from "@/data/program";
@@ -12,21 +13,23 @@ export const metadata: Metadata = {
 export default function SupportPage() {
   return (
     <>
-      <section className="bg-spruce-900 text-surface-white">
-        <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8">
-          <p className="text-xs font-bold uppercase tracking-widest text-saffron-100">
-            Support Our Work
-          </p>
-          <h1 className="mt-2 font-serif text-4xl font-normal tracking-tight sm:text-5xl">
-            Invest Directly in{" "}
-            <em className="italic">Basho Valley Classrooms</em>
-          </h1>
-          <p className="mt-4 max-w-2xl text-base leading-relaxed text-surface-white/85">
-            With zero bricks-and-mortar spending, every contribution goes
-            directly toward local STEM educators, offline digital learning
-            equipment, and solar power for partner schools.
-          </p>
-        </div>
+      <section
+        aria-label="Support Basho Valley students"
+        className="w-full overflow-hidden bg-surface-mist"
+      >
+        <h1 className="sr-only">
+          Invest Directly in Basho Valley Classrooms
+        </h1>
+        <Image
+          src="/images/support/foundation_banner.png"
+          alt="Your donation can change a child's future — three Basho Valley schoolgirls standing together"
+          width={1920}
+          height={600}
+          priority
+          unoptimized
+          sizes="100vw"
+          className="h-auto w-full"
+        />
       </section>
 
       {/* Tangible Sponsorship Tiers */}

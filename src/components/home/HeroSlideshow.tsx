@@ -5,20 +5,20 @@ import { useEffect, useState } from "react";
 
 const HERO_SLIDES = [
   {
-    src: "/images/hero-section/image1.jpg",
-    alt: "Snow-dusted suspension bridge crossing the River Sind toward Basho Valley in winter",
+    src: "/images/hero-section/img1.jpg",
+    alt: "Bringing Education Beyond Mountains, Building Brighter Futures — Basho Valley students gathered in morning assembly",
   },
   {
-    src: "/images/hero-section/image2.jpeg",
-    alt: "Students in blue and white uniforms gathered in morning assembly prayer outside the Basho Valley partner school",
+    src: "/images/hero-section/img2.jpeg",
+    alt: "Students sitting outdoors in the sunlit courtyard completing written work at the Basho Valley partner school",
   },
   {
-    src: "/images/hero-section/image3.jpeg",
+    src: "/images/hero-section/img3.jpeg",
     alt: "Boys and girls standing in rows during morning assembly in the sunlit courtyard of the Basho Valley partner school",
   },
   {
-    src: "/images/hero-section/image4.jpeg",
-    alt: "Students sitting outdoors in the sunlit courtyard completing written work at the Basho Valley partner school",
+    src: "/images/hero-section/img4.jpg",
+    alt: "Snow-dusted suspension bridge crossing the River Sind toward Basho Valley in winter",
   },
 ];
 

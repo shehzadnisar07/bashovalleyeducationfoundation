@@ -70,33 +70,20 @@ export default function Home() {
 
       {/* 2. Intro Statement & Donate CTA (Soft Glacier Mist) */}
       <section className="bg-surface-mist">
-        <div className="mx-auto max-w-4xl px-4 py-16 text-center sm:px-6 sm:py-20 lg:px-8">
+        <div className="mx-auto max-w-4xl px-5 py-10 text-center sm:px-6 sm:py-16 lg:px-8">
           <Link
             href="/support"
-            className="inline-flex items-center justify-center rounded-full bg-spruce-900 px-10 py-3.5 text-sm font-semibold text-surface-white transition-colors hover:bg-spruce-950"
+            className="inline-flex items-center justify-center rounded-full bg-spruce-900 px-8 py-3 text-sm font-semibold text-surface-white transition-colors hover:bg-spruce-950 sm:px-10 sm:py-3.5"
           >
             Donate Now
           </Link>
 
-          <h1 className="mt-10 text-left font-serif text-2xl font-normal leading-snug text-spruce-900 sm:text-4xl">
-            Every child in Basho Valley deserves quality education . . .{" "}
+          <h1 className="mt-8 text-left font-serif text-[clamp(1.5rem,1.125rem+2vw,2.25rem)] font-normal leading-snug text-balance text-spruce-900 sm:mt-10">
+            Every child in Basho Valley deserves quality education —{" "}
             <em className="italic">
-              yet mountain isolation keeps classrooms underserved.
+              but mountain isolation leaves too many classrooms underserved.
             </em>
           </h1>
-
-          <p className="mt-5 text-left text-base leading-relaxed text-text-body sm:text-lg">
-            Across a suspension bridge over the River Sind and a{" "}
-            <Link
-              href="/about"
-              className="font-medium text-spruce-900 underline decoration-spruce-900/50 underline-offset-4 hover:decoration-spruce-900"
-            >
-              {siteConfig.stats.distanceFromSkardu}
-            </Link>{" "}
-            from Skardu, 17 mountain villages value education deeply—yet remote
-            terrain and harsh winters leave public schools without consistent
-            STEM instruction.
-          </p>
         </div>
       </section>
 
